@@ -1,0 +1,26 @@
+const Joi = require('joi');
+
+/**
+ * Validation middleware
+ * @param {Object} schema - Joi validation schema
+ */
+const validate = (schema) => {
+  return (req, res, next) => {
+    const { error } = schema.validate(req.body, {
+      abortEarly: false,   // return all errors
+      allowUnknown: false // block unexpected fields
+    });
+
+    if (error) {
+      return res.status(400).json({
+        success: false,
+        message: 'Validation failed',
+        errors: error.details.map(err => err.message),
+      });
+    }
+
+    next();
+  };
+};
+
+module.exports = validate;
