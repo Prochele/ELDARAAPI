@@ -2,6 +2,7 @@ const express = require('express');
 
 const authRoutes = require('./routes/auth.routes');
 const errorHandler = require('./middlewares/error.middleware');
+const dailyActivityRoutes = require('./routes/dailyActivity.routes');
 
 const app = express();
 
@@ -14,7 +15,7 @@ app.use(express.json());
  * Routes
  */
 app.use('/api/auth', authRoutes);
-
+app.use('/api/daily-activity', dailyActivityRoutes);
 /**
  * Health check
  */
@@ -29,5 +30,7 @@ app.get('/health', (req, res) => {
  * Error handler (MUST be last)
  */
 app.use(errorHandler);
+
+
 
 module.exports = app;

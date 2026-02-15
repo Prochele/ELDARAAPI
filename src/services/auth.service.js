@@ -11,7 +11,7 @@ const authenticateUserService = async (loginData) => {
 
   logger.info('Authentication result', {
     isValid: dbResult.isValid,
-    message: dbResult.message,
+    message: dbResult.userId,
   });
 
   return {
