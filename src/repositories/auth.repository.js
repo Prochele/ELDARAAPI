@@ -9,7 +9,6 @@ const authenticateUserRepo = async (loginData) => {
   const {
     identifier,
     otp,
-    roleId,
     deviceUUID,
     platform,
     appVersion,
@@ -17,6 +16,7 @@ const authenticateUserRepo = async (loginData) => {
 
   // OUT parameters
   let o_UserID = null;
+  let o_Role = null;
   let o_UserName = null;
   let o_MobileNumber = null;
   let o_EmailID = null;
@@ -26,8 +26,9 @@ const authenticateUserRepo = async (loginData) => {
 
   const sql = `
     CALL sp_authenticate_user(
-      ?, ?, ?, ?, ?, ?,
+      ?, ?, ?, ?, ?,
       @o_UserID,
+      @o_Role,
       @o_UserName,
       @o_MobileNumber,
       @o_EmailID,
@@ -44,7 +45,6 @@ const authenticateUserRepo = async (loginData) => {
     await connection.query(sql, [
       identifier,
       otp,
-      roleId,
       deviceUUID,
       platform,
       appVersion,
@@ -54,6 +54,7 @@ const authenticateUserRepo = async (loginData) => {
     const [rows] = await connection.query(`
       SELECT
         @o_UserID        AS userId,
+        @o_Role          AS role,
         @o_UserName      AS userName,
         @o_MobileNumber  AS mobileNumber,
         @o_EmailID       AS emailId,

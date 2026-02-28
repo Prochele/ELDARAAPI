@@ -4,7 +4,7 @@ const logger = require('../utils/logger.util');
 const authenticateUserService = async (loginData) => {
   logger.info('Authentication attempt', {
     identifier: loginData.identifier,
-    roleId: loginData.roleId,
+    //roleId: loginData.roleId,
   });
 
   const dbResult = await authRepository.authenticateUserRepo(loginData);
@@ -20,6 +20,7 @@ const authenticateUserService = async (loginData) => {
     data: dbResult.isValid === 1
       ? {
           userId: dbResult.userId,
+          role: dbResult.role,
           userName: dbResult.userName,
           mobileNumber: dbResult.mobileNumber,
           emailId: dbResult.emailId,
