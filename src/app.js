@@ -7,6 +7,7 @@ const dailyActivityRoutes = require('./routes/dailyActivity.routes');
 const geoRoutes = require('./routes/geo.routes');   // ✅ ADD THIS
 const otpRoutes = require('./routes/otp.routes');
 const errorHandler = require('./middlewares/error.middleware');
+const signupRoutes = require('./routes/signup.routes');
 
 const app = express();
 
@@ -22,6 +23,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/daily-activity', dailyActivityRoutes);
 app.use('/api/geo', geoRoutes);   // ✅ ADD THIS
 app.use('/api/otp', otpRoutes);
+app.use('/api/signup', signupRoutes);
 /**
  * Health check
  */
