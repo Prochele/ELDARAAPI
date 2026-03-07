@@ -1,5 +1,40 @@
+// const crypto = require('crypto');
+// const otpRepository = require('../repositories/otp.repository');
+
+// exports.generateOtp = async ({ contactType, contactValue }) => {
+
+//   if (!contactType || !contactValue) {
+//     throw new Error('ContactType and ContactValue are required');
+//   }
+
+//   const otp = crypto.randomInt(100000, 999999).toString();
+
+//   await otpRepository.generateOtp(contactType, contactValue, otp);
+
+//   // TODO: Send SMS / Email here
+
+//   return { message: 'OTP sent successfully' };
+// };
+
+// exports.verifyOtp = async ({ contactType, contactValue, otp }) => {
+
+//   if (!contactType || !contactValue || !otp) {
+//     throw new Error('Invalid verification request');
+//   }
+
+//   const result = await otpRepository.verifyOtp(contactType, contactValue, otp);
+
+//   if (!result) {
+//     throw new Error('Verification failed');
+//   }
+
+//   return result; // returns { IsValid, Message }
+// };
+
 const crypto = require('crypto');
 const otpRepository = require('../repositories/otp.repository');
+const emailUtil = require('../utils/email.util');
+const smsUtil = require('../utils/sms.util');
 
 exports.generateOtp = async ({ contactType, contactValue }) => {
 
@@ -11,7 +46,29 @@ exports.generateOtp = async ({ contactType, contactValue }) => {
 
   await otpRepository.generateOtp(contactType, contactValue, otp);
 
-  // TODO: Send SMS / Email here
+  try {
+
+    if (contactType === 'EMAIL') {
+
+      await emailUtil.sendOtpEmail(contactValue, otp);
+
+    }
+
+    if (contactType === 'MOBILE') {
+
+      const mobileNumber = contactValue.startsWith('+')
+        ? contactValue
+        : `${contactValue}`;
+
+      await smsUtil.sendOtpSms(mobileNumber, otp);
+
+    }
+
+  } catch (error) {
+
+    console.error('OTP delivery failed:', error);
+
+  }
 
   return { message: 'OTP sent successfully' };
 };

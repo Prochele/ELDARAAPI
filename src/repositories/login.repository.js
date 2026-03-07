@@ -5,6 +5,7 @@ exports.generateLoginOtp = async (mobileNumber) => {
         'CALL sp_generate_login_otp(?)',
         [mobileNumber]
     );
+    console.log('inside repository');
     return rows[0][0];
 };
 

@@ -34,7 +34,7 @@ const generateLoginOtp = async (req, res, next) => {
     const { mobileNumber } = req.body;
 
     const result = await authService.generateLoginOtp(mobileNumber);
-
+    console.log(result);
     return res.status(result.success ? 200 : 400).json(result);
 
   } catch (error) {

@@ -4,4 +4,6 @@ const geoController = require('../controllers/geo.controller');
 
 router.get('/hierarchy', geoController.getGeoHierarchy);
 
+router.post('/country-code', geoController.getCountryCode);
+
 module.exports = router;

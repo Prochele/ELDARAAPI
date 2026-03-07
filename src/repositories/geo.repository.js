@@ -44,6 +44,19 @@ const getGeoHierarchy = async () => {
   }
 };
 
+const getCountryCode = async (countryId) => {
+
+  const csql = `CALL sp_get_country_code(?)`;
+
+  const [rows] = await db.query(
+    csql,
+    [countryId]
+  );
+
+  return rows[0][0];
+};
+
 module.exports = {
-  getGeoHierarchy
+  getGeoHierarchy,
+  getCountryCode,
 };

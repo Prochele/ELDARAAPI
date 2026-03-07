@@ -23,6 +23,14 @@ const getGeoHierarchy = async () => {
   return result;
 };
 
+const getCountryCode = async (countryId) => {
+
+  const result = await geoRepository.getCountryCode(countryId);
+  console.log('Country Code', result.TeleCode);
+  return result;
+};
+
 module.exports = {
   getGeoHierarchy,
+  getCountryCode,
 };
