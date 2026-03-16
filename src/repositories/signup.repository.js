@@ -1,4 +1,5 @@
 const db = require('../config/db');
+const { DB_HOST } = require('../config/env');
 
 const callSignupProcedure = async (payload) => {
   const {
@@ -7,6 +8,7 @@ const callSignupProcedure = async (payload) => {
     mobileNumber,
     emailId,
     genderId,
+    dob,
     countryId,
     provinceId,
     districtId,
@@ -17,13 +19,14 @@ const callSignupProcedure = async (payload) => {
   } = payload;
 
   const [rows] = await db.query(
-    `CALL sp_user_signup(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+    `CALL sp_user_signup(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     [
       firstName,
       lastName,
       mobileNumber,
       emailId,
       genderId,
+      dob,
       countryId,
       provinceId,
       districtId,

@@ -12,7 +12,9 @@ exports.generateOtp = async (req, res, next) => {
 
 exports.verifyOtp = async (req, res, next) => {
   try {
+    console.log("OTP API HIT:", req.body);
     const result = await otpService.verifyOtp(req.body);
+    console.log("VERIFY OTP RESULT:", result);
     return successResponse(res, result);
   } catch (err) {
     next(err);
