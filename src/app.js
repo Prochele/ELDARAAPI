@@ -9,6 +9,7 @@ const otpRoutes = require('./routes/otp.routes');
 const errorHandler = require('./middlewares/error.middleware');
 const signupRoutes = require('./routes/signup.routes');
 const patronRoutes = require('./routes/patron.routes');
+const fileRoutes = require('./routes/file.routes');
 
 const app = express();
 
@@ -26,6 +27,7 @@ app.use('/api/geo', geoRoutes);   // ✅ ADD THIS
 app.use('/api/otp', otpRoutes);
 app.use('/api/signup', signupRoutes);
 app.use('/api/patron', patronRoutes);
+app.use('/api/file', fileRoutes);
 /**
  * Health check
  */

@@ -1,18 +1,19 @@
 const dailyActivityRepository = require('../repositories/dailyActivity.repository');
 const logger = require('../utils/logger.util');
 const addDailyActivity = async (userId, body) => {
-  const { activityDate, activityTime, categoryId, activityDescription } = body;
+  const { patronId, activityDate, activityTime, categoryId, activityDescription } = body;
 
-  if (!activityDate || !activityTime || !categoryId || !activityDescription) {
+  if (!patronId || !activityDate || !activityTime || !categoryId || !activityDescription || !userId) {
     throw new Error('All fields are required');
   }
 
   const result = await dailyActivityRepository.addDailyActivity(
-    userId,
+    patronId,
     activityDate,
     activityTime,
     categoryId,
-    activityDescription
+    activityDescription,
+    userId
   );
 
   return result;

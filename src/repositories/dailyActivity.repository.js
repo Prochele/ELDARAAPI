@@ -1,9 +1,9 @@
 const db = require('../config/db');
 
-const addDailyActivity = async (userId, activityDate, activityTime, categoryId, activityDescription) => {
+const addDailyActivity = async (userId, activityDate, activityTime, categoryId, activityDescription, createdby) => {
   const [rows] = await db.query(
-    'CALL USP_AddDailyActivity(?, ?, ?, ?, ?)',
-    [userId, activityDate, activityTime, categoryId, activityDescription]
+    'CALL USP_AddDailyActivity(?, ?, ?, ?, ?, ?)',
+    [userId, activityDate, activityTime, categoryId, activityDescription, createdby]
   );
 
   return rows[0][0]; // returning inserted ID
