@@ -10,6 +10,7 @@ const errorHandler = require('./middlewares/error.middleware');
 const signupRoutes = require('./routes/signup.routes');
 const patronRoutes = require('./routes/patron.routes');
 const fileRoutes = require('./routes/file.routes');
+const doctorAppointmentRoutes = require('./routes/doctorAppointment.routes');
 
 const app = express();
 
@@ -28,6 +29,7 @@ app.use('/api/otp', otpRoutes);
 app.use('/api/signup', signupRoutes);
 app.use('/api/patron', patronRoutes);
 app.use('/api/file', fileRoutes);
+app.use('/api/doctor-appointments', doctorAppointmentRoutes);
 /**
  * Health check
  */
