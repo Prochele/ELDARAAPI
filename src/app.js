@@ -11,6 +11,9 @@ const signupRoutes = require('./routes/signup.routes');
 const patronRoutes = require('./routes/patron.routes');
 const fileRoutes = require('./routes/file.routes');
 const doctorAppointmentRoutes = require('./routes/doctorAppointment.routes');
+const ocrRoutes = require('./routes/ocr.routes');
+const masterRoutes = require('./routes/master.routes');
+const medicineRoutes = require('./routes/medicine.routes');
 
 const app = express();
 
@@ -30,6 +33,10 @@ app.use('/api/signup', signupRoutes);
 app.use('/api/patron', patronRoutes);
 app.use('/api/file', fileRoutes);
 app.use('/api/doctor-appointments', doctorAppointmentRoutes);
+app.use('/api/ocr', ocrRoutes);
+app.use('/api/master', masterRoutes);
+app.use('/api/medicine', medicineRoutes);
+
 /**
  * Health check
  */

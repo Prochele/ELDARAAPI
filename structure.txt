@@ -2,2269 +2,112 @@
 ├── node_modules
 │   ├── @aws
 │   │   └── lambda-invoke-store
-│   │       ├── dist-cjs
-│   │       │   └── invoke-store.js
-│   │       ├── dist-es
-│   │       │   └── invoke-store.js
-│   │       ├── dist-types
-│   │       │   ├── invoke-store.benchmark.d.ts
-│   │       │   └── invoke-store.d.ts
-│   │       ├── LICENSE
-│   │       ├── package.json
-│   │       └── README.md
 │   ├── @aws-crypto
 │   │   ├── crc32
-│   │   │   ├── build
-│   │   │   │   ├── main
-│   │   │   │   └── module
-│   │   │   ├── CHANGELOG.md
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   ├── README.md
-│   │   │   ├── src
-│   │   │   │   ├── aws_crc32.ts
-│   │   │   │   └── index.ts
-│   │   │   ├── tsconfig.json
-│   │   │   └── tsconfig.module.json
 │   │   ├── crc32c
-│   │   │   ├── build
-│   │   │   │   ├── main
-│   │   │   │   └── module
-│   │   │   ├── CHANGELOG.md
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   ├── README.md
-│   │   │   ├── src
-│   │   │   │   ├── aws_crc32c.ts
-│   │   │   │   └── index.ts
-│   │   │   ├── tsconfig.json
-│   │   │   └── tsconfig.module.json
 │   │   ├── sha1-browser
-│   │   │   ├── build
-│   │   │   │   ├── main
-│   │   │   │   └── module
-│   │   │   ├── CHANGELOG.md
-│   │   │   ├── LICENSE
-│   │   │   ├── node_modules
-│   │   │   │   └── @smithy
-│   │   │   ├── package.json
-│   │   │   ├── README.md
-│   │   │   ├── src
-│   │   │   │   ├── constants.ts
-│   │   │   │   ├── crossPlatformSha1.ts
-│   │   │   │   ├── index.ts
-│   │   │   │   ├── isEmptyData.ts
-│   │   │   │   └── webCryptoSha1.ts
-│   │   │   ├── tsconfig.json
-│   │   │   └── tsconfig.module.json
 │   │   ├── sha256-browser
-│   │   │   ├── build
-│   │   │   │   ├── main
-│   │   │   │   └── module
-│   │   │   ├── CHANGELOG.md
-│   │   │   ├── LICENSE
-│   │   │   ├── node_modules
-│   │   │   │   └── @smithy
-│   │   │   ├── package.json
-│   │   │   ├── README.md
-│   │   │   ├── src
-│   │   │   │   ├── constants.ts
-│   │   │   │   ├── crossPlatformSha256.ts
-│   │   │   │   ├── index.ts
-│   │   │   │   ├── isEmptyData.ts
-│   │   │   │   └── webCryptoSha256.ts
-│   │   │   ├── tsconfig.json
-│   │   │   └── tsconfig.module.json
 │   │   ├── sha256-js
-│   │   │   ├── build
-│   │   │   │   ├── main
-│   │   │   │   └── module
-│   │   │   ├── CHANGELOG.md
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   ├── README.md
-│   │   │   ├── src
-│   │   │   │   ├── constants.ts
-│   │   │   │   ├── index.ts
-│   │   │   │   ├── jsSha256.ts
-│   │   │   │   ├── knownHashes.fixture.ts
-│   │   │   │   └── RawSha256.ts
-│   │   │   ├── tsconfig.json
-│   │   │   └── tsconfig.module.json
 │   │   ├── supports-web-crypto
-│   │   │   ├── build
-│   │   │   │   ├── main
-│   │   │   │   └── module
-│   │   │   ├── CHANGELOG.md
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   ├── README.md
-│   │   │   ├── src
-│   │   │   │   ├── index.ts
-│   │   │   │   └── supportsWebCrypto.ts
-│   │   │   ├── tsconfig.json
-│   │   │   └── tsconfig.module.json
 │   │   └── util
-│   │       ├── build
-│   │       │   ├── main
-│   │       │   └── module
-│   │       ├── CHANGELOG.md
-│   │       ├── LICENSE
-│   │       ├── node_modules
-│   │       │   └── @smithy
-│   │       ├── package.json
-│   │       ├── README.md
-│   │       ├── src
-│   │       │   ├── convertToBuffer.ts
-│   │       │   ├── index.ts
-│   │       │   ├── isEmptyData.ts
-│   │       │   ├── numToUint8.ts
-│   │       │   └── uint32ArrayFrom.ts
-│   │       ├── tsconfig.json
-│   │       └── tsconfig.module.json
 │   ├── @aws-sdk
 │   │   ├── client-s3
-│   │   │   ├── dist-cjs
-│   │   │   │   ├── auth
-│   │   │   │   ├── endpoint
-│   │   │   │   ├── index.js
-│   │   │   │   ├── models
-│   │   │   │   ├── runtimeConfig.browser.js
-│   │   │   │   ├── runtimeConfig.js
-│   │   │   │   ├── runtimeConfig.native.js
-│   │   │   │   ├── runtimeConfig.shared.js
-│   │   │   │   └── schemas
-│   │   │   ├── dist-es
-│   │   │   │   ├── auth
-│   │   │   │   ├── commands
-│   │   │   │   ├── endpoint
-│   │   │   │   ├── extensionConfiguration.js
-│   │   │   │   ├── index.js
-│   │   │   │   ├── models
-│   │   │   │   ├── pagination
-│   │   │   │   ├── runtimeConfig.browser.js
-│   │   │   │   ├── runtimeConfig.js
-│   │   │   │   ├── runtimeConfig.native.js
-│   │   │   │   ├── runtimeConfig.shared.js
-│   │   │   │   ├── runtimeExtensions.js
-│   │   │   │   ├── S3.js
-│   │   │   │   ├── S3Client.js
-│   │   │   │   ├── schemas
-│   │   │   │   └── waiters
-│   │   │   ├── dist-types
-│   │   │   │   ├── auth
-│   │   │   │   ├── commands
-│   │   │   │   ├── endpoint
-│   │   │   │   ├── extensionConfiguration.d.ts
-│   │   │   │   ├── index.d.ts
-│   │   │   │   ├── models
-│   │   │   │   ├── pagination
-│   │   │   │   ├── runtimeConfig.browser.d.ts
-│   │   │   │   ├── runtimeConfig.d.ts
-│   │   │   │   ├── runtimeConfig.native.d.ts
-│   │   │   │   ├── runtimeConfig.shared.d.ts
-│   │   │   │   ├── runtimeExtensions.d.ts
-│   │   │   │   ├── S3.d.ts
-│   │   │   │   ├── S3Client.d.ts
-│   │   │   │   ├── schemas
-│   │   │   │   ├── ts3.4
-│   │   │   │   └── waiters
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── client-ses
-│   │   │   ├── dist-cjs
-│   │   │   │   ├── auth
-│   │   │   │   ├── endpoint
-│   │   │   │   ├── index.js
-│   │   │   │   ├── models
-│   │   │   │   ├── runtimeConfig.browser.js
-│   │   │   │   ├── runtimeConfig.js
-│   │   │   │   ├── runtimeConfig.native.js
-│   │   │   │   ├── runtimeConfig.shared.js
-│   │   │   │   └── schemas
-│   │   │   ├── dist-es
-│   │   │   │   ├── auth
-│   │   │   │   ├── commands
-│   │   │   │   ├── endpoint
-│   │   │   │   ├── extensionConfiguration.js
-│   │   │   │   ├── index.js
-│   │   │   │   ├── models
-│   │   │   │   ├── pagination
-│   │   │   │   ├── runtimeConfig.browser.js
-│   │   │   │   ├── runtimeConfig.js
-│   │   │   │   ├── runtimeConfig.native.js
-│   │   │   │   ├── runtimeConfig.shared.js
-│   │   │   │   ├── runtimeExtensions.js
-│   │   │   │   ├── schemas
-│   │   │   │   ├── SES.js
-│   │   │   │   ├── SESClient.js
-│   │   │   │   └── waiters
-│   │   │   ├── dist-types
-│   │   │   │   ├── auth
-│   │   │   │   ├── commands
-│   │   │   │   ├── endpoint
-│   │   │   │   ├── extensionConfiguration.d.ts
-│   │   │   │   ├── index.d.ts
-│   │   │   │   ├── models
-│   │   │   │   ├── pagination
-│   │   │   │   ├── runtimeConfig.browser.d.ts
-│   │   │   │   ├── runtimeConfig.d.ts
-│   │   │   │   ├── runtimeConfig.native.d.ts
-│   │   │   │   ├── runtimeConfig.shared.d.ts
-│   │   │   │   ├── runtimeExtensions.d.ts
-│   │   │   │   ├── schemas
-│   │   │   │   ├── SES.d.ts
-│   │   │   │   ├── SESClient.d.ts
-│   │   │   │   ├── ts3.4
-│   │   │   │   └── waiters
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── client-sns
-│   │   │   ├── dist-cjs
-│   │   │   │   ├── auth
-│   │   │   │   ├── endpoint
-│   │   │   │   ├── index.js
-│   │   │   │   ├── models
-│   │   │   │   ├── runtimeConfig.browser.js
-│   │   │   │   ├── runtimeConfig.js
-│   │   │   │   ├── runtimeConfig.native.js
-│   │   │   │   ├── runtimeConfig.shared.js
-│   │   │   │   └── schemas
-│   │   │   ├── dist-es
-│   │   │   │   ├── auth
-│   │   │   │   ├── commands
-│   │   │   │   ├── endpoint
-│   │   │   │   ├── extensionConfiguration.js
-│   │   │   │   ├── index.js
-│   │   │   │   ├── models
-│   │   │   │   ├── pagination
-│   │   │   │   ├── runtimeConfig.browser.js
-│   │   │   │   ├── runtimeConfig.js
-│   │   │   │   ├── runtimeConfig.native.js
-│   │   │   │   ├── runtimeConfig.shared.js
-│   │   │   │   ├── runtimeExtensions.js
-│   │   │   │   ├── schemas
-│   │   │   │   ├── SNS.js
-│   │   │   │   └── SNSClient.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── auth
-│   │   │   │   ├── commands
-│   │   │   │   ├── endpoint
-│   │   │   │   ├── extensionConfiguration.d.ts
-│   │   │   │   ├── index.d.ts
-│   │   │   │   ├── models
-│   │   │   │   ├── pagination
-│   │   │   │   ├── runtimeConfig.browser.d.ts
-│   │   │   │   ├── runtimeConfig.d.ts
-│   │   │   │   ├── runtimeConfig.native.d.ts
-│   │   │   │   ├── runtimeConfig.shared.d.ts
-│   │   │   │   ├── runtimeExtensions.d.ts
-│   │   │   │   ├── schemas
-│   │   │   │   ├── SNS.d.ts
-│   │   │   │   ├── SNSClient.d.ts
-│   │   │   │   └── ts3.4
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── core
-│   │   │   ├── account-id-endpoint.d.ts
-│   │   │   ├── account-id-endpoint.js
-│   │   │   ├── client.d.ts
-│   │   │   ├── client.js
-│   │   │   ├── dist-cjs
-│   │   │   │   ├── index.js
-│   │   │   │   └── submodules
-│   │   │   ├── dist-es
-│   │   │   │   ├── index.js
-│   │   │   │   └── submodules
-│   │   │   ├── dist-types
-│   │   │   │   ├── api-extractor-type-index.d.ts
-│   │   │   │   ├── index.d.ts
-│   │   │   │   ├── submodules
-│   │   │   │   └── ts3.4
-│   │   │   ├── httpAuthSchemes.d.ts
-│   │   │   ├── httpAuthSchemes.js
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   ├── protocols.d.ts
-│   │   │   ├── protocols.js
-│   │   │   └── README.md
 │   │   ├── crc64-nvme
-│   │   │   ├── dist-cjs
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   ├── crc64-nvme-crt-container.js
-│   │   │   │   ├── Crc64Nvme.js
-│   │   │   │   └── index.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── crc64-nvme-crt-container.d.ts
-│   │   │   │   ├── Crc64Nvme.d.ts
-│   │   │   │   ├── index.d.ts
-│   │   │   │   └── ts3.4
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── credential-provider-env
-│   │   │   ├── dist-cjs
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   ├── fromEnv.js
-│   │   │   │   └── index.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── fromEnv.d.ts
-│   │   │   │   ├── index.d.ts
-│   │   │   │   └── ts3.4
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── credential-provider-http
-│   │   │   ├── dist-cjs
-│   │   │   │   ├── fromHttp
-│   │   │   │   ├── index.browser.js
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   ├── fromHttp
-│   │   │   │   ├── index.browser.js
-│   │   │   │   └── index.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── fromHttp
-│   │   │   │   ├── index.browser.d.ts
-│   │   │   │   ├── index.d.ts
-│   │   │   │   └── ts3.4
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── credential-provider-ini
-│   │   │   ├── dist-cjs
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   ├── fromIni.js
-│   │   │   │   ├── index.js
-│   │   │   │   ├── resolveAssumeRoleCredentials.js
-│   │   │   │   ├── resolveCredentialSource.js
-│   │   │   │   ├── resolveLoginCredentials.js
-│   │   │   │   ├── resolveProcessCredentials.js
-│   │   │   │   ├── resolveProfileData.js
-│   │   │   │   ├── resolveSsoCredentials.js
-│   │   │   │   ├── resolveStaticCredentials.js
-│   │   │   │   └── resolveWebIdentityCredentials.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── fromIni.d.ts
-│   │   │   │   ├── index.d.ts
-│   │   │   │   ├── resolveAssumeRoleCredentials.d.ts
-│   │   │   │   ├── resolveCredentialSource.d.ts
-│   │   │   │   ├── resolveLoginCredentials.d.ts
-│   │   │   │   ├── resolveProcessCredentials.d.ts
-│   │   │   │   ├── resolveProfileData.d.ts
-│   │   │   │   ├── resolveSsoCredentials.d.ts
-│   │   │   │   ├── resolveStaticCredentials.d.ts
-│   │   │   │   ├── resolveWebIdentityCredentials.d.ts
-│   │   │   │   └── ts3.4
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── credential-provider-login
-│   │   │   ├── dist-cjs
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   ├── fromLoginCredentials.js
-│   │   │   │   ├── index.js
-│   │   │   │   ├── LoginCredentialsFetcher.js
-│   │   │   │   └── types.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── fromLoginCredentials.d.ts
-│   │   │   │   ├── index.d.ts
-│   │   │   │   ├── LoginCredentialsFetcher.d.ts
-│   │   │   │   ├── ts3.4
-│   │   │   │   └── types.d.ts
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── credential-provider-node
-│   │   │   ├── dist-cjs
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   ├── defaultProvider.js
-│   │   │   │   ├── index.js
-│   │   │   │   ├── remoteProvider.js
-│   │   │   │   └── runtime
-│   │   │   ├── dist-types
-│   │   │   │   ├── defaultProvider.d.ts
-│   │   │   │   ├── index.d.ts
-│   │   │   │   ├── remoteProvider.d.ts
-│   │   │   │   ├── runtime
-│   │   │   │   └── ts3.4
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── credential-provider-process
-│   │   │   ├── dist-cjs
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   ├── fromProcess.js
-│   │   │   │   ├── getValidatedProcessCredentials.js
-│   │   │   │   ├── index.js
-│   │   │   │   ├── ProcessCredentials.js
-│   │   │   │   └── resolveProcessCredentials.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── fromProcess.d.ts
-│   │   │   │   ├── getValidatedProcessCredentials.d.ts
-│   │   │   │   ├── index.d.ts
-│   │   │   │   ├── ProcessCredentials.d.ts
-│   │   │   │   ├── resolveProcessCredentials.d.ts
-│   │   │   │   └── ts3.4
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── credential-provider-sso
-│   │   │   ├── dist-cjs
-│   │   │   │   ├── index.js
-│   │   │   │   └── loadSso-BKDNrsal.js
-│   │   │   ├── dist-es
-│   │   │   │   ├── fromSSO.js
-│   │   │   │   ├── index.js
-│   │   │   │   ├── isSsoProfile.js
-│   │   │   │   ├── loadSso.js
-│   │   │   │   ├── resolveSSOCredentials.js
-│   │   │   │   ├── types.js
-│   │   │   │   └── validateSsoProfile.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── fromSSO.d.ts
-│   │   │   │   ├── index.d.ts
-│   │   │   │   ├── isSsoProfile.d.ts
-│   │   │   │   ├── loadSso.d.ts
-│   │   │   │   ├── resolveSSOCredentials.d.ts
-│   │   │   │   ├── ts3.4
-│   │   │   │   ├── types.d.ts
-│   │   │   │   └── validateSsoProfile.d.ts
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── credential-provider-web-identity
-│   │   │   ├── dist-cjs
-│   │   │   │   ├── fromTokenFile.js
-│   │   │   │   ├── fromWebToken.js
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   ├── fromTokenFile.js
-│   │   │   │   ├── fromWebToken.js
-│   │   │   │   └── index.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── fromTokenFile.d.ts
-│   │   │   │   ├── fromWebToken.d.ts
-│   │   │   │   ├── index.d.ts
-│   │   │   │   └── ts3.4
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── middleware-bucket-endpoint
-│   │   │   ├── dist-cjs
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   ├── bucketEndpointMiddleware.js
-│   │   │   │   ├── bucketHostname.js
-│   │   │   │   ├── bucketHostnameUtils.js
-│   │   │   │   ├── configurations.js
-│   │   │   │   ├── index.js
-│   │   │   │   ├── NodeDisableMultiregionAccessPointConfigOptions.js
-│   │   │   │   └── NodeUseArnRegionConfigOptions.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── bucketEndpointMiddleware.d.ts
-│   │   │   │   ├── bucketHostname.d.ts
-│   │   │   │   ├── bucketHostnameUtils.d.ts
-│   │   │   │   ├── configurations.d.ts
-│   │   │   │   ├── index.d.ts
-│   │   │   │   ├── NodeDisableMultiregionAccessPointConfigOptions.d.ts
-│   │   │   │   ├── NodeUseArnRegionConfigOptions.d.ts
-│   │   │   │   └── ts3.4
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── middleware-expect-continue
-│   │   │   ├── dist-cjs
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   └── index.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── index.d.ts
-│   │   │   │   └── ts3.4
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── middleware-flexible-checksums
-│   │   │   ├── dist-cjs
-│   │   │   │   ├── getCrc32ChecksumAlgorithmFunction.browser.js
-│   │   │   │   ├── getCrc32ChecksumAlgorithmFunction.js
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   ├── configuration.js
-│   │   │   │   ├── constants.js
-│   │   │   │   ├── flexibleChecksumsInputMiddleware.js
-│   │   │   │   ├── flexibleChecksumsMiddleware.js
-│   │   │   │   ├── flexibleChecksumsResponseMiddleware.js
-│   │   │   │   ├── getChecksum.js
-│   │   │   │   ├── getChecksumAlgorithmForRequest.js
-│   │   │   │   ├── getChecksumAlgorithmListForResponse.js
-│   │   │   │   ├── getChecksumLocationName.js
-│   │   │   │   ├── getCrc32ChecksumAlgorithmFunction.browser.js
-│   │   │   │   ├── getCrc32ChecksumAlgorithmFunction.js
-│   │   │   │   ├── getFlexibleChecksumsPlugin.js
-│   │   │   │   ├── hasHeader.js
-│   │   │   │   ├── hasHeaderWithPrefix.js
-│   │   │   │   ├── index.js
-│   │   │   │   ├── isChecksumWithPartNumber.js
-│   │   │   │   ├── isStreaming.js
-│   │   │   │   ├── NODE_REQUEST_CHECKSUM_CALCULATION_CONFIG_OPTIONS.js
-│   │   │   │   ├── NODE_RESPONSE_CHECKSUM_VALIDATION_CONFIG_OPTIONS.js
-│   │   │   │   ├── resolveFlexibleChecksumsConfig.js
-│   │   │   │   ├── selectChecksumAlgorithmFunction.js
-│   │   │   │   ├── stringHasher.js
-│   │   │   │   ├── stringUnionSelector.js
-│   │   │   │   ├── types.js
-│   │   │   │   └── validateChecksumFromResponse.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── configuration.d.ts
-│   │   │   │   ├── constants.d.ts
-│   │   │   │   ├── flexibleChecksumsInputMiddleware.d.ts
-│   │   │   │   ├── flexibleChecksumsMiddleware.d.ts
-│   │   │   │   ├── flexibleChecksumsResponseMiddleware.d.ts
-│   │   │   │   ├── getChecksum.d.ts
-│   │   │   │   ├── getChecksumAlgorithmForRequest.d.ts
-│   │   │   │   ├── getChecksumAlgorithmListForResponse.d.ts
-│   │   │   │   ├── getChecksumLocationName.d.ts
-│   │   │   │   ├── getCrc32ChecksumAlgorithmFunction.browser.d.ts
-│   │   │   │   ├── getCrc32ChecksumAlgorithmFunction.d.ts
-│   │   │   │   ├── getFlexibleChecksumsPlugin.d.ts
-│   │   │   │   ├── hasHeader.d.ts
-│   │   │   │   ├── hasHeaderWithPrefix.d.ts
-│   │   │   │   ├── index.d.ts
-│   │   │   │   ├── isChecksumWithPartNumber.d.ts
-│   │   │   │   ├── isStreaming.d.ts
-│   │   │   │   ├── NODE_REQUEST_CHECKSUM_CALCULATION_CONFIG_OPTIONS.d.ts
-│   │   │   │   ├── NODE_RESPONSE_CHECKSUM_VALIDATION_CONFIG_OPTIONS.d.ts
-│   │   │   │   ├── resolveFlexibleChecksumsConfig.d.ts
-│   │   │   │   ├── selectChecksumAlgorithmFunction.d.ts
-│   │   │   │   ├── stringHasher.d.ts
-│   │   │   │   ├── stringUnionSelector.d.ts
-│   │   │   │   ├── ts3.4
-│   │   │   │   ├── types.d.ts
-│   │   │   │   └── validateChecksumFromResponse.d.ts
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── middleware-host-header
-│   │   │   ├── dist-cjs
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   └── index.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── index.d.ts
-│   │   │   │   └── ts3.4
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── middleware-location-constraint
-│   │   │   ├── dist-cjs
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   ├── configuration.js
-│   │   │   │   └── index.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── configuration.d.ts
-│   │   │   │   ├── index.d.ts
-│   │   │   │   └── ts3.4
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── middleware-logger
-│   │   │   ├── dist-cjs
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   ├── index.js
-│   │   │   │   └── loggerMiddleware.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── index.d.ts
-│   │   │   │   ├── loggerMiddleware.d.ts
-│   │   │   │   └── ts3.4
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── middleware-recursion-detection
-│   │   │   ├── dist-cjs
-│   │   │   │   ├── index.js
-│   │   │   │   ├── recursionDetectionMiddleware.js
-│   │   │   │   └── recursionDetectionMiddleware.native.js
-│   │   │   ├── dist-es
-│   │   │   │   ├── configuration.js
-│   │   │   │   ├── getRecursionDetectionPlugin.js
-│   │   │   │   ├── index.js
-│   │   │   │   ├── recursionDetectionMiddleware.browser.js
-│   │   │   │   ├── recursionDetectionMiddleware.js
-│   │   │   │   └── recursionDetectionMiddleware.native.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── configuration.d.ts
-│   │   │   │   ├── getRecursionDetectionPlugin.d.ts
-│   │   │   │   ├── index.d.ts
-│   │   │   │   ├── recursionDetectionMiddleware.browser.d.ts
-│   │   │   │   ├── recursionDetectionMiddleware.d.ts
-│   │   │   │   ├── recursionDetectionMiddleware.native.d.ts
-│   │   │   │   └── ts3.4
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── middleware-sdk-s3
-│   │   │   ├── dist-cjs
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   ├── bucket-endpoint-middleware.js
-│   │   │   │   ├── check-content-length-header.js
-│   │   │   │   ├── index.js
-│   │   │   │   ├── region-redirect-endpoint-middleware.js
-│   │   │   │   ├── region-redirect-middleware.js
-│   │   │   │   ├── s3-expires-middleware.js
-│   │   │   │   ├── s3-express
-│   │   │   │   ├── s3Configuration.js
-│   │   │   │   ├── throw-200-exceptions.js
-│   │   │   │   └── validate-bucket-name.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── bucket-endpoint-middleware.d.ts
-│   │   │   │   ├── check-content-length-header.d.ts
-│   │   │   │   ├── index.d.ts
-│   │   │   │   ├── region-redirect-endpoint-middleware.d.ts
-│   │   │   │   ├── region-redirect-middleware.d.ts
-│   │   │   │   ├── s3-expires-middleware.d.ts
-│   │   │   │   ├── s3-express
-│   │   │   │   ├── s3Configuration.d.ts
-│   │   │   │   ├── throw-200-exceptions.d.ts
-│   │   │   │   ├── ts3.4
-│   │   │   │   └── validate-bucket-name.d.ts
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── middleware-ssec
-│   │   │   ├── dist-cjs
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   └── index.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── index.d.ts
-│   │   │   │   └── ts3.4
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── middleware-user-agent
-│   │   │   ├── dist-cjs
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   ├── check-features.js
-│   │   │   │   ├── configurations.js
-│   │   │   │   ├── constants.js
-│   │   │   │   ├── encode-features.js
-│   │   │   │   ├── index.js
-│   │   │   │   └── user-agent-middleware.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── check-features.d.ts
-│   │   │   │   ├── configurations.d.ts
-│   │   │   │   ├── constants.d.ts
-│   │   │   │   ├── encode-features.d.ts
-│   │   │   │   ├── index.d.ts
-│   │   │   │   ├── ts3.4
-│   │   │   │   └── user-agent-middleware.d.ts
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── nested-clients
-│   │   │   ├── cognito-identity.d.ts
-│   │   │   ├── cognito-identity.js
-│   │   │   ├── dist-cjs
-│   │   │   │   ├── index.js
-│   │   │   │   └── submodules
-│   │   │   ├── dist-es
-│   │   │   │   ├── index.js
-│   │   │   │   └── submodules
-│   │   │   ├── dist-types
-│   │   │   │   ├── index.d.ts
-│   │   │   │   ├── submodules
-│   │   │   │   └── ts3.4
-│   │   │   ├── package.json
-│   │   │   ├── README.md
-│   │   │   ├── signin.d.ts
-│   │   │   ├── signin.js
-│   │   │   ├── sso-oidc.d.ts
-│   │   │   ├── sso-oidc.js
-│   │   │   ├── sso.d.ts
-│   │   │   ├── sso.js
-│   │   │   ├── sts.d.ts
-│   │   │   └── sts.js
 │   │   ├── region-config-resolver
-│   │   │   ├── dist-cjs
-│   │   │   │   ├── index.js
-│   │   │   │   └── regionConfig
-│   │   │   ├── dist-es
-│   │   │   │   ├── extensions
-│   │   │   │   ├── index.js
-│   │   │   │   └── regionConfig
-│   │   │   ├── dist-types
-│   │   │   │   ├── extensions
-│   │   │   │   ├── index.d.ts
-│   │   │   │   ├── regionConfig
-│   │   │   │   └── ts3.4
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── s3-request-presigner
-│   │   │   ├── dist-cjs
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   ├── constants.js
-│   │   │   │   ├── getSignedUrl.js
-│   │   │   │   ├── index.js
-│   │   │   │   └── presigner.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── constants.d.ts
-│   │   │   │   ├── getSignedUrl.d.ts
-│   │   │   │   ├── index.d.ts
-│   │   │   │   ├── presigner.d.ts
-│   │   │   │   └── ts3.4
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── signature-v4-multi-region
-│   │   │   ├── dist-cjs
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   ├── index.js
-│   │   │   │   ├── signature-v4-crt-container.js
-│   │   │   │   └── SignatureV4MultiRegion.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── index.d.ts
-│   │   │   │   ├── signature-v4-crt-container.d.ts
-│   │   │   │   ├── SignatureV4MultiRegion.d.ts
-│   │   │   │   └── ts3.4
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── token-providers
-│   │   │   ├── dist-cjs
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   ├── constants.js
-│   │   │   │   ├── fromEnvSigningName.js
-│   │   │   │   ├── fromSso.js
-│   │   │   │   ├── fromStatic.js
-│   │   │   │   ├── getNewSsoOidcToken.js
-│   │   │   │   ├── getSsoOidcClient.js
-│   │   │   │   ├── index.js
-│   │   │   │   ├── nodeProvider.js
-│   │   │   │   ├── validateTokenExpiry.js
-│   │   │   │   ├── validateTokenKey.js
-│   │   │   │   └── writeSSOTokenToFile.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── constants.d.ts
-│   │   │   │   ├── fromEnvSigningName.d.ts
-│   │   │   │   ├── fromSso.d.ts
-│   │   │   │   ├── fromStatic.d.ts
-│   │   │   │   ├── getNewSsoOidcToken.d.ts
-│   │   │   │   ├── getSsoOidcClient.d.ts
-│   │   │   │   ├── index.d.ts
-│   │   │   │   ├── nodeProvider.d.ts
-│   │   │   │   ├── ts3.4
-│   │   │   │   ├── validateTokenExpiry.d.ts
-│   │   │   │   ├── validateTokenKey.d.ts
-│   │   │   │   └── writeSSOTokenToFile.d.ts
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── types
-│   │   │   ├── dist-cjs
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   ├── abort.js
-│   │   │   │   ├── auth.js
-│   │   │   │   ├── blob
-│   │   │   │   ├── checksum.js
-│   │   │   │   ├── client.js
-│   │   │   │   ├── command.js
-│   │   │   │   ├── connection.js
-│   │   │   │   ├── credentials.js
-│   │   │   │   ├── crypto.js
-│   │   │   │   ├── dns.js
-│   │   │   │   ├── encode.js
-│   │   │   │   ├── endpoint.js
-│   │   │   │   ├── eventStream.js
-│   │   │   │   ├── extensions
-│   │   │   │   ├── feature-ids.js
-│   │   │   │   ├── function.js
-│   │   │   │   ├── http.js
-│   │   │   │   ├── identity
-│   │   │   │   ├── index.js
-│   │   │   │   ├── logger.js
-│   │   │   │   ├── middleware.js
-│   │   │   │   ├── pagination.js
-│   │   │   │   ├── profile.js
-│   │   │   │   ├── request.js
-│   │   │   │   ├── response.js
-│   │   │   │   ├── retry.js
-│   │   │   │   ├── serde.js
-│   │   │   │   ├── shapes.js
-│   │   │   │   ├── signature.js
-│   │   │   │   ├── stream.js
-│   │   │   │   ├── token.js
-│   │   │   │   ├── transfer.js
-│   │   │   │   ├── uri.js
-│   │   │   │   ├── util.js
-│   │   │   │   └── waiter.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── abort.d.ts
-│   │   │   │   ├── auth.d.ts
-│   │   │   │   ├── blob
-│   │   │   │   ├── checksum.d.ts
-│   │   │   │   ├── client.d.ts
-│   │   │   │   ├── command.d.ts
-│   │   │   │   ├── connection.d.ts
-│   │   │   │   ├── credentials.d.ts
-│   │   │   │   ├── crypto.d.ts
-│   │   │   │   ├── dns.d.ts
-│   │   │   │   ├── encode.d.ts
-│   │   │   │   ├── endpoint.d.ts
-│   │   │   │   ├── eventStream.d.ts
-│   │   │   │   ├── extensions
-│   │   │   │   ├── feature-ids.d.ts
-│   │   │   │   ├── function.d.ts
-│   │   │   │   ├── http.d.ts
-│   │   │   │   ├── identity
-│   │   │   │   ├── index.d.ts
-│   │   │   │   ├── logger.d.ts
-│   │   │   │   ├── middleware.d.ts
-│   │   │   │   ├── pagination.d.ts
-│   │   │   │   ├── profile.d.ts
-│   │   │   │   ├── request.d.ts
-│   │   │   │   ├── response.d.ts
-│   │   │   │   ├── retry.d.ts
-│   │   │   │   ├── serde.d.ts
-│   │   │   │   ├── shapes.d.ts
-│   │   │   │   ├── signature.d.ts
-│   │   │   │   ├── stream.d.ts
-│   │   │   │   ├── token.d.ts
-│   │   │   │   ├── transfer.d.ts
-│   │   │   │   ├── ts3.4
-│   │   │   │   ├── uri.d.ts
-│   │   │   │   ├── util.d.ts
-│   │   │   │   └── waiter.d.ts
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── util-arn-parser
-│   │   │   ├── dist-cjs
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   └── index.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── index.d.ts
-│   │   │   │   └── ts3.4
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── util-endpoints
-│   │   │   ├── dist-cjs
-│   │   │   │   ├── index.js
-│   │   │   │   └── lib
-│   │   │   ├── dist-es
-│   │   │   │   ├── aws.js
-│   │   │   │   ├── index.js
-│   │   │   │   ├── lib
-│   │   │   │   ├── resolveDefaultAwsRegionalEndpointsConfig.js
-│   │   │   │   ├── resolveEndpoint.js
-│   │   │   │   └── types
-│   │   │   ├── dist-types
-│   │   │   │   ├── aws.d.ts
-│   │   │   │   ├── index.d.ts
-│   │   │   │   ├── lib
-│   │   │   │   ├── resolveDefaultAwsRegionalEndpointsConfig.d.ts
-│   │   │   │   ├── resolveEndpoint.d.ts
-│   │   │   │   ├── ts3.4
-│   │   │   │   └── types
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── util-format-url
-│   │   │   ├── dist-cjs
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   └── index.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── index.d.ts
-│   │   │   │   └── ts3.4
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── util-locate-window
-│   │   │   ├── dist-cjs
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   └── index.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── index.d.ts
-│   │   │   │   └── ts3.4
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── util-user-agent-browser
-│   │   │   ├── dist-cjs
-│   │   │   │   ├── configurations.js
-│   │   │   │   ├── createUserAgentStringParsingProvider.js
-│   │   │   │   ├── index.js
-│   │   │   │   └── index.native.js
-│   │   │   ├── dist-es
-│   │   │   │   ├── configurations.js
-│   │   │   │   ├── createUserAgentStringParsingProvider.js
-│   │   │   │   ├── index.js
-│   │   │   │   └── index.native.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── configurations.d.ts
-│   │   │   │   ├── createUserAgentStringParsingProvider.d.ts
-│   │   │   │   ├── index.d.ts
-│   │   │   │   ├── index.native.d.ts
-│   │   │   │   └── ts3.4
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── util-user-agent-node
-│   │   │   ├── dist-cjs
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   ├── crt-availability.js
-│   │   │   │   ├── defaultUserAgent.js
-│   │   │   │   ├── getNodeModulesParentDirs.js
-│   │   │   │   ├── getRuntimeUserAgentPair.js
-│   │   │   │   ├── getSanitizedDevTypeScriptVersion.js
-│   │   │   │   ├── getSanitizedTypeScriptVersion.js
-│   │   │   │   ├── getTypeScriptUserAgentPair.js
-│   │   │   │   ├── index.js
-│   │   │   │   ├── is-crt-available.js
-│   │   │   │   └── nodeAppIdConfigOptions.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── crt-availability.d.ts
-│   │   │   │   ├── defaultUserAgent.d.ts
-│   │   │   │   ├── getNodeModulesParentDirs.d.ts
-│   │   │   │   ├── getRuntimeUserAgentPair.d.ts
-│   │   │   │   ├── getSanitizedDevTypeScriptVersion.d.ts
-│   │   │   │   ├── getSanitizedTypeScriptVersion.d.ts
-│   │   │   │   ├── getTypeScriptUserAgentPair.d.ts
-│   │   │   │   ├── index.d.ts
-│   │   │   │   ├── is-crt-available.d.ts
-│   │   │   │   ├── nodeAppIdConfigOptions.d.ts
-│   │   │   │   └── ts3.4
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   └── xml-builder
-│   │       ├── dist-cjs
-│   │       │   ├── index.js
-│   │       │   └── xml-parser.js
-│   │       ├── dist-es
-│   │       │   ├── escape-attribute.js
-│   │       │   ├── escape-element.js
-│   │       │   ├── index.js
-│   │       │   ├── stringable.js
-│   │       │   ├── xml-parser.browser.js
-│   │       │   ├── xml-parser.js
-│   │       │   ├── XmlNode.js
-│   │       │   └── XmlText.js
-│   │       ├── dist-types
-│   │       │   ├── escape-attribute.d.ts
-│   │       │   ├── escape-element.d.ts
-│   │       │   ├── index.d.ts
-│   │       │   ├── stringable.d.ts
-│   │       │   ├── ts3.4
-│   │       │   ├── xml-parser.browser.d.ts
-│   │       │   ├── xml-parser.d.ts
-│   │       │   ├── XmlNode.d.ts
-│   │       │   └── XmlText.d.ts
-│   │       ├── LICENSE
-│   │       ├── package.json
-│   │       └── README.md
 │   ├── @hapi
 │   │   ├── address
-│   │   │   ├── dist
-│   │   │   │   ├── decode.d.ts
-│   │   │   │   ├── decode.js
-│   │   │   │   ├── decode.js.map
-│   │   │   │   ├── domain.d.ts
-│   │   │   │   ├── domain.js
-│   │   │   │   ├── domain.js.map
-│   │   │   │   ├── email.d.ts
-│   │   │   │   ├── email.js
-│   │   │   │   ├── email.js.map
-│   │   │   │   ├── errors.d.ts
-│   │   │   │   ├── errors.js
-│   │   │   │   ├── errors.js.map
-│   │   │   │   ├── index.d.ts
-│   │   │   │   ├── index.js
-│   │   │   │   ├── index.js.map
-│   │   │   │   ├── ip.d.ts
-│   │   │   │   ├── ip.js
-│   │   │   │   ├── ip.js.map
-│   │   │   │   ├── uri.d.ts
-│   │   │   │   ├── uri.js
-│   │   │   │   └── uri.js.map
-│   │   │   ├── esm
-│   │   │   │   ├── decode.d.ts
-│   │   │   │   ├── decode.js
-│   │   │   │   ├── decode.js.map
-│   │   │   │   ├── domain.d.ts
-│   │   │   │   ├── domain.js
-│   │   │   │   ├── domain.js.map
-│   │   │   │   ├── email.d.ts
-│   │   │   │   ├── email.js
-│   │   │   │   ├── email.js.map
-│   │   │   │   ├── errors.d.ts
-│   │   │   │   ├── errors.js
-│   │   │   │   ├── errors.js.map
-│   │   │   │   ├── index.d.ts
-│   │   │   │   ├── index.js
-│   │   │   │   ├── index.js.map
-│   │   │   │   ├── ip.d.ts
-│   │   │   │   ├── ip.js
-│   │   │   │   ├── ip.js.map
-│   │   │   │   ├── uri.d.ts
-│   │   │   │   ├── uri.js
-│   │   │   │   └── uri.js.map
-│   │   │   ├── LICENSE.md
-│   │   │   ├── package.json
-│   │   │   ├── README.md
-│   │   │   └── src
-│   │   │       ├── decode.ts
-│   │   │       ├── domain.ts
-│   │   │       ├── email.ts
-│   │   │       ├── errors.ts
-│   │   │       ├── index.ts
-│   │   │       ├── ip.ts
-│   │   │       └── uri.ts
 │   │   ├── formula
-│   │   │   ├── lib
-│   │   │   │   ├── index.d.ts
-│   │   │   │   └── index.js
-│   │   │   ├── LICENSE.md
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── hoek
-│   │   │   ├── lib
-│   │   │   │   ├── applyToDefaults.d.ts
-│   │   │   │   ├── applyToDefaults.js
-│   │   │   │   ├── assert.d.ts
-│   │   │   │   ├── assert.js
-│   │   │   │   ├── assertError.d.ts
-│   │   │   │   ├── assertError.js
-│   │   │   │   ├── bench.d.ts
-│   │   │   │   ├── bench.js
-│   │   │   │   ├── block.d.ts
-│   │   │   │   ├── block.js
-│   │   │   │   ├── clone.d.ts
-│   │   │   │   ├── clone.js
-│   │   │   │   ├── contain.d.ts
-│   │   │   │   ├── contain.js
-│   │   │   │   ├── deepEqual.d.ts
-│   │   │   │   ├── deepEqual.js
-│   │   │   │   ├── escapeHeaderAttribute.d.ts
-│   │   │   │   ├── escapeHeaderAttribute.js
-│   │   │   │   ├── escapeHtml.d.ts
-│   │   │   │   ├── escapeHtml.js
-│   │   │   │   ├── escapeJson.d.ts
-│   │   │   │   ├── escapeJson.js
-│   │   │   │   ├── escapeRegex.d.ts
-│   │   │   │   ├── escapeRegex.js
-│   │   │   │   ├── flatten.d.ts
-│   │   │   │   ├── flatten.js
-│   │   │   │   ├── ignore.d.ts
-│   │   │   │   ├── ignore.js
-│   │   │   │   ├── index.d.ts
-│   │   │   │   ├── index.js
-│   │   │   │   ├── index.mjs
-│   │   │   │   ├── intersect.d.ts
-│   │   │   │   ├── intersect.js
-│   │   │   │   ├── isPromise.d.ts
-│   │   │   │   ├── isPromise.js
-│   │   │   │   ├── merge.d.ts
-│   │   │   │   ├── merge.js
-│   │   │   │   ├── once.d.ts
-│   │   │   │   ├── once.js
-│   │   │   │   ├── reach.d.ts
-│   │   │   │   ├── reach.js
-│   │   │   │   ├── reachTemplate.d.ts
-│   │   │   │   ├── reachTemplate.js
-│   │   │   │   ├── stringify.d.ts
-│   │   │   │   ├── stringify.js
-│   │   │   │   ├── types.js
-│   │   │   │   ├── utils.js
-│   │   │   │   ├── wait.d.ts
-│   │   │   │   └── wait.js
-│   │   │   ├── LICENSE.md
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── pinpoint
-│   │   │   ├── lib
-│   │   │   │   ├── index.d.ts
-│   │   │   │   └── index.js
-│   │   │   ├── LICENSE.md
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── tlds
-│   │   │   ├── dist
-│   │   │   │   ├── commonjs
-│   │   │   │   └── esm
-│   │   │   ├── LICENSE.md
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   └── topo
-│   │       ├── lib
-│   │       │   ├── index.d.ts
-│   │       │   └── index.js
-│   │       ├── LICENSE.md
-│   │       ├── package.json
-│   │       └── README.md
 │   ├── @smithy
 │   │   ├── abort-controller
-│   │   │   ├── dist-cjs
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   ├── AbortController.js
-│   │   │   │   ├── AbortSignal.js
-│   │   │   │   └── index.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── AbortController.d.ts
-│   │   │   │   ├── AbortSignal.d.ts
-│   │   │   │   ├── index.d.ts
-│   │   │   │   └── ts3.4
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── chunked-blob-reader
-│   │   │   ├── dist-cjs
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   └── index.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── index.d.ts
-│   │   │   │   └── ts3.4
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── chunked-blob-reader-native
-│   │   │   ├── dist-cjs
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   └── index.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── index.d.ts
-│   │   │   │   └── ts3.4
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── config-resolver
-│   │   │   ├── dist-cjs
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   ├── endpointsConfig
-│   │   │   │   ├── index.js
-│   │   │   │   ├── regionConfig
-│   │   │   │   └── regionInfo
-│   │   │   ├── dist-types
-│   │   │   │   ├── endpointsConfig
-│   │   │   │   ├── index.d.ts
-│   │   │   │   ├── regionConfig
-│   │   │   │   ├── regionInfo
-│   │   │   │   └── ts3.4
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── core
-│   │   │   ├── cbor.d.ts
-│   │   │   ├── cbor.js
-│   │   │   ├── dist-cjs
-│   │   │   │   ├── index.js
-│   │   │   │   └── submodules
-│   │   │   ├── dist-es
-│   │   │   │   ├── getSmithyContext.js
-│   │   │   │   ├── index.js
-│   │   │   │   ├── middleware-http-auth-scheme
-│   │   │   │   ├── middleware-http-signing
-│   │   │   │   ├── normalizeProvider.js
-│   │   │   │   ├── pagination
-│   │   │   │   ├── request-builder
-│   │   │   │   ├── setFeature.js
-│   │   │   │   ├── submodules
-│   │   │   │   └── util-identity-and-auth
-│   │   │   ├── dist-types
-│   │   │   │   ├── getSmithyContext.d.ts
-│   │   │   │   ├── index.d.ts
-│   │   │   │   ├── middleware-http-auth-scheme
-│   │   │   │   ├── middleware-http-signing
-│   │   │   │   ├── normalizeProvider.d.ts
-│   │   │   │   ├── pagination
-│   │   │   │   ├── request-builder
-│   │   │   │   ├── setFeature.d.ts
-│   │   │   │   ├── submodules
-│   │   │   │   ├── ts3.4
-│   │   │   │   └── util-identity-and-auth
-│   │   │   ├── endpoints.d.ts
-│   │   │   ├── endpoints.js
-│   │   │   ├── event-streams.d.ts
-│   │   │   ├── event-streams.js
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   ├── protocols.d.ts
-│   │   │   ├── protocols.js
-│   │   │   ├── README.md
-│   │   │   ├── schema.d.ts
-│   │   │   ├── schema.js
-│   │   │   ├── serde.d.ts
-│   │   │   └── serde.js
 │   │   ├── credential-provider-imds
-│   │   │   ├── dist-cjs
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   ├── config
-│   │   │   │   ├── error
-│   │   │   │   ├── fromContainerMetadata.js
-│   │   │   │   ├── fromInstanceMetadata.js
-│   │   │   │   ├── index.js
-│   │   │   │   ├── remoteProvider
-│   │   │   │   ├── types.js
-│   │   │   │   └── utils
-│   │   │   ├── dist-types
-│   │   │   │   ├── config
-│   │   │   │   ├── error
-│   │   │   │   ├── fromContainerMetadata.d.ts
-│   │   │   │   ├── fromInstanceMetadata.d.ts
-│   │   │   │   ├── index.d.ts
-│   │   │   │   ├── remoteProvider
-│   │   │   │   ├── ts3.4
-│   │   │   │   ├── types.d.ts
-│   │   │   │   └── utils
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── eventstream-codec
-│   │   │   ├── dist-cjs
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   ├── EventStreamCodec.js
-│   │   │   │   ├── HeaderMarshaller.js
-│   │   │   │   ├── index.js
-│   │   │   │   ├── Int64.js
-│   │   │   │   ├── Message.js
-│   │   │   │   ├── MessageDecoderStream.js
-│   │   │   │   ├── MessageEncoderStream.js
-│   │   │   │   ├── SmithyMessageDecoderStream.js
-│   │   │   │   ├── SmithyMessageEncoderStream.js
-│   │   │   │   ├── splitMessage.js
-│   │   │   │   ├── TestVectors.fixture.js
-│   │   │   │   └── vectorTypes.fixture.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── EventStreamCodec.d.ts
-│   │   │   │   ├── HeaderMarshaller.d.ts
-│   │   │   │   ├── index.d.ts
-│   │   │   │   ├── Int64.d.ts
-│   │   │   │   ├── Message.d.ts
-│   │   │   │   ├── MessageDecoderStream.d.ts
-│   │   │   │   ├── MessageEncoderStream.d.ts
-│   │   │   │   ├── SmithyMessageDecoderStream.d.ts
-│   │   │   │   ├── SmithyMessageEncoderStream.d.ts
-│   │   │   │   ├── splitMessage.d.ts
-│   │   │   │   ├── TestVectors.fixture.d.ts
-│   │   │   │   ├── ts3.4
-│   │   │   │   └── vectorTypes.fixture.d.ts
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── eventstream-serde-browser
-│   │   │   ├── dist-cjs
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   ├── EventStreamMarshaller.js
-│   │   │   │   ├── index.js
-│   │   │   │   ├── provider.js
-│   │   │   │   └── utils.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── EventStreamMarshaller.d.ts
-│   │   │   │   ├── index.d.ts
-│   │   │   │   ├── provider.d.ts
-│   │   │   │   ├── ts3.4
-│   │   │   │   └── utils.d.ts
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── eventstream-serde-config-resolver
-│   │   │   ├── dist-cjs
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   ├── EventStreamSerdeConfig.js
-│   │   │   │   └── index.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── EventStreamSerdeConfig.d.ts
-│   │   │   │   ├── index.d.ts
-│   │   │   │   └── ts3.4
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── eventstream-serde-node
-│   │   │   ├── dist-cjs
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   ├── EventStreamMarshaller.js
-│   │   │   │   ├── index.js
-│   │   │   │   ├── provider.js
-│   │   │   │   └── utils.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── EventStreamMarshaller.d.ts
-│   │   │   │   ├── index.d.ts
-│   │   │   │   ├── provider.d.ts
-│   │   │   │   ├── ts3.4
-│   │   │   │   └── utils.d.ts
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── eventstream-serde-universal
-│   │   │   ├── dist-cjs
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   ├── EventStreamMarshaller.js
-│   │   │   │   ├── getChunkedStream.js
-│   │   │   │   ├── getUnmarshalledStream.js
-│   │   │   │   ├── index.js
-│   │   │   │   └── provider.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── EventStreamMarshaller.d.ts
-│   │   │   │   ├── getChunkedStream.d.ts
-│   │   │   │   ├── getUnmarshalledStream.d.ts
-│   │   │   │   ├── index.d.ts
-│   │   │   │   ├── provider.d.ts
-│   │   │   │   └── ts3.4
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── fetch-http-handler
-│   │   │   ├── dist-cjs
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   ├── create-request.js
-│   │   │   │   ├── fetch-http-handler.js
-│   │   │   │   ├── index.js
-│   │   │   │   ├── request-timeout.js
-│   │   │   │   └── stream-collector.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── create-request.d.ts
-│   │   │   │   ├── fetch-http-handler.d.ts
-│   │   │   │   ├── index.d.ts
-│   │   │   │   ├── request-timeout.d.ts
-│   │   │   │   ├── stream-collector.d.ts
-│   │   │   │   └── ts3.4
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── hash-blob-browser
-│   │   │   ├── dist-cjs
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   └── index.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── index.d.ts
-│   │   │   │   └── ts3.4
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── hash-node
-│   │   │   ├── dist-cjs
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   └── index.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── index.d.ts
-│   │   │   │   └── ts3.4
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── hash-stream-node
-│   │   │   ├── dist-cjs
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   ├── fileStreamHasher.js
-│   │   │   │   ├── HashCalculator.js
-│   │   │   │   ├── index.js
-│   │   │   │   └── readableStreamHasher.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── fileStreamHasher.d.ts
-│   │   │   │   ├── HashCalculator.d.ts
-│   │   │   │   ├── index.d.ts
-│   │   │   │   ├── readableStreamHasher.d.ts
-│   │   │   │   └── ts3.4
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── invalid-dependency
-│   │   │   ├── dist-cjs
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   ├── index.js
-│   │   │   │   ├── invalidFunction.js
-│   │   │   │   └── invalidProvider.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── index.d.ts
-│   │   │   │   ├── invalidFunction.d.ts
-│   │   │   │   ├── invalidProvider.d.ts
-│   │   │   │   └── ts3.4
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── is-array-buffer
-│   │   │   ├── dist-cjs
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   └── index.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── index.d.ts
-│   │   │   │   └── ts3.4
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── md5-js
-│   │   │   ├── dist-cjs
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   ├── constants.js
-│   │   │   │   └── index.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── constants.d.ts
-│   │   │   │   ├── index.d.ts
-│   │   │   │   └── ts3.4
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── middleware-content-length
-│   │   │   ├── dist-cjs
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   └── index.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── index.d.ts
-│   │   │   │   └── ts3.4
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── middleware-endpoint
-│   │   │   ├── dist-cjs
-│   │   │   │   ├── adaptors
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   ├── adaptors
-│   │   │   │   ├── endpointMiddleware.js
-│   │   │   │   ├── getEndpointPlugin.js
-│   │   │   │   ├── index.js
-│   │   │   │   ├── resolveEndpointConfig.js
-│   │   │   │   ├── resolveEndpointRequiredConfig.js
-│   │   │   │   ├── service-customizations
-│   │   │   │   └── types.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── adaptors
-│   │   │   │   ├── endpointMiddleware.d.ts
-│   │   │   │   ├── getEndpointPlugin.d.ts
-│   │   │   │   ├── index.d.ts
-│   │   │   │   ├── resolveEndpointConfig.d.ts
-│   │   │   │   ├── resolveEndpointRequiredConfig.d.ts
-│   │   │   │   ├── service-customizations
-│   │   │   │   ├── ts3.4
-│   │   │   │   └── types.d.ts
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── middleware-retry
-│   │   │   ├── dist-cjs
-│   │   │   │   ├── index.js
-│   │   │   │   └── isStreamingPayload
-│   │   │   ├── dist-es
-│   │   │   │   ├── AdaptiveRetryStrategy.js
-│   │   │   │   ├── configurations.js
-│   │   │   │   ├── defaultRetryQuota.js
-│   │   │   │   ├── delayDecider.js
-│   │   │   │   ├── index.js
-│   │   │   │   ├── isStreamingPayload
-│   │   │   │   ├── omitRetryHeadersMiddleware.js
-│   │   │   │   ├── retryDecider.js
-│   │   │   │   ├── retryMiddleware.js
-│   │   │   │   ├── StandardRetryStrategy.js
-│   │   │   │   ├── types.js
-│   │   │   │   └── util.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── AdaptiveRetryStrategy.d.ts
-│   │   │   │   ├── configurations.d.ts
-│   │   │   │   ├── defaultRetryQuota.d.ts
-│   │   │   │   ├── delayDecider.d.ts
-│   │   │   │   ├── index.d.ts
-│   │   │   │   ├── isStreamingPayload
-│   │   │   │   ├── omitRetryHeadersMiddleware.d.ts
-│   │   │   │   ├── retryDecider.d.ts
-│   │   │   │   ├── retryMiddleware.d.ts
-│   │   │   │   ├── StandardRetryStrategy.d.ts
-│   │   │   │   ├── ts3.4
-│   │   │   │   ├── types.d.ts
-│   │   │   │   └── util.d.ts
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── middleware-serde
-│   │   │   ├── dist-cjs
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   ├── deserializerMiddleware.js
-│   │   │   │   ├── index.js
-│   │   │   │   ├── serdePlugin.js
-│   │   │   │   └── serializerMiddleware.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── deserializerMiddleware.d.ts
-│   │   │   │   ├── index.d.ts
-│   │   │   │   ├── serdePlugin.d.ts
-│   │   │   │   ├── serializerMiddleware.d.ts
-│   │   │   │   └── ts3.4
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── middleware-stack
-│   │   │   ├── dist-cjs
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   ├── index.js
-│   │   │   │   ├── MiddlewareStack.js
-│   │   │   │   └── types.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── index.d.ts
-│   │   │   │   ├── MiddlewareStack.d.ts
-│   │   │   │   ├── ts3.4
-│   │   │   │   └── types.d.ts
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── node-config-provider
-│   │   │   ├── dist-cjs
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   ├── configLoader.js
-│   │   │   │   ├── fromEnv.js
-│   │   │   │   ├── fromSharedConfigFiles.js
-│   │   │   │   ├── fromStatic.js
-│   │   │   │   ├── getSelectorName.js
-│   │   │   │   └── index.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── configLoader.d.ts
-│   │   │   │   ├── fromEnv.d.ts
-│   │   │   │   ├── fromSharedConfigFiles.d.ts
-│   │   │   │   ├── fromStatic.d.ts
-│   │   │   │   ├── getSelectorName.d.ts
-│   │   │   │   ├── index.d.ts
-│   │   │   │   └── ts3.4
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── node-http-handler
-│   │   │   ├── dist-cjs
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   ├── build-abort-error.js
-│   │   │   │   ├── constants.js
-│   │   │   │   ├── get-transformed-headers.js
-│   │   │   │   ├── index.js
-│   │   │   │   ├── node-http-handler.js
-│   │   │   │   ├── node-http2-connection-manager.js
-│   │   │   │   ├── node-http2-connection-pool.js
-│   │   │   │   ├── node-http2-handler.js
-│   │   │   │   ├── readable.mock.js
-│   │   │   │   ├── server.mock.js
-│   │   │   │   ├── set-connection-timeout.js
-│   │   │   │   ├── set-request-timeout.js
-│   │   │   │   ├── set-socket-keep-alive.js
-│   │   │   │   ├── set-socket-timeout.js
-│   │   │   │   ├── stream-collector
-│   │   │   │   ├── timing.js
-│   │   │   │   └── write-request-body.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── build-abort-error.d.ts
-│   │   │   │   ├── constants.d.ts
-│   │   │   │   ├── get-transformed-headers.d.ts
-│   │   │   │   ├── index.d.ts
-│   │   │   │   ├── node-http-handler.d.ts
-│   │   │   │   ├── node-http2-connection-manager.d.ts
-│   │   │   │   ├── node-http2-connection-pool.d.ts
-│   │   │   │   ├── node-http2-handler.d.ts
-│   │   │   │   ├── readable.mock.d.ts
-│   │   │   │   ├── server.mock.d.ts
-│   │   │   │   ├── set-connection-timeout.d.ts
-│   │   │   │   ├── set-request-timeout.d.ts
-│   │   │   │   ├── set-socket-keep-alive.d.ts
-│   │   │   │   ├── set-socket-timeout.d.ts
-│   │   │   │   ├── stream-collector
-│   │   │   │   ├── timing.d.ts
-│   │   │   │   ├── ts3.4
-│   │   │   │   └── write-request-body.d.ts
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── property-provider
-│   │   │   ├── dist-cjs
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   ├── chain.js
-│   │   │   │   ├── CredentialsProviderError.js
-│   │   │   │   ├── fromStatic.js
-│   │   │   │   ├── index.js
-│   │   │   │   ├── memoize.js
-│   │   │   │   ├── ProviderError.js
-│   │   │   │   └── TokenProviderError.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── chain.d.ts
-│   │   │   │   ├── CredentialsProviderError.d.ts
-│   │   │   │   ├── fromStatic.d.ts
-│   │   │   │   ├── index.d.ts
-│   │   │   │   ├── memoize.d.ts
-│   │   │   │   ├── ProviderError.d.ts
-│   │   │   │   ├── TokenProviderError.d.ts
-│   │   │   │   └── ts3.4
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── protocol-http
-│   │   │   ├── dist-cjs
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   ├── extensions
-│   │   │   │   ├── Field.js
-│   │   │   │   ├── Fields.js
-│   │   │   │   ├── httpHandler.js
-│   │   │   │   ├── httpRequest.js
-│   │   │   │   ├── httpResponse.js
-│   │   │   │   ├── index.js
-│   │   │   │   ├── isValidHostname.js
-│   │   │   │   └── types.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── extensions
-│   │   │   │   ├── Field.d.ts
-│   │   │   │   ├── Fields.d.ts
-│   │   │   │   ├── httpHandler.d.ts
-│   │   │   │   ├── httpRequest.d.ts
-│   │   │   │   ├── httpResponse.d.ts
-│   │   │   │   ├── index.d.ts
-│   │   │   │   ├── isValidHostname.d.ts
-│   │   │   │   ├── ts3.4
-│   │   │   │   └── types.d.ts
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── querystring-builder
-│   │   │   ├── dist-cjs
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   └── index.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── index.d.ts
-│   │   │   │   └── ts3.4
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── querystring-parser
-│   │   │   ├── dist-cjs
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   └── index.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── index.d.ts
-│   │   │   │   └── ts3.4
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── service-error-classification
-│   │   │   ├── dist-cjs
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   ├── constants.js
-│   │   │   │   └── index.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── constants.d.ts
-│   │   │   │   ├── index.d.ts
-│   │   │   │   └── ts3.4
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── shared-ini-file-loader
-│   │   │   ├── dist-cjs
-│   │   │   │   ├── getHomeDir.js
-│   │   │   │   ├── getSSOTokenFilepath.js
-│   │   │   │   ├── getSSOTokenFromFile.js
-│   │   │   │   ├── index.js
-│   │   │   │   └── readFile.js
-│   │   │   ├── dist-es
-│   │   │   │   ├── constants.js
-│   │   │   │   ├── externalDataInterceptor.js
-│   │   │   │   ├── getConfigData.js
-│   │   │   │   ├── getConfigFilepath.js
-│   │   │   │   ├── getCredentialsFilepath.js
-│   │   │   │   ├── getHomeDir.js
-│   │   │   │   ├── getProfileName.js
-│   │   │   │   ├── getSsoSessionData.js
-│   │   │   │   ├── getSSOTokenFilepath.js
-│   │   │   │   ├── getSSOTokenFromFile.js
-│   │   │   │   ├── index.js
-│   │   │   │   ├── loadSharedConfigFiles.js
-│   │   │   │   ├── loadSsoSessionData.js
-│   │   │   │   ├── mergeConfigFiles.js
-│   │   │   │   ├── parseIni.js
-│   │   │   │   ├── parseKnownFiles.js
-│   │   │   │   ├── readFile.js
-│   │   │   │   └── types.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── constants.d.ts
-│   │   │   │   ├── externalDataInterceptor.d.ts
-│   │   │   │   ├── getConfigData.d.ts
-│   │   │   │   ├── getConfigFilepath.d.ts
-│   │   │   │   ├── getCredentialsFilepath.d.ts
-│   │   │   │   ├── getHomeDir.d.ts
-│   │   │   │   ├── getProfileName.d.ts
-│   │   │   │   ├── getSsoSessionData.d.ts
-│   │   │   │   ├── getSSOTokenFilepath.d.ts
-│   │   │   │   ├── getSSOTokenFromFile.d.ts
-│   │   │   │   ├── index.d.ts
-│   │   │   │   ├── loadSharedConfigFiles.d.ts
-│   │   │   │   ├── loadSsoSessionData.d.ts
-│   │   │   │   ├── mergeConfigFiles.d.ts
-│   │   │   │   ├── parseIni.d.ts
-│   │   │   │   ├── parseKnownFiles.d.ts
-│   │   │   │   ├── readFile.d.ts
-│   │   │   │   ├── ts3.4
-│   │   │   │   └── types.d.ts
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── signature-v4
-│   │   │   ├── dist-cjs
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   ├── constants.js
-│   │   │   │   ├── credentialDerivation.js
-│   │   │   │   ├── getCanonicalHeaders.js
-│   │   │   │   ├── getCanonicalQuery.js
-│   │   │   │   ├── getPayloadHash.js
-│   │   │   │   ├── HeaderFormatter.js
-│   │   │   │   ├── headerUtil.js
-│   │   │   │   ├── index.js
-│   │   │   │   ├── moveHeadersToQuery.js
-│   │   │   │   ├── prepareRequest.js
-│   │   │   │   ├── signature-v4a-container.js
-│   │   │   │   ├── SignatureV4.js
-│   │   │   │   ├── SignatureV4Base.js
-│   │   │   │   ├── suite.fixture.js
-│   │   │   │   └── utilDate.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── constants.d.ts
-│   │   │   │   ├── credentialDerivation.d.ts
-│   │   │   │   ├── getCanonicalHeaders.d.ts
-│   │   │   │   ├── getCanonicalQuery.d.ts
-│   │   │   │   ├── getPayloadHash.d.ts
-│   │   │   │   ├── HeaderFormatter.d.ts
-│   │   │   │   ├── headerUtil.d.ts
-│   │   │   │   ├── index.d.ts
-│   │   │   │   ├── moveHeadersToQuery.d.ts
-│   │   │   │   ├── prepareRequest.d.ts
-│   │   │   │   ├── signature-v4a-container.d.ts
-│   │   │   │   ├── SignatureV4.d.ts
-│   │   │   │   ├── SignatureV4Base.d.ts
-│   │   │   │   ├── suite.fixture.d.ts
-│   │   │   │   ├── ts3.4
-│   │   │   │   └── utilDate.d.ts
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── smithy-client
-│   │   │   ├── dist-cjs
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   ├── client.js
-│   │   │   │   ├── collect-stream-body.js
-│   │   │   │   ├── command.js
-│   │   │   │   ├── constants.js
-│   │   │   │   ├── create-aggregated-client.js
-│   │   │   │   ├── default-error-handler.js
-│   │   │   │   ├── defaults-mode.js
-│   │   │   │   ├── emitWarningIfUnsupportedVersion.js
-│   │   │   │   ├── exceptions.js
-│   │   │   │   ├── extended-encode-uri-component.js
-│   │   │   │   ├── extensions
-│   │   │   │   ├── get-array-if-single-item.js
-│   │   │   │   ├── get-value-from-text-node.js
-│   │   │   │   ├── index.js
-│   │   │   │   ├── is-serializable-header-value.js
-│   │   │   │   ├── NoOpLogger.js
-│   │   │   │   ├── object-mapping.js
-│   │   │   │   ├── resolve-path.js
-│   │   │   │   ├── schemaLogFilter.js
-│   │   │   │   ├── ser-utils.js
-│   │   │   │   └── serde-json.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── client.d.ts
-│   │   │   │   ├── collect-stream-body.d.ts
-│   │   │   │   ├── command.d.ts
-│   │   │   │   ├── constants.d.ts
-│   │   │   │   ├── create-aggregated-client.d.ts
-│   │   │   │   ├── default-error-handler.d.ts
-│   │   │   │   ├── defaults-mode.d.ts
-│   │   │   │   ├── emitWarningIfUnsupportedVersion.d.ts
-│   │   │   │   ├── exceptions.d.ts
-│   │   │   │   ├── extended-encode-uri-component.d.ts
-│   │   │   │   ├── extensions
-│   │   │   │   ├── get-array-if-single-item.d.ts
-│   │   │   │   ├── get-value-from-text-node.d.ts
-│   │   │   │   ├── index.d.ts
-│   │   │   │   ├── is-serializable-header-value.d.ts
-│   │   │   │   ├── NoOpLogger.d.ts
-│   │   │   │   ├── object-mapping.d.ts
-│   │   │   │   ├── resolve-path.d.ts
-│   │   │   │   ├── schemaLogFilter.d.ts
-│   │   │   │   ├── ser-utils.d.ts
-│   │   │   │   ├── serde-json.d.ts
-│   │   │   │   └── ts3.4
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── types
-│   │   │   ├── dist-cjs
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   ├── abort-handler.js
-│   │   │   │   ├── abort.js
-│   │   │   │   ├── auth
-│   │   │   │   ├── blob
-│   │   │   │   ├── checksum.js
-│   │   │   │   ├── client.js
-│   │   │   │   ├── command.js
-│   │   │   │   ├── connection
-│   │   │   │   ├── crypto.js
-│   │   │   │   ├── downlevel-ts3.4
-│   │   │   │   ├── encode.js
-│   │   │   │   ├── endpoint.js
-│   │   │   │   ├── endpoints
-│   │   │   │   ├── eventStream.js
-│   │   │   │   ├── extensions
-│   │   │   │   ├── externals-check
-│   │   │   │   ├── feature-ids.js
-│   │   │   │   ├── http
-│   │   │   │   ├── http.js
-│   │   │   │   ├── identity
-│   │   │   │   ├── index.js
-│   │   │   │   ├── logger.js
-│   │   │   │   ├── middleware.js
-│   │   │   │   ├── pagination.js
-│   │   │   │   ├── profile.js
-│   │   │   │   ├── response.js
-│   │   │   │   ├── retry.js
-│   │   │   │   ├── schema
-│   │   │   │   ├── serde.js
-│   │   │   │   ├── shapes.js
-│   │   │   │   ├── signature.js
-│   │   │   │   ├── stream.js
-│   │   │   │   ├── streaming-payload
-│   │   │   │   ├── transfer.js
-│   │   │   │   ├── transform
-│   │   │   │   ├── uri.js
-│   │   │   │   ├── util.js
-│   │   │   │   └── waiter.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── abort-handler.d.ts
-│   │   │   │   ├── abort.d.ts
-│   │   │   │   ├── auth
-│   │   │   │   ├── blob
-│   │   │   │   ├── checksum.d.ts
-│   │   │   │   ├── client.d.ts
-│   │   │   │   ├── command.d.ts
-│   │   │   │   ├── connection
-│   │   │   │   ├── crypto.d.ts
-│   │   │   │   ├── downlevel-ts3.4
-│   │   │   │   ├── encode.d.ts
-│   │   │   │   ├── endpoint.d.ts
-│   │   │   │   ├── endpoints
-│   │   │   │   ├── eventStream.d.ts
-│   │   │   │   ├── extensions
-│   │   │   │   ├── externals-check
-│   │   │   │   ├── feature-ids.d.ts
-│   │   │   │   ├── http
-│   │   │   │   ├── http.d.ts
-│   │   │   │   ├── identity
-│   │   │   │   ├── index.d.ts
-│   │   │   │   ├── logger.d.ts
-│   │   │   │   ├── middleware.d.ts
-│   │   │   │   ├── pagination.d.ts
-│   │   │   │   ├── profile.d.ts
-│   │   │   │   ├── response.d.ts
-│   │   │   │   ├── retry.d.ts
-│   │   │   │   ├── schema
-│   │   │   │   ├── serde.d.ts
-│   │   │   │   ├── shapes.d.ts
-│   │   │   │   ├── signature.d.ts
-│   │   │   │   ├── stream.d.ts
-│   │   │   │   ├── streaming-payload
-│   │   │   │   ├── transfer.d.ts
-│   │   │   │   ├── transform
-│   │   │   │   ├── ts3.4
-│   │   │   │   ├── uri.d.ts
-│   │   │   │   ├── util.d.ts
-│   │   │   │   └── waiter.d.ts
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── url-parser
-│   │   │   ├── dist-cjs
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   └── index.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── index.d.ts
-│   │   │   │   └── ts3.4
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── util-base64
-│   │   │   ├── dist-cjs
-│   │   │   │   ├── constants.browser.js
-│   │   │   │   ├── fromBase64.browser.js
-│   │   │   │   ├── fromBase64.js
-│   │   │   │   ├── index.js
-│   │   │   │   ├── toBase64.browser.js
-│   │   │   │   └── toBase64.js
-│   │   │   ├── dist-es
-│   │   │   │   ├── constants.browser.js
-│   │   │   │   ├── fromBase64.browser.js
-│   │   │   │   ├── fromBase64.js
-│   │   │   │   ├── index.js
-│   │   │   │   ├── toBase64.browser.js
-│   │   │   │   └── toBase64.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── constants.browser.d.ts
-│   │   │   │   ├── fromBase64.browser.d.ts
-│   │   │   │   ├── fromBase64.d.ts
-│   │   │   │   ├── index.d.ts
-│   │   │   │   ├── toBase64.browser.d.ts
-│   │   │   │   ├── toBase64.d.ts
-│   │   │   │   └── ts3.4
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── util-body-length-browser
-│   │   │   ├── dist-cjs
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   ├── calculateBodyLength.js
-│   │   │   │   └── index.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── calculateBodyLength.d.ts
-│   │   │   │   ├── index.d.ts
-│   │   │   │   └── ts3.4
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── util-body-length-node
-│   │   │   ├── dist-cjs
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   ├── calculateBodyLength.js
-│   │   │   │   └── index.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── calculateBodyLength.d.ts
-│   │   │   │   ├── index.d.ts
-│   │   │   │   └── ts3.4
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── util-buffer-from
-│   │   │   ├── dist-cjs
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   └── index.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── index.d.ts
-│   │   │   │   └── ts3.4
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── util-config-provider
-│   │   │   ├── dist-cjs
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   ├── booleanSelector.js
-│   │   │   │   ├── index.js
-│   │   │   │   ├── numberSelector.js
-│   │   │   │   └── types.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── booleanSelector.d.ts
-│   │   │   │   ├── index.d.ts
-│   │   │   │   ├── numberSelector.d.ts
-│   │   │   │   ├── ts3.4
-│   │   │   │   └── types.d.ts
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── util-defaults-mode-browser
-│   │   │   ├── dist-cjs
-│   │   │   │   ├── constants.js
-│   │   │   │   ├── index.js
-│   │   │   │   ├── resolveDefaultsModeConfig.js
-│   │   │   │   └── resolveDefaultsModeConfig.native.js
-│   │   │   ├── dist-es
-│   │   │   │   ├── constants.js
-│   │   │   │   ├── index.js
-│   │   │   │   ├── resolveDefaultsModeConfig.js
-│   │   │   │   └── resolveDefaultsModeConfig.native.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── constants.d.ts
-│   │   │   │   ├── index.d.ts
-│   │   │   │   ├── resolveDefaultsModeConfig.d.ts
-│   │   │   │   ├── resolveDefaultsModeConfig.native.d.ts
-│   │   │   │   └── ts3.4
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── util-defaults-mode-node
-│   │   │   ├── dist-cjs
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   ├── constants.js
-│   │   │   │   ├── defaultsModeConfig.js
-│   │   │   │   ├── index.js
-│   │   │   │   └── resolveDefaultsModeConfig.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── constants.d.ts
-│   │   │   │   ├── defaultsModeConfig.d.ts
-│   │   │   │   ├── index.d.ts
-│   │   │   │   ├── resolveDefaultsModeConfig.d.ts
-│   │   │   │   └── ts3.4
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── util-endpoints
-│   │   │   ├── dist-cjs
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   ├── cache
-│   │   │   │   ├── debug
-│   │   │   │   ├── getEndpointUrlConfig.js
-│   │   │   │   ├── index.js
-│   │   │   │   ├── lib
-│   │   │   │   ├── resolveEndpoint.js
-│   │   │   │   ├── types
-│   │   │   │   └── utils
-│   │   │   ├── dist-types
-│   │   │   │   ├── cache
-│   │   │   │   ├── debug
-│   │   │   │   ├── getEndpointUrlConfig.d.ts
-│   │   │   │   ├── index.d.ts
-│   │   │   │   ├── lib
-│   │   │   │   ├── resolveEndpoint.d.ts
-│   │   │   │   ├── ts3.4
-│   │   │   │   ├── types
-│   │   │   │   └── utils
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── util-hex-encoding
-│   │   │   ├── dist-cjs
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   └── index.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── index.d.ts
-│   │   │   │   └── ts3.4
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── util-middleware
-│   │   │   ├── dist-cjs
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   ├── getSmithyContext.js
-│   │   │   │   ├── index.js
-│   │   │   │   └── normalizeProvider.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── getSmithyContext.d.ts
-│   │   │   │   ├── index.d.ts
-│   │   │   │   ├── normalizeProvider.d.ts
-│   │   │   │   └── ts3.4
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── util-retry
-│   │   │   ├── dist-cjs
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   ├── AdaptiveRetryStrategy.js
-│   │   │   │   ├── config.js
-│   │   │   │   ├── ConfiguredRetryStrategy.js
-│   │   │   │   ├── constants.js
-│   │   │   │   ├── DefaultRateLimiter.js
-│   │   │   │   ├── defaultRetryBackoffStrategy.js
-│   │   │   │   ├── defaultRetryToken.js
-│   │   │   │   ├── index.js
-│   │   │   │   ├── StandardRetryStrategy.js
-│   │   │   │   └── types.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── AdaptiveRetryStrategy.d.ts
-│   │   │   │   ├── config.d.ts
-│   │   │   │   ├── ConfiguredRetryStrategy.d.ts
-│   │   │   │   ├── constants.d.ts
-│   │   │   │   ├── DefaultRateLimiter.d.ts
-│   │   │   │   ├── defaultRetryBackoffStrategy.d.ts
-│   │   │   │   ├── defaultRetryToken.d.ts
-│   │   │   │   ├── index.d.ts
-│   │   │   │   ├── StandardRetryStrategy.d.ts
-│   │   │   │   ├── ts3.4
-│   │   │   │   └── types.d.ts
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── util-stream
-│   │   │   ├── dist-cjs
-│   │   │   │   ├── ByteArrayCollector.js
-│   │   │   │   ├── checksum
-│   │   │   │   ├── createBufferedReadable.js
-│   │   │   │   ├── createBufferedReadableStream.js
-│   │   │   │   ├── getAwsChunkedEncodingStream.browser.js
-│   │   │   │   ├── getAwsChunkedEncodingStream.js
-│   │   │   │   ├── headStream.browser.js
-│   │   │   │   ├── headStream.js
-│   │   │   │   ├── index.js
-│   │   │   │   ├── sdk-stream-mixin.browser.js
-│   │   │   │   ├── sdk-stream-mixin.js
-│   │   │   │   ├── splitStream.browser.js
-│   │   │   │   ├── splitStream.js
-│   │   │   │   └── stream-type-check.js
-│   │   │   ├── dist-es
-│   │   │   │   ├── blob
-│   │   │   │   ├── ByteArrayCollector.js
-│   │   │   │   ├── checksum
-│   │   │   │   ├── createBufferedReadable.js
-│   │   │   │   ├── createBufferedReadableStream.js
-│   │   │   │   ├── getAwsChunkedEncodingStream.browser.js
-│   │   │   │   ├── getAwsChunkedEncodingStream.js
-│   │   │   │   ├── headStream.browser.js
-│   │   │   │   ├── headStream.js
-│   │   │   │   ├── index.js
-│   │   │   │   ├── sdk-stream-mixin.browser.js
-│   │   │   │   ├── sdk-stream-mixin.js
-│   │   │   │   ├── splitStream.browser.js
-│   │   │   │   ├── splitStream.js
-│   │   │   │   └── stream-type-check.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── blob
-│   │   │   │   ├── ByteArrayCollector.d.ts
-│   │   │   │   ├── checksum
-│   │   │   │   ├── createBufferedReadable.d.ts
-│   │   │   │   ├── createBufferedReadableStream.d.ts
-│   │   │   │   ├── getAwsChunkedEncodingStream.browser.d.ts
-│   │   │   │   ├── getAwsChunkedEncodingStream.d.ts
-│   │   │   │   ├── headStream.browser.d.ts
-│   │   │   │   ├── headStream.d.ts
-│   │   │   │   ├── index.d.ts
-│   │   │   │   ├── sdk-stream-mixin.browser.d.ts
-│   │   │   │   ├── sdk-stream-mixin.d.ts
-│   │   │   │   ├── splitStream.browser.d.ts
-│   │   │   │   ├── splitStream.d.ts
-│   │   │   │   ├── stream-type-check.d.ts
-│   │   │   │   └── ts3.4
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── util-uri-escape
-│   │   │   ├── dist-cjs
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   ├── escape-uri-path.js
-│   │   │   │   ├── escape-uri.js
-│   │   │   │   └── index.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── escape-uri-path.d.ts
-│   │   │   │   ├── escape-uri.d.ts
-│   │   │   │   ├── index.d.ts
-│   │   │   │   └── ts3.4
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── util-utf8
-│   │   │   ├── dist-cjs
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   ├── fromUtf8.browser.js
-│   │   │   │   ├── fromUtf8.js
-│   │   │   │   ├── index.js
-│   │   │   │   ├── toUint8Array.js
-│   │   │   │   ├── toUtf8.browser.js
-│   │   │   │   └── toUtf8.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── fromUtf8.browser.d.ts
-│   │   │   │   ├── fromUtf8.d.ts
-│   │   │   │   ├── index.d.ts
-│   │   │   │   ├── toUint8Array.d.ts
-│   │   │   │   ├── toUtf8.browser.d.ts
-│   │   │   │   ├── toUtf8.d.ts
-│   │   │   │   └── ts3.4
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   ├── util-waiter
-│   │   │   ├── dist-cjs
-│   │   │   │   └── index.js
-│   │   │   ├── dist-es
-│   │   │   │   ├── circularReplacer.js
-│   │   │   │   ├── createWaiter.js
-│   │   │   │   ├── index.js
-│   │   │   │   ├── poller.js
-│   │   │   │   ├── utils
-│   │   │   │   └── waiter.js
-│   │   │   ├── dist-types
-│   │   │   │   ├── circularReplacer.d.ts
-│   │   │   │   ├── createWaiter.d.ts
-│   │   │   │   ├── index.d.ts
-│   │   │   │   ├── poller.d.ts
-│   │   │   │   ├── ts3.4
-│   │   │   │   ├── utils
-│   │   │   │   └── waiter.d.ts
-│   │   │   ├── LICENSE
-│   │   │   ├── package.json
-│   │   │   └── README.md
 │   │   └── uuid
-│   │       ├── dist-cjs
-│   │       │   ├── index.js
-│   │       │   ├── randomUUID.js
-│   │       │   └── randomUUID.native.js
-│   │       ├── dist-es
-│   │       │   ├── index.js
-│   │       │   ├── randomUUID.browser.js
-│   │       │   ├── randomUUID.js
-│   │       │   ├── randomUUID.native.js
-│   │       │   └── v4.js
-│   │       ├── dist-types
-│   │       │   ├── index.d.ts
-│   │       │   ├── randomUUID.browser.d.ts
-│   │       │   ├── randomUUID.d.ts
-│   │       │   ├── randomUUID.native.d.ts
-│   │       │   ├── ts3.4
-│   │       │   └── v4.d.ts
-│   │       ├── LICENSE
-│   │       ├── package.json
-│   │       └── README.md
 │   ├── @standard-schema
 │   │   └── spec
-│   │       ├── dist
-│   │       │   ├── index.cjs
-│   │       │   ├── index.d.cts
-│   │       │   ├── index.d.ts
-│   │       │   └── index.js
-│   │       ├── LICENSE
-│   │       ├── package.json
-│   │       └── README.md
 │   ├── accepts
 │   │   ├── HISTORY.md
 │   │   ├── index.js
@@ -2274,35 +117,18 @@
 │   ├── append-field
 │   │   ├── index.js
 │   │   ├── lib
-│   │   │   ├── parse-path.js
-│   │   │   └── set-value.js
 │   │   ├── LICENSE
 │   │   ├── package.json
 │   │   ├── README.md
 │   │   └── test
-│   │       └── forms.js
 │   ├── aws-ssl-profiles
 │   │   ├── lib
-│   │   │   ├── @types
-│   │   │   │   ├── profiles.d.ts
-│   │   │   │   └── profiles.js
-│   │   │   ├── index.d.ts
-│   │   │   ├── index.js
-│   │   │   └── profiles
-│   │   │       └── ca
 │   │   ├── LICENSE
 │   │   ├── package.json
 │   │   └── README.md
 │   ├── body-parser
 │   │   ├── index.js
 │   │   ├── lib
-│   │   │   ├── read.js
-│   │   │   ├── types
-│   │   │   │   ├── json.js
-│   │   │   │   ├── raw.js
-│   │   │   │   ├── text.js
-│   │   │   │   └── urlencoded.js
-│   │   │   └── utils.js
 │   │   ├── LICENSE
 │   │   ├── package.json
 │   │   └── README.md
@@ -2314,14 +140,6 @@
 │   │   ├── package.json
 │   │   ├── README.md
 │   │   └── src
-│   │       ├── bowser.js
-│   │       ├── constants.js
-│   │       ├── parser-browsers.js
-│   │       ├── parser-engines.js
-│   │       ├── parser-os.js
-│   │       ├── parser-platforms.js
-│   │       ├── parser.js
-│   │       └── utils.js
 │   ├── buffer-from
 │   │   ├── index.js
 │   │   ├── LICENSE
@@ -2329,28 +147,11 @@
 │   │   └── readme.md
 │   ├── busboy
 │   │   ├── bench
-│   │   │   ├── bench-multipart-fields-100mb-big.js
-│   │   │   ├── bench-multipart-fields-100mb-small.js
-│   │   │   ├── bench-multipart-files-100mb-big.js
-│   │   │   ├── bench-multipart-files-100mb-small.js
-│   │   │   ├── bench-urlencoded-fields-100pairs-small.js
-│   │   │   └── bench-urlencoded-fields-900pairs-small-alt.js
 │   │   ├── lib
-│   │   │   ├── index.js
-│   │   │   ├── types
-│   │   │   │   ├── multipart.js
-│   │   │   │   └── urlencoded.js
-│   │   │   └── utils.js
 │   │   ├── LICENSE
 │   │   ├── package.json
 │   │   ├── README.md
 │   │   └── test
-│   │       ├── common.js
-│   │       ├── test-types-multipart-charsets.js
-│   │       ├── test-types-multipart-stream-pause.js
-│   │       ├── test-types-multipart.js
-│   │       ├── test-types-urlencoded.js
-│   │       └── test.js
 │   ├── bytes
 │   │   ├── History.md
 │   │   ├── index.js
@@ -2375,7 +176,6 @@
 │   │   ├── reflectApply.d.ts
 │   │   ├── reflectApply.js
 │   │   ├── test
-│   │   │   └── index.js
 │   │   └── tsconfig.json
 │   ├── call-bound
 │   │   ├── CHANGELOG.md
@@ -2385,7 +185,6 @@
 │   │   ├── package.json
 │   │   ├── README.md
 │   │   ├── test
-│   │   │   └── index.js
 │   │   └── tsconfig.json
 │   ├── concat-stream
 │   │   ├── index.js
@@ -2421,10 +220,6 @@
 │   │   ├── package.json
 │   │   ├── README.md
 │   │   └── src
-│   │       ├── browser.js
-│   │       ├── common.js
-│   │       ├── index.js
-│   │       └── node.js
 │   ├── denque
 │   │   ├── CHANGELOG.md
 │   │   ├── index.d.ts
@@ -2436,8 +231,6 @@
 │   │   ├── History.md
 │   │   ├── index.js
 │   │   ├── lib
-│   │   │   └── browser
-│   │   │       └── index.js
 │   │   ├── LICENSE
 │   │   ├── package.json
 │   │   └── Readme.md
@@ -2446,10 +239,6 @@
 │   │   ├── config.d.ts
 │   │   ├── config.js
 │   │   ├── lib
-│   │   │   ├── cli-options.js
-│   │   │   ├── env-options.js
-│   │   │   ├── main.d.ts
-│   │   │   └── main.js
 │   │   ├── LICENSE
 │   │   ├── package.json
 │   │   ├── README-es.md
@@ -2465,9 +254,6 @@
 │   │   ├── set.d.ts
 │   │   ├── set.js
 │   │   ├── test
-│   │   │   ├── get.js
-│   │   │   ├── index.js
-│   │   │   └── set.js
 │   │   └── tsconfig.json
 │   ├── ee-first
 │   │   ├── index.js
@@ -2487,7 +273,6 @@
 │   │   ├── package.json
 │   │   ├── README.md
 │   │   ├── test
-│   │   │   └── index.js
 │   │   └── tsconfig.json
 │   ├── es-errors
 │   │   ├── CHANGELOG.md
@@ -2505,7 +290,6 @@
 │   │   ├── syntax.d.ts
 │   │   ├── syntax.js
 │   │   ├── test
-│   │   │   └── index.js
 │   │   ├── tsconfig.json
 │   │   ├── type.d.ts
 │   │   ├── type.js
@@ -2523,7 +307,6 @@
 │   │   ├── RequireObjectCoercible.d.ts
 │   │   ├── RequireObjectCoercible.js
 │   │   ├── test
-│   │   │   └── index.js
 │   │   ├── ToObject.d.ts
 │   │   ├── ToObject.js
 │   │   └── tsconfig.json
@@ -2541,22 +324,11 @@
 │   ├── express
 │   │   ├── index.js
 │   │   ├── lib
-│   │   │   ├── application.js
-│   │   │   ├── express.js
-│   │   │   ├── request.js
-│   │   │   ├── response.js
-│   │   │   ├── utils.js
-│   │   │   └── view.js
 │   │   ├── LICENSE
 │   │   ├── package.json
 │   │   └── Readme.md
 │   ├── express-rate-limit
 │   │   ├── dist
-│   │   │   ├── index.cjs
-│   │   │   ├── index.d.cts
-│   │   │   ├── index.d.mts
-│   │   │   ├── index.d.ts
-│   │   │   └── index.mjs
 │   │   ├── license.md
 │   │   ├── package.json
 │   │   ├── readme.md
@@ -2564,70 +336,17 @@
 │   ├── fast-xml-builder
 │   │   ├── CHANGELOG.md
 │   │   ├── lib
-│   │   │   ├── fxb.cjs
-│   │   │   ├── fxb.d.cts
-│   │   │   ├── fxb.min.js
-│   │   │   └── fxb.min.js.map
 │   │   ├── LICENSE
 │   │   ├── package.json
 │   │   ├── README.md
 │   │   └── src
-│   │       ├── fxb.d.ts
-│   │       ├── fxb.js
-│   │       ├── ignoreAttributes.js
-│   │       ├── orderedJs2Xml.js
-│   │       └── prettifyJs2Xml.js
 │   ├── fast-xml-parser
 │   │   ├── CHANGELOG.md
 │   │   ├── lib
-│   │   │   ├── fxbuilder.min.js
-│   │   │   ├── fxbuilder.min.js.map
-│   │   │   ├── fxp.cjs
-│   │   │   ├── fxp.d.cts
-│   │   │   ├── fxp.min.js
-│   │   │   ├── fxp.min.js.map
-│   │   │   ├── fxparser.min.js
-│   │   │   ├── fxparser.min.js.map
-│   │   │   ├── fxvalidator.min.js
-│   │   │   ├── fxvalidator.min.js.map
-│   │   │   └── pem.d.cts
 │   │   ├── LICENSE
 │   │   ├── package.json
 │   │   ├── README.md
 │   │   └── src
-│   │       ├── cli
-│   │       │   ├── cli.js
-│   │       │   ├── man.js
-│   │       │   └── read.js
-│   │       ├── fxp.d.ts
-│   │       ├── fxp.js
-│   │       ├── ignoreAttributes.js
-│   │       ├── pem.d.ts
-│   │       ├── util.js
-│   │       ├── v6
-│   │       │   ├── CharsSymbol.js
-│   │       │   ├── EntitiesParser.js
-│   │       │   ├── inputSource
-│   │       │   ├── OptionsBuilder.js
-│   │       │   ├── OutputBuilders
-│   │       │   ├── Report.js
-│   │       │   ├── TagPath.js
-│   │       │   ├── TagPathMatcher.js
-│   │       │   ├── valueParsers
-│   │       │   ├── Xml2JsParser.js
-│   │       │   ├── XMLParser.js
-│   │       │   ├── XmlPartReader.js
-│   │       │   └── XmlSpecialTagsReader.js
-│   │       ├── validator.js
-│   │       ├── xmlbuilder
-│   │       │   └── json2xml.js
-│   │       └── xmlparser
-│   │           ├── DocTypeReader.js
-│   │           ├── node2json.js
-│   │           ├── OptionsBuilder.js
-│   │           ├── OrderedObjParser.js
-│   │           ├── xmlNode.js
-│   │           └── XMLParser.js
 │   ├── finalhandler
 │   │   ├── HISTORY.md
 │   │   ├── index.js
@@ -2654,7 +373,6 @@
 │   │   ├── package.json
 │   │   ├── README.md
 │   │   └── test
-│   │       └── index.js
 │   ├── generate-function
 │   │   ├── example.js
 │   │   ├── index.js
@@ -2669,7 +387,6 @@
 │   │   ├── package.json
 │   │   ├── README.md
 │   │   └── test
-│   │       └── GetIntrinsic.js
 │   ├── get-proto
 │   │   ├── CHANGELOG.md
 │   │   ├── index.d.ts
@@ -2682,7 +399,6 @@
 │   │   ├── Reflect.getPrototypeOf.d.ts
 │   │   ├── Reflect.getPrototypeOf.js
 │   │   ├── test
-│   │   │   └── index.js
 │   │   └── tsconfig.json
 │   ├── gopd
 │   │   ├── CHANGELOG.md
@@ -2694,7 +410,6 @@
 │   │   ├── package.json
 │   │   ├── README.md
 │   │   ├── test
-│   │   │   └── index.js
 │   │   └── tsconfig.json
 │   ├── has-symbols
 │   │   ├── CHANGELOG.md
@@ -2706,11 +421,6 @@
 │   │   ├── shams.d.ts
 │   │   ├── shams.js
 │   │   ├── test
-│   │   │   ├── index.js
-│   │   │   ├── shams
-│   │   │   │   ├── core-js.js
-│   │   │   │   └── get-own-property-symbols.js
-│   │   │   └── tests.js
 │   │   └── tsconfig.json
 │   ├── hasown
 │   │   ├── CHANGELOG.md
@@ -2728,37 +438,11 @@
 │   │   └── README.md
 │   ├── iconv-lite
 │   │   ├── encodings
-│   │   │   ├── dbcs-codec.js
-│   │   │   ├── dbcs-data.js
-│   │   │   ├── index.js
-│   │   │   ├── internal.js
-│   │   │   ├── sbcs-codec.js
-│   │   │   ├── sbcs-data-generated.js
-│   │   │   ├── sbcs-data.js
-│   │   │   ├── tables
-│   │   │   │   ├── big5-added.json
-│   │   │   │   ├── cp936.json
-│   │   │   │   ├── cp949.json
-│   │   │   │   ├── cp950.json
-│   │   │   │   ├── eucjp.json
-│   │   │   │   ├── gb18030-ranges.json
-│   │   │   │   ├── gbk-added.json
-│   │   │   │   └── shiftjis.json
-│   │   │   ├── utf16.js
-│   │   │   ├── utf32.js
-│   │   │   └── utf7.js
 │   │   ├── lib
-│   │   │   ├── bom-handling.js
-│   │   │   ├── helpers
-│   │   │   │   └── merge-exports.js
-│   │   │   ├── index.d.ts
-│   │   │   ├── index.js
-│   │   │   └── streams.js
 │   │   ├── LICENSE
 │   │   ├── package.json
 │   │   ├── README.md
 │   │   └── types
-│   │       └── encodings.d.ts
 │   ├── inherits
 │   │   ├── inherits_browser.js
 │   │   ├── inherits.js
@@ -2767,64 +451,13 @@
 │   │   └── README.md
 │   ├── ip-address
 │   │   ├── dist
-│   │   │   ├── address-error.d.ts
-│   │   │   ├── address-error.d.ts.map
-│   │   │   ├── address-error.js
-│   │   │   ├── address-error.js.map
-│   │   │   ├── common.d.ts
-│   │   │   ├── common.d.ts.map
-│   │   │   ├── common.js
-│   │   │   ├── common.js.map
-│   │   │   ├── ip-address.d.ts
-│   │   │   ├── ip-address.d.ts.map
-│   │   │   ├── ip-address.js
-│   │   │   ├── ip-address.js.map
-│   │   │   ├── ipv4.d.ts
-│   │   │   ├── ipv4.d.ts.map
-│   │   │   ├── ipv4.js
-│   │   │   ├── ipv4.js.map
-│   │   │   ├── ipv6.d.ts
-│   │   │   ├── ipv6.d.ts.map
-│   │   │   ├── ipv6.js
-│   │   │   ├── ipv6.js.map
-│   │   │   ├── v4
-│   │   │   │   ├── constants.d.ts
-│   │   │   │   ├── constants.d.ts.map
-│   │   │   │   ├── constants.js
-│   │   │   │   └── constants.js.map
-│   │   │   └── v6
-│   │   │       ├── constants.d.ts
-│   │   │       ├── constants.d.ts.map
-│   │   │       ├── constants.js
-│   │   │       ├── constants.js.map
-│   │   │       ├── helpers.d.ts
-│   │   │       ├── helpers.d.ts.map
-│   │   │       ├── helpers.js
-│   │   │       ├── helpers.js.map
-│   │   │       ├── regular-expressions.d.ts
-│   │   │       ├── regular-expressions.d.ts.map
-│   │   │       ├── regular-expressions.js
-│   │   │       └── regular-expressions.js.map
 │   │   ├── LICENSE
 │   │   ├── package.json
 │   │   ├── README.md
 │   │   └── src
-│   │       ├── address-error.ts
-│   │       ├── common.ts
-│   │       ├── ip-address.ts
-│   │       ├── ipv4.ts
-│   │       ├── ipv6.ts
-│   │       ├── v4
-│   │       │   └── constants.ts
-│   │       └── v6
-│   │           ├── constants.ts
-│   │           ├── helpers.ts
-│   │           └── regular-expressions.ts
 │   ├── ipaddr.js
 │   │   ├── ipaddr.min.js
 │   │   ├── lib
-│   │   │   ├── ipaddr.js
-│   │   │   └── ipaddr.js.d.ts
 │   │   ├── LICENSE
 │   │   ├── package.json
 │   │   └── README.md
@@ -2842,41 +475,7 @@
 │   │   └── README.md
 │   ├── joi
 │   │   ├── dist
-│   │   │   └── joi-browser.min.js
 │   │   ├── lib
-│   │   │   ├── annotate.js
-│   │   │   ├── base.js
-│   │   │   ├── cache.js
-│   │   │   ├── common.js
-│   │   │   ├── compile.js
-│   │   │   ├── errors.js
-│   │   │   ├── extend.js
-│   │   │   ├── index.d.ts
-│   │   │   ├── index.js
-│   │   │   ├── manifest.js
-│   │   │   ├── messages.js
-│   │   │   ├── modify.js
-│   │   │   ├── ref.js
-│   │   │   ├── schemas.js
-│   │   │   ├── state.js
-│   │   │   ├── template.js
-│   │   │   ├── trace.js
-│   │   │   ├── types
-│   │   │   │   ├── alternatives.js
-│   │   │   │   ├── any.js
-│   │   │   │   ├── array.js
-│   │   │   │   ├── binary.js
-│   │   │   │   ├── boolean.js
-│   │   │   │   ├── date.js
-│   │   │   │   ├── function.js
-│   │   │   │   ├── keys.js
-│   │   │   │   ├── link.js
-│   │   │   │   ├── number.js
-│   │   │   │   ├── object.js
-│   │   │   │   ├── string.js
-│   │   │   │   └── symbol.js
-│   │   │   ├── validator.js
-│   │   │   └── values.js
 │   │   ├── LICENSE.md
 │   │   ├── package.json
 │   │   └── README.md
@@ -2888,17 +487,9 @@
 │   │   ├── README.md
 │   │   ├── types.d.ts
 │   │   └── umd
-│   │       ├── index.d.ts
-│   │       ├── index.js
-│   │       ├── package.json
-│   │       └── types.d.ts
 │   ├── lru.min
 │   │   ├── browser
-│   │   │   └── lru.min.js
 │   │   ├── lib
-│   │   │   ├── index.d.ts
-│   │   │   ├── index.js
-│   │   │   └── index.mjs
 │   │   ├── LICENSE
 │   │   ├── package.json
 │   │   └── README.md
@@ -2907,12 +498,6 @@
 │   │   ├── abs.js
 │   │   ├── CHANGELOG.md
 │   │   ├── constants
-│   │   │   ├── maxArrayLength.d.ts
-│   │   │   ├── maxArrayLength.js
-│   │   │   ├── maxSafeInteger.d.ts
-│   │   │   ├── maxSafeInteger.js
-│   │   │   ├── maxValue.d.ts
-│   │   │   └── maxValue.js
 │   │   ├── floor.d.ts
 │   │   ├── floor.js
 │   │   ├── isFinite.d.ts
@@ -2939,7 +524,6 @@
 │   │   ├── sign.d.ts
 │   │   ├── sign.js
 │   │   ├── test
-│   │   │   └── index.js
 │   │   └── tsconfig.json
 │   ├── media-typer
 │   │   ├── HISTORY.md
@@ -2975,150 +559,21 @@
 │   ├── multer
 │   │   ├── index.js
 │   │   ├── lib
-│   │   │   ├── counter.js
-│   │   │   ├── file-appender.js
-│   │   │   ├── make-middleware.js
-│   │   │   ├── multer-error.js
-│   │   │   └── remove-uploaded-files.js
 │   │   ├── LICENSE
 │   │   ├── node_modules
-│   │   │   ├── media-typer
-│   │   │   │   ├── HISTORY.md
-│   │   │   │   ├── index.js
-│   │   │   │   ├── LICENSE
-│   │   │   │   ├── package.json
-│   │   │   │   └── README.md
-│   │   │   ├── mime-db
-│   │   │   │   ├── db.json
-│   │   │   │   ├── HISTORY.md
-│   │   │   │   ├── index.js
-│   │   │   │   ├── LICENSE
-│   │   │   │   ├── package.json
-│   │   │   │   └── README.md
-│   │   │   ├── mime-types
-│   │   │   │   ├── HISTORY.md
-│   │   │   │   ├── index.js
-│   │   │   │   ├── LICENSE
-│   │   │   │   ├── package.json
-│   │   │   │   └── README.md
-│   │   │   └── type-is
-│   │   │       ├── HISTORY.md
-│   │   │       ├── index.js
-│   │   │       ├── LICENSE
-│   │   │       ├── package.json
-│   │   │       └── README.md
 │   │   ├── package.json
 │   │   ├── README.md
 │   │   └── storage
-│   │       ├── disk.js
-│   │       └── memory.js
 │   ├── mysql2
 │   │   ├── index.d.ts
 │   │   ├── index.js
 │   │   ├── lib
-│   │   │   ├── auth_41.js
-│   │   │   ├── auth_plugins
-│   │   │   │   ├── caching_sha2_password.js
-│   │   │   │   ├── caching_sha2_password.md
-│   │   │   │   ├── index.js
-│   │   │   │   ├── mysql_clear_password.js
-│   │   │   │   ├── mysql_native_password.js
-│   │   │   │   └── sha256_password.js
-│   │   │   ├── base
-│   │   │   │   ├── connection.js
-│   │   │   │   ├── pool_connection.js
-│   │   │   │   └── pool.js
-│   │   │   ├── commands
-│   │   │   │   ├── auth_switch.js
-│   │   │   │   ├── binlog_dump.js
-│   │   │   │   ├── change_user.js
-│   │   │   │   ├── client_handshake.js
-│   │   │   │   ├── close_statement.js
-│   │   │   │   ├── command.js
-│   │   │   │   ├── execute.js
-│   │   │   │   ├── index.js
-│   │   │   │   ├── ping.js
-│   │   │   │   ├── prepare.js
-│   │   │   │   ├── query.js
-│   │   │   │   ├── quit.js
-│   │   │   │   ├── register_slave.js
-│   │   │   │   └── server_handshake.js
-│   │   │   ├── compressed_protocol.js
-│   │   │   ├── connection_config.js
-│   │   │   ├── connection.js
-│   │   │   ├── constants
-│   │   │   │   ├── charset_encodings.js
-│   │   │   │   ├── charsets.js
-│   │   │   │   ├── client.js
-│   │   │   │   ├── commands.js
-│   │   │   │   ├── cursor.js
-│   │   │   │   ├── encoding_charset.js
-│   │   │   │   ├── errors.js
-│   │   │   │   ├── field_flags.js
-│   │   │   │   ├── server_status.js
-│   │   │   │   ├── session_track.js
-│   │   │   │   ├── ssl_profiles.js
-│   │   │   │   └── types.js
-│   │   │   ├── create_connection.js
-│   │   │   ├── create_pool_cluster.js
-│   │   │   ├── create_pool.js
-│   │   │   ├── helpers.js
-│   │   │   ├── packet_parser.js
-│   │   │   ├── packets
-│   │   │   │   ├── auth_next_factor.js
-│   │   │   │   ├── auth_switch_request_more_data.js
-│   │   │   │   ├── auth_switch_request.js
-│   │   │   │   ├── auth_switch_response.js
-│   │   │   │   ├── binary_row.js
-│   │   │   │   ├── binlog_dump.js
-│   │   │   │   ├── binlog_query_statusvars.js
-│   │   │   │   ├── change_user.js
-│   │   │   │   ├── close_statement.js
-│   │   │   │   ├── column_definition.js
-│   │   │   │   ├── execute.js
-│   │   │   │   ├── handshake_response.js
-│   │   │   │   ├── handshake.js
-│   │   │   │   ├── index.js
-│   │   │   │   ├── packet.js
-│   │   │   │   ├── prepare_statement.js
-│   │   │   │   ├── prepared_statement_header.js
-│   │   │   │   ├── query.js
-│   │   │   │   ├── register_slave.js
-│   │   │   │   ├── resultset_header.js
-│   │   │   │   ├── ssl_request.js
-│   │   │   │   └── text_row.js
-│   │   │   ├── parsers
-│   │   │   │   ├── binary_parser.js
-│   │   │   │   ├── parser_cache.js
-│   │   │   │   ├── static_binary_parser.js
-│   │   │   │   ├── static_text_parser.js
-│   │   │   │   ├── string.js
-│   │   │   │   └── text_parser.js
-│   │   │   ├── pool_cluster.js
-│   │   │   ├── pool_config.js
-│   │   │   ├── pool_connection.js
-│   │   │   ├── pool.js
-│   │   │   ├── promise
-│   │   │   │   ├── connection.js
-│   │   │   │   ├── inherit_events.js
-│   │   │   │   ├── make_done_cb.js
-│   │   │   │   ├── pool_cluster.js
-│   │   │   │   ├── pool_connection.js
-│   │   │   │   ├── pool.js
-│   │   │   │   └── prepared_statement_info.js
-│   │   │   ├── results_stream.js
-│   │   │   └── server.js
 │   │   ├── License
 │   │   ├── package.json
 │   │   ├── promise.d.ts
 │   │   ├── promise.js
 │   │   ├── README.md
 │   │   └── typings
-│   │       └── mysql
-│   │           ├── index.d.ts
-│   │           ├── info.txt
-│   │           ├── lib
-│   │           └── LICENSE.txt
 │   ├── named-placeholders
 │   │   ├── index.js
 │   │   ├── LICENSE
@@ -3128,46 +583,18 @@
 │   │   ├── HISTORY.md
 │   │   ├── index.js
 │   │   ├── lib
-│   │   │   ├── charset.js
-│   │   │   ├── encoding.js
-│   │   │   ├── language.js
-│   │   │   └── mediaType.js
 │   │   ├── LICENSE
 │   │   ├── package.json
 │   │   └── README.md
 │   ├── object-inspect
 │   │   ├── CHANGELOG.md
 │   │   ├── example
-│   │   │   ├── all.js
-│   │   │   ├── circular.js
-│   │   │   ├── fn.js
-│   │   │   └── inspect.js
 │   │   ├── index.js
 │   │   ├── LICENSE
 │   │   ├── package-support.json
 │   │   ├── package.json
 │   │   ├── readme.markdown
 │   │   ├── test
-│   │   │   ├── bigint.js
-│   │   │   ├── browser
-│   │   │   │   └── dom.js
-│   │   │   ├── circular.js
-│   │   │   ├── deep.js
-│   │   │   ├── element.js
-│   │   │   ├── err.js
-│   │   │   ├── fakes.js
-│   │   │   ├── fn.js
-│   │   │   ├── global.js
-│   │   │   ├── has.js
-│   │   │   ├── holes.js
-│   │   │   ├── indent-option.js
-│   │   │   ├── inspect.js
-│   │   │   ├── lowbyte.js
-│   │   │   ├── number.js
-│   │   │   ├── quoteStyle.js
-│   │   │   ├── toStringTag.js
-│   │   │   ├── undef.js
-│   │   │   └── values.js
 │   │   ├── test-core-js.js
 │   │   └── util.inspect.js
 │   ├── on-finished
@@ -3189,23 +616,12 @@
 │   │   └── README.md
 │   ├── path-expression-matcher
 │   │   ├── lib
-│   │   │   ├── pem.cjs
-│   │   │   ├── pem.d.cts
-│   │   │   ├── pem.min.js
-│   │   │   └── pem.min.js.map
 │   │   ├── LICENSE
 │   │   ├── package.json
 │   │   ├── README.md
 │   │   └── src
-│   │       ├── Expression.js
-│   │       ├── index.d.ts
-│   │       ├── index.js
-│   │       └── Matcher.js
 │   ├── path-to-regexp
 │   │   ├── dist
-│   │   │   ├── index.d.ts
-│   │   │   ├── index.js
-│   │   │   └── index.js.map
 │   │   ├── LICENSE
 │   │   ├── package.json
 │   │   └── Readme.md
@@ -3218,22 +634,12 @@
 │   ├── qs
 │   │   ├── CHANGELOG.md
 │   │   ├── dist
-│   │   │   └── qs.js
 │   │   ├── eslint.config.mjs
 │   │   ├── lib
-│   │   │   ├── formats.js
-│   │   │   ├── index.js
-│   │   │   ├── parse.js
-│   │   │   ├── stringify.js
-│   │   │   └── utils.js
 │   │   ├── LICENSE.md
 │   │   ├── package.json
 │   │   ├── README.md
 │   │   └── test
-│   │       ├── empty-keys-cases.js
-│   │       ├── parse.js
-│   │       ├── stringify.js
-│   │       └── utils.js
 │   ├── range-parser
 │   │   ├── HISTORY.md
 │   │   ├── index.js
@@ -3253,13 +659,6 @@
 │   │   ├── experimentalWarning.js
 │   │   ├── GOVERNANCE.md
 │   │   ├── lib
-│   │   │   ├── _stream_duplex.js
-│   │   │   ├── _stream_passthrough.js
-│   │   │   ├── _stream_readable.js
-│   │   │   ├── _stream_transform.js
-│   │   │   ├── _stream_writable.js
-│   │   │   └── internal
-│   │   │       └── streams
 │   │   ├── LICENSE
 │   │   ├── package.json
 │   │   ├── readable-browser.js
@@ -3269,8 +668,6 @@
 │   │   ├── HISTORY.md
 │   │   ├── index.js
 │   │   ├── lib
-│   │   │   ├── layer.js
-│   │   │   └── route.js
 │   │   ├── LICENSE
 │   │   ├── package.json
 │   │   └── README.md
@@ -3297,13 +694,11 @@
 │   │   ├── AUTHORS
 │   │   ├── index.js
 │   │   ├── lib
-│   │   │   └── seq-queue.js
 │   │   ├── LICENSE
 │   │   ├── Makefile
 │   │   ├── package.json
 │   │   ├── README.md
 │   │   └── test
-│   │       └── seq-queue-test.js
 │   ├── serve-static
 │   │   ├── index.js
 │   │   ├── LICENSE
@@ -3316,7 +711,6 @@
 │   │   ├── package.json
 │   │   ├── README.md
 │   │   └── test
-│   │       └── index.js
 │   ├── side-channel
 │   │   ├── CHANGELOG.md
 │   │   ├── index.d.ts
@@ -3325,7 +719,6 @@
 │   │   ├── package.json
 │   │   ├── README.md
 │   │   ├── test
-│   │   │   └── index.js
 │   │   └── tsconfig.json
 │   ├── side-channel-list
 │   │   ├── CHANGELOG.md
@@ -3336,7 +729,6 @@
 │   │   ├── package.json
 │   │   ├── README.md
 │   │   ├── test
-│   │   │   └── index.js
 │   │   └── tsconfig.json
 │   ├── side-channel-map
 │   │   ├── CHANGELOG.md
@@ -3346,7 +738,6 @@
 │   │   ├── package.json
 │   │   ├── README.md
 │   │   ├── test
-│   │   │   └── index.js
 │   │   └── tsconfig.json
 │   ├── side-channel-weakmap
 │   │   ├── CHANGELOG.md
@@ -3356,13 +747,11 @@
 │   │   ├── package.json
 │   │   ├── README.md
 │   │   ├── test
-│   │   │   └── index.js
 │   │   └── tsconfig.json
 │   ├── sqlstring
 │   │   ├── HISTORY.md
 │   │   ├── index.js
 │   │   ├── lib
-│   │   │   └── SqlString.js
 │   │   ├── LICENSE
 │   │   ├── package.json
 │   │   └── README.md
@@ -3375,15 +764,12 @@
 │   │   └── README.md
 │   ├── streamsearch
 │   │   ├── lib
-│   │   │   └── sbmh.js
 │   │   ├── LICENSE
 │   │   ├── package.json
 │   │   ├── README.md
 │   │   └── test
-│   │       └── test.js
 │   ├── string_decoder
 │   │   ├── lib
-│   │   │   └── string_decoder.js
 │   │   ├── LICENSE
 │   │   ├── package.json
 │   │   └── README.md
@@ -3395,9 +781,6 @@
 │   │   ├── README.md
 │   │   ├── strnum.js
 │   │   └── tests
-│   │       ├── infinity_test.js
-│   │       ├── strnum_test.js
-│   │       └── temp.js
 │   ├── toidentifier
 │   │   ├── HISTORY.md
 │   │   ├── index.js
@@ -3408,9 +791,6 @@
 │   │   ├── CopyrightNotice.txt
 │   │   ├── LICENSE.txt
 │   │   ├── modules
-│   │   │   ├── index.d.ts
-│   │   │   ├── index.js
-│   │   │   └── package.json
 │   │   ├── package.json
 │   │   ├── README.md
 │   │   ├── SECURITY.md
@@ -3428,15 +808,11 @@
 │   │   └── README.md
 │   ├── typedarray
 │   │   ├── example
-│   │   │   └── tarray.js
 │   │   ├── index.js
 │   │   ├── LICENSE
 │   │   ├── package.json
 │   │   ├── readme.markdown
 │   │   └── test
-│   │       ├── server
-│   │       │   └── undef_globals.js
-│   │       └── tarray.js
 │   ├── unpipe
 │   │   ├── HISTORY.md
 │   │   ├── index.js
@@ -3452,78 +828,7 @@
 │   │   └── README.md
 │   ├── uuid
 │   │   ├── dist
-│   │   │   ├── index.d.ts
-│   │   │   ├── index.js
-│   │   │   ├── max.d.ts
-│   │   │   ├── max.js
-│   │   │   ├── md5.d.ts
-│   │   │   ├── md5.js
-│   │   │   ├── native.d.ts
-│   │   │   ├── native.js
-│   │   │   ├── nil.d.ts
-│   │   │   ├── nil.js
-│   │   │   ├── parse.d.ts
-│   │   │   ├── parse.js
-│   │   │   ├── regex.d.ts
-│   │   │   ├── regex.js
-│   │   │   ├── rng.d.ts
-│   │   │   ├── rng.js
-│   │   │   ├── sha1.d.ts
-│   │   │   ├── sha1.js
-│   │   │   ├── stringify.d.ts
-│   │   │   ├── stringify.js
-│   │   │   ├── types.d.ts
-│   │   │   ├── types.js
-│   │   │   ├── uuid-bin.d.ts
-│   │   │   ├── uuid-bin.js
-│   │   │   ├── v1.d.ts
-│   │   │   ├── v1.js
-│   │   │   ├── v1ToV6.d.ts
-│   │   │   ├── v1ToV6.js
-│   │   │   ├── v3.d.ts
-│   │   │   ├── v3.js
-│   │   │   ├── v35.d.ts
-│   │   │   ├── v35.js
-│   │   │   ├── v4.d.ts
-│   │   │   ├── v4.js
-│   │   │   ├── v5.d.ts
-│   │   │   ├── v5.js
-│   │   │   ├── v6.d.ts
-│   │   │   ├── v6.js
-│   │   │   ├── v6ToV1.d.ts
-│   │   │   ├── v6ToV1.js
-│   │   │   ├── v7.d.ts
-│   │   │   ├── v7.js
-│   │   │   ├── validate.d.ts
-│   │   │   ├── validate.js
-│   │   │   ├── version.d.ts
-│   │   │   └── version.js
 │   │   ├── dist-node
-│   │   │   ├── bin
-│   │   │   │   └── uuid
-│   │   │   ├── index.js
-│   │   │   ├── max.js
-│   │   │   ├── md5.js
-│   │   │   ├── native.js
-│   │   │   ├── nil.js
-│   │   │   ├── parse.js
-│   │   │   ├── regex.js
-│   │   │   ├── rng.js
-│   │   │   ├── sha1.js
-│   │   │   ├── stringify.js
-│   │   │   ├── types.js
-│   │   │   ├── uuid-bin.js
-│   │   │   ├── v1.js
-│   │   │   ├── v1ToV6.js
-│   │   │   ├── v3.js
-│   │   │   ├── v35.js
-│   │   │   ├── v4.js
-│   │   │   ├── v5.js
-│   │   │   ├── v6.js
-│   │   │   ├── v6ToV1.js
-│   │   │   ├── v7.js
-│   │   │   ├── validate.js
-│   │   │   └── version.js
 │   │   ├── LICENSE.md
 │   │   ├── package.json
 │   │   └── README.md
@@ -3551,6 +856,7 @@
 │   ├── controllers
 │   │   ├── auth.controller.js
 │   │   ├── dailyActivity.controller.js
+│   │   ├── doctorAppointment.controller.js
 │   │   ├── file.controller.js
 │   │   ├── geo.controller.js
 │   │   ├── login.controller.js
@@ -3565,6 +871,7 @@
 │   ├── repositories
 │   │   ├── auth.repository.js
 │   │   ├── dailyActivity.repository.js
+│   │   ├── doctorAppointment.repository.js
 │   │   ├── file.repository.js
 │   │   ├── geo.repository.js
 │   │   ├── login.repository.js
@@ -3574,6 +881,7 @@
 │   ├── routes
 │   │   ├── auth.routes.js
 │   │   ├── dailyActivity.routes.js
+│   │   ├── doctorAppointment.routes.js
 │   │   ├── file.routes.js
 │   │   ├── geo.routes.js
 │   │   ├── login.routes.js
@@ -3584,12 +892,14 @@
 │   ├── services
 │   │   ├── auth.service.js
 │   │   ├── dailyActivity.service.js
+│   │   ├── doctorAppointment.service.js
 │   │   ├── file.service.js
 │   │   ├── geo.service.js
 │   │   ├── login.service.js
 │   │   ├── otp.service.js
 │   │   ├── patron.service.js
 │   │   └── signup.service.js
+│   ├── structure.txt
 │   └── utils
 │       ├── email.util.js
 │       ├── logger.util.js
@@ -3598,4 +908,4 @@
 │       └── sms.util.js
 └── structure.txt
 
-888 directories, 2711 files
+290 directories, 619 files
