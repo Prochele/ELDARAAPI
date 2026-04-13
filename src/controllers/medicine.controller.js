@@ -11,7 +11,7 @@ const addMedicineSchedule = async (req, res, next) => {
     };
 
     const result = await medicineService.addMedicineSchedule(payload);
-console.log('Medicine schedule created:........', result);
+    console.log('Medicine schedule created:........', result);
     return successResponse(
       res,
       'Medicine schedule created successfully',
@@ -23,6 +23,22 @@ console.log('Medicine schedule created:........', result);
   }
 };
 
+const logMedicineStatus = async (req, res, next) => {
+  try {
+    const payload = {
+      ...req.body,
+      userId: req.user.UserID
+    };
+
+    const result = await medicineService.logMedicineStatus(payload);
+
+    return successResponse(res, 'Status updated', result);
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   addMedicineSchedule,
+  logMedicineStatus
 };

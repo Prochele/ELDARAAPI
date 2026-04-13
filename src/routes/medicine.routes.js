@@ -12,4 +12,9 @@ router.post(
   medicineController.addMedicineSchedule
 );
 
+router.post(
+  '/log-status',
+  authenticateSession,
+  medicineController.logMedicineStatus
+);
 module.exports = router;

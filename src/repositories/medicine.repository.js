@@ -15,11 +15,12 @@ const addMedicineSchedule = async (data) => {
     scheduleTypeIds,
     needAlarm,
     ocrRawJson,
-    createdBy
+    createdBy,
+    fileId
   } = data;
 try {
   const [rows] = await db.query(
-    `CALL USP_InsertMedicineSchedule(?,?,?,?,?,?,?,?,?,?,?,?)`,
+    `CALL USP_InsertMedicineSchedule(?,?,?,?,?,?,?,?,?,?,?,?,?)`,
     [
       patronId,
       medicineName,
@@ -32,7 +33,8 @@ try {
       JSON.stringify(scheduleTypeIds),
       needAlarm,
       ocrRawJson ? JSON.stringify(ocrRawJson) : null,
-      createdBy
+      createdBy,
+      fileId
     ]
   );
 
@@ -43,6 +45,18 @@ try {
 }
 };
 
+const logMedicineStatus = async (data) => {
+  const { scheduleId, status, userId, notes } = data;
+
+  const [rows] = await db.query(
+    `CALL sp_log_medicine_status(?,?,?,?)`,
+    [scheduleId, status, userId, notes]
+  );
+
+  return rows;
+};
+
 module.exports = {
   addMedicineSchedule,
+  logMedicineStatus
 };

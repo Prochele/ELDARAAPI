@@ -19,7 +19,8 @@ const addMedicineSchedule = async (body) => {
     scheduleTypeIds,
     needAlarm,
     ocrRawJson,
-    createdBy
+    createdBy,
+    fileId
   } = body;
 
   // 🔹 Validation
@@ -45,10 +46,27 @@ const addMedicineSchedule = async (body) => {
     scheduleTypeIds,
     needAlarm: needAlarm || 0,
     ocrRawJson: ocrRawJson || null,
-    createdBy
+    createdBy,
+    fileId
+  });
+};
+
+const logMedicineStatus = async (body) => {
+  const { scheduleId, status, userId, notes } = body;
+
+  if (!scheduleId) throw new Error('scheduleId required');
+  if (status === undefined) throw new Error('status required');
+  if (!userId) throw new Error('userId required');
+
+  return await medicineRepository.logMedicineStatus({
+    scheduleId,
+    status,
+    userId,
+    notes
   });
 };
 console.log('Medicine service loaded:........');
 module.exports = {
   addMedicineSchedule,
+  logMedicineStatus
 };

@@ -14,8 +14,10 @@ const doctorAppointmentRoutes = require('./routes/doctorAppointment.routes');
 const ocrRoutes = require('./routes/ocr.routes');
 const masterRoutes = require('./routes/master.routes');
 const medicineRoutes = require('./routes/medicine.routes');
-
+const deviceRoutes = require('./routes/device.routes');
 const app = express();
+const medicineScheduleRoutes = require('./routes/medicineSchedule.routes');
+const vitalsRoutes = require('./routes/vitals.routes');
 
 /**
  * Global middlewares
@@ -37,6 +39,11 @@ app.use('/api/ocr', ocrRoutes);
 app.use('/api/master', masterRoutes);
 app.use('/api/medicine', medicineRoutes);
 
+app.use('/api/medicine-schedule', medicineScheduleRoutes);
+
+app.use('/api/vitals', vitalsRoutes);
+
+app.use('/api/device', deviceRoutes);
 /**
  * Health check
  */
