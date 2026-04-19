@@ -15,5 +15,10 @@ const env = require('./env');
 //   }
 
 // });
-const pool = mysql.createPool(process.env.DATABASE_URL);
+const pool = mysql.createPool({
+  uri: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
+});
 module.exports = pool;
