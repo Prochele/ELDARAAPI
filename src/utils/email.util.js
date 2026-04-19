@@ -3,7 +3,7 @@
 const { SESClient, SendEmailCommand } = require("@aws-sdk/client-ses");
 
 const sesClient = new SESClient({
-    region: "ap-south-1"
+    region: process.env.AWS_REGION,
 });
 
 exports.sendOtpEmail = async (toEmail, otp, expiry) => {
