@@ -10,7 +10,9 @@ const getMedicineSchedule = async (patronId) => {
       let imageUrl = null;
 
       if (item.ImageKey) {
+        console.log("S3 KEY:", item.ImageKey);
         imageUrl = await getSignedFileUrl(item.ImageKey);
+        console.log("SIGNED URL:", imageUrl);
       }
 
       return {
