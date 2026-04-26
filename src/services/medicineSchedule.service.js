@@ -61,13 +61,24 @@ const getMedicineSchedule = async (patronId) => {
         // Fallback for direct API file viewing if used
         imageUrl = `https://eldaraapi-production.up.railway.app/api/file/view/${item.FileId}`;
       }
+      const formatDate = (date) => {
+        try {
+          if (!date) return null;
 
+          const d = new Date(date);
+
+          if (isNaN(d.getTime())) return date;
+
+          return d.toISOString().split('T')[0];
+        } catch {
+          return date;
+        }
+      };
       // ✅ FIX: Ensure we RETURN the object and format dates safely
       return {
         ...item,
-        // Convert dates to YYYY-MM-DD strings to avoid ".toISOString is not a function" errors
-        FromDate: item.FromDate ? new Date(item.FromDate).toISOString().split('T')[0] : null,
-        ToDate: item.ToDate ? new Date(item.ToDate).toISOString().split('T')[0] : null,
+        FromDate: formatDate(item.FromDate),
+        ToDate: formatDate(item.ToDate),
         imageUrl
       };
     })
