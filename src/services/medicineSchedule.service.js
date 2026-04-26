@@ -19,8 +19,8 @@ const getMedicineSchedule = async (patronId) => {
         ...item,
         // FromDate: item.FromDate ? item.FromDate.toISOString().split('T')[0] : null,
         // ToDate: item.ToDate ? item.ToDate.toISOString().split('T')[0] : null,
-        FromDate: item.FromDate ? new Date(item.FromDate).toISOString().split('T')[0] : null,
-      ToDate: item.ToDate ? new Date(item.ToDate).toISOString().split('T')[0] : null,
+        FromDate: item.FromDate,
+        ToDate: item.ToDate,
         imageUrl
       };
     })
