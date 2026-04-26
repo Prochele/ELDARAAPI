@@ -15,14 +15,14 @@ const getMedicineSchedule = async (patronId) => {
         console.log("SIGNED URL:", imageUrl);
       }
 
-      return {
-        ...item,
-        // FromDate: item.FromDate ? item.FromDate.toISOString().split('T')[0] : null,
-        // ToDate: item.ToDate ? item.ToDate.toISOString().split('T')[0] : null,
-        FromDate: item.FromDate,
-        ToDate: item.ToDate,
-        imageUrl
-      };
+      // return {
+      //   ...item,
+      //   // FromDate: item.FromDate ? item.FromDate.toISOString().split('T')[0] : null,
+      //   // ToDate: item.ToDate ? item.ToDate.toISOString().split('T')[0] : null,
+      //   FromDate: item.FromDate,
+      //   ToDate: item.ToDate,
+      //   imageUrl
+      // };
     })
   );
 
