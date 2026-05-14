@@ -12,6 +12,10 @@ const sendFCM = async (tokens, payload) => {
   //console.log('DATA:', payload);
   const response = await admin.messaging().sendEachForMulticast({
     tokens,
+    notification: {
+      title: 'Medicine Reminder',
+      body: 'Time to take your medicine',
+    },
     data: {
       title: 'Medicine Reminder',
       body: 'Time to take your medicine',
@@ -19,7 +23,11 @@ const sendFCM = async (tokens, payload) => {
       payload: JSON.stringify(payload)
     },
     android: {
-      priority: 'high'
+      priority: 'high',
+      notification: {
+        channelId: 'medicine-reminders',
+        sound: 'default',
+      },
     }
   });
   //console.log('FCM Response:', response);
