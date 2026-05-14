@@ -28,6 +28,7 @@ const medicineRoutes = require('./routes/medicine.routes');
 console.log("STEP 14");
 const deviceRoutes = require('./routes/device.routes');
 console.log("STEP 15");
+const caretakerRoutes = require('./routes/caretaker.routes');
 const app = express();
 const medicineScheduleRoutes = require('./routes/medicineSchedule.routes');
 console.log("STEP 16");
@@ -62,6 +63,7 @@ app.use('/api/medicine-schedule', medicineScheduleRoutes);
 app.use('/api/vitals', vitalsRoutes);
 
 app.use('/api/device', deviceRoutes);
+app.use('/api/caretaker', caretakerRoutes);
 /**
  * Health check
  */
