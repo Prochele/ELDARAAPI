@@ -10,13 +10,32 @@ const addDailyActivity = async (userId, activityDate, activityTime, categoryId, 
 };
 
 
-const getDailyActivities = async (userId) => {
+const getDailyActivities = async (userId, roleCode, patronId) => {
+  const isPatronView = roleCode === 'PT' || Boolean(patronId);
+  const filterColumn = isPatronView ? 'DA.UserId' : 'DA.CreatedBy';
+  const filterValue = isPatronView ? (patronId || userId) : userId;
+
   const [rows] = await db.query(
-    'CALL sp_get_daily_activities(?)',
-    [userId]
+    `SELECT 
+        DA.DailyActivityId,
+        DA.ActivityDate,
+        DA.ActivityTime,
+        AC.CategoryName,
+        DA.ActivityDescription,
+        DA.IsNotified,
+        DA.CreatedAt,
+        TRIM(CONCAT(IFNULL(UM.FirstName, ''), ' ', IFNULL(UM.LastName, ''))) AS FullName
+    FROM DailyActivity DA
+    INNER JOIN ActivityCategoryMaster AC
+        ON DA.CategoryId = AC.CategoryId
+    JOIN UserMaster UM
+        ON UM.UserId = DA.UserId
+    WHERE ${filterColumn} = ?
+    ORDER BY DA.ActivityDate ASC, DA.ActivityTime ASC`,
+    [filterValue]
   );
 
-  return rows[0];
+  return rows;
 };
 
 const deleteDailyActivity = async (userId, activityID) => {

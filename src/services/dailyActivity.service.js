@@ -54,9 +54,9 @@ const deleteDailyActivity = async (userId, body) => {
 };
 
 
-const getDailyActivitiesService = async (userId) => {
+const getDailyActivitiesService = async (userId, roleCode, patronId) => {
 
-  const activities = await dailyActivityRepository.getDailyActivities(userId);
+  const activities = await dailyActivityRepository.getDailyActivities(userId, roleCode, patronId);
   logger.info('User ID', {
     message: userId,
   });

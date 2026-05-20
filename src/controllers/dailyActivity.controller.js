@@ -24,8 +24,10 @@ const addDailyActivity = async (req, res, next) => {
 const getDailyActivities = async (req, res, next) => {
   try {
     const userId = req.user.UserID; // from auth middleware
+    const roleCode = req.user.RoleCode;
+    const patronId = req.query.patronId ? Number(req.query.patronId) : null;
 
-    const result = await dailyActivityService.getDailyActivitiesService(userId);
+    const result = await dailyActivityService.getDailyActivitiesService(userId, roleCode, patronId);
 
     return successResponse(
       res,

@@ -12,21 +12,27 @@ const authenticateSession = async (req, res, next) => {
     const accessToken = token.replace('Bearer ', '');
 
     const [rows] = await db.query(
-      `SELECT UserID
-       FROM UserTokens
-       WHERE AccessToken = ?
-         AND IsActive = TRUE
-         AND ExpiryOn > NOW()
+      `SELECT
+         UT.UserID,
+         RM.RoleCode
+       FROM UserTokens UT
+       LEFT JOIN UserRoleMapping URM
+         ON URM.UserID = UT.UserID
+       LEFT JOIN RoleMaster RM
+         ON RM.RoleID = URM.RoleID
+       WHERE UT.AccessToken = ?
+         AND UT.IsActive = TRUE
        LIMIT 1`,
       [accessToken]
     );
 
     if (rows.length === 0) {
-      return errorResponse(res, 'Invalid or expired session', 401);
+      return errorResponse(res, 'Invalid session', 401);
     }
 
     req.user = {
-      UserID: rows[0].UserID
+      UserID: rows[0].UserID,
+      RoleCode: rows[0].RoleCode
     };
 
     next();
