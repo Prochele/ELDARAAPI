@@ -43,11 +43,40 @@ const createPatron = async (data) => {
   return rows[0][0];
 };
 
-const getPatronList = async (ptaUserId) => {
+const getPatronList = async (userId, roleCode) => {
+
+  if (roleCode === 'CT') {
+    const [rows] = await db.query(
+      `
+      SELECT DISTINCT
+        U.UserID,
+        U.FirstName,
+        U.LastName,
+        U.DOB,
+        TIMESTAMPDIFF(YEAR, U.DOB, CURDATE()) AS Age
+      FROM CaretakerPatronMapping CPM
+      INNER JOIN UserMaster U
+        ON U.UserID = CPM.PatronId
+      INNER JOIN UserRoleMapping UR
+        ON UR.UserID = U.UserID
+       AND UR.IsActive = TRUE
+      INNER JOIN RoleMaster RM
+        ON RM.RoleID = UR.RoleID
+       AND RM.RoleCode = 'PT'
+      WHERE CPM.CaretakerId = ?
+        AND CPM.IsActive = TRUE
+        AND U.StatusID = 1
+      ORDER BY U.FirstName, U.LastName
+      `,
+      [userId]
+    );
+
+    return rows;
+  }
 
   const sql = `CALL sp_get_patron_list(?)`;
 
-  const [rows] = await db.query(sql, [ptaUserId]);
+  const [rows] = await db.query(sql, [userId]);
 
   return rows[0];
 

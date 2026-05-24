@@ -9,9 +9,9 @@ const createPatron = async (data) => {
 
 };
 
-const getPatronList = async (ptaUserId) => {
+const getPatronList = async (userId, roleCode) => {
 
-  const patrons = await patronRepository.getPatronList(ptaUserId);
+  const patrons = await patronRepository.getPatronList(userId, roleCode);
 
   return patrons;
 

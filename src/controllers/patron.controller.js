@@ -37,9 +37,10 @@ const createPatron = async (req, res, next) => {
 const getPatronList = async (req, res, next) => {
   try {
 
-    const ptaUserId = req.user.UserID;
+    const userId = req.user.UserID;
+    const roleCode = req.user.RoleCode;
 
-    const patrons = await patronService.getPatronList(ptaUserId);
+    const patrons = await patronService.getPatronList(userId, roleCode);
     console.log("Patron List:", patrons);
 
     return responseUtil.successResponse(res, 'Patron list fetched', patrons);
