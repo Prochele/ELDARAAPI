@@ -10,7 +10,11 @@ const createPremiumOrder = async (req, res, next) => {
       data: order,
     });
   } catch (error) {
-    next(error);
+    return res.status(400).json({
+      success: false,
+      message: error.message || 'Unable to create Premium payment order',
+      data: null,
+    });
   }
 };
 
@@ -23,7 +27,11 @@ const verifyPayment = async (req, res, next) => {
       data: null,
     });
   } catch (error) {
-    next(error);
+    return res.status(400).json({
+      success: false,
+      message: error.message || 'Unable to verify payment',
+      data: null,
+    });
   }
 };
 
