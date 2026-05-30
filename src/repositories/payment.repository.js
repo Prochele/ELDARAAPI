@@ -78,7 +78,23 @@ const markTransactionVerified = async (data) => {
     [data.paymentId, data.signature, data.orderId]
   );
 
-  return result.affectedRows > 0;
+  if (result.affectedRows === 0) {
+    return null;
+  }
+
+  const [rows] = await db.query(
+    `
+    SELECT *
+    FROM PaymentTransaction
+    WHERE ProviderOrderID = ?
+      AND ProviderPaymentID = ?
+      AND Status = 'VERIFIED'
+    LIMIT 1
+    `,
+    [data.orderId, data.paymentId]
+  );
+
+  return rows[0] || null;
 };
 
 const markTransactionFailed = async (orderId) => {

@@ -1,5 +1,6 @@
 const crypto = require('crypto');
 const env = require('../config/env');
+const emailUtil = require('../utils/email.util');
 const paymentRepository = require('../repositories/payment.repository');
 
 const PREMIUM_PLAN_ID = 3;
@@ -97,17 +98,36 @@ const verifyPayment = async (payload) => {
     };
   }
 
-  const updated = await paymentRepository.markTransactionVerified({
+  const transaction = await paymentRepository.markTransactionVerified({
     orderId: razorpayOrderId,
     paymentId: razorpayPaymentId,
     signature: razorpaySignature,
   });
 
-  if (!updated) {
+  if (!transaction) {
     return {
       success: false,
       message: 'Payment transaction was not found or already used',
     };
+  }
+
+  try {
+    await emailUtil.sendPremiumInvoiceEmail({
+      toEmail: transaction.EmailID,
+      invoiceNumber: `INV-${transaction.PaymentTransactionID}`,
+      paymentTransactionId: transaction.PaymentTransactionID,
+      firstName: transaction.FirstName,
+      lastName: transaction.LastName,
+      mobileNumber: transaction.MobileNumber,
+      planName: 'ELDARA Premium Family Plan',
+      amountPaise: transaction.AmountPaise,
+      currency: transaction.Currency,
+      orderId: transaction.ProviderOrderID,
+      paymentId: transaction.ProviderPaymentID,
+      paymentDate: transaction.VerifiedOn,
+    });
+  } catch (error) {
+    console.error('Premium invoice email send failed:', error);
   }
 
   return {
