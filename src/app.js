@@ -31,6 +31,7 @@ console.log("STEP 15");
 const caretakerRoutes = require('./routes/caretaker.routes');
 const accountRoutes = require('./routes/account.routes');
 const paymentRoutes = require('./routes/payment.routes');
+const adminRoutes = require('./routes/admin.routes');
 const app = express();
 const medicineScheduleRoutes = require('./routes/medicineSchedule.routes');
 console.log("STEP 16");
@@ -40,6 +41,20 @@ console.log("STEP 17");
 /**
  * Global middlewares
  */
+app.use((req, res, next) => {
+  const allowedOrigin = process.env.ADMIN_WEB_ORIGIN || '*';
+
+  res.header('Access-Control-Allow-Origin', allowedOrigin);
+  res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE,OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type,Authorization');
+
+  if (req.method === 'OPTIONS') {
+    return res.sendStatus(204);
+  }
+
+  next();
+});
+
 app.use(express.json());
 
 const path = require('path');
@@ -68,6 +83,7 @@ app.use('/api/device', deviceRoutes);
 app.use('/api/caretaker', caretakerRoutes);
 app.use('/api/account', accountRoutes);
 app.use('/api/payments', paymentRoutes);
+app.use('/api/admin', adminRoutes);
 /**
  * Health check
  */

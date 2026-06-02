@@ -1,13 +1,23 @@
 const admin = require('firebase-admin');
 
-//const serviceAccount = require('../config/firebase.json');
-const serviceAccount = JSON.parse(process.env.FIREBASE_CONFIG);
+let firebaseInitialized = false;
 
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-});
+try {
+  const serviceAccount = process.env.FIREBASE_CONFIG
+    ? JSON.parse(process.env.FIREBASE_CONFIG)
+    : require('../config/firebase.json');
+
+  admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+  });
+
+  firebaseInitialized = true;
+} catch (error) {
+  console.warn('Firebase config not available. FCM notifications are disabled.');
+}
 
 const sendFCM = async (tokens, payload) => {
+  if (!firebaseInitialized) return;
   if (!tokens || tokens.length === 0) return;
   //console.log('DATA:', payload);
   const response = await admin.messaging().sendEachForMulticast({

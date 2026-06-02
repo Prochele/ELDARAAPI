@@ -35,7 +35,25 @@ const verifyPayment = async (req, res, next) => {
   }
 };
 
+const recordPaymentFailure = async (req, res, next) => {
+  try {
+    const result = await paymentService.recordPaymentFailure(req.body || {});
+
+    return res.status(result.success ? 200 : 400).json({
+      ...result,
+      data: null,
+    });
+  } catch (error) {
+    return res.status(400).json({
+      success: false,
+      message: error.message || 'Unable to record payment failure',
+      data: null,
+    });
+  }
+};
+
 module.exports = {
   createPremiumOrder,
+  recordPaymentFailure,
   verifyPayment,
 };

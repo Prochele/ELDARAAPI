@@ -26,6 +26,34 @@ const ensurePaymentTransactionTable = async () => {
       KEY idx_payment_user (UserID)
     )
   `);
+
+  await ensurePaymentTransactionColumns();
+};
+
+const addColumnIfMissing = async (columnName, columnDefinition) => {
+  const [rows] = await db.query(
+    `
+    SELECT COLUMN_NAME
+    FROM INFORMATION_SCHEMA.COLUMNS
+    WHERE TABLE_SCHEMA = DATABASE()
+      AND TABLE_NAME = 'PaymentTransaction'
+      AND COLUMN_NAME = ?
+    LIMIT 1
+    `,
+    [columnName]
+  );
+
+  if (rows.length === 0) {
+    await db.query(`ALTER TABLE PaymentTransaction ADD COLUMN ${columnDefinition}`);
+  }
+};
+
+const ensurePaymentTransactionColumns = async () => {
+  await addColumnIfMissing('FailureCode', 'FailureCode VARCHAR(100) NULL');
+  await addColumnIfMissing('FailureDescription', 'FailureDescription VARCHAR(500) NULL');
+  await addColumnIfMissing('FailureSource', 'FailureSource VARCHAR(100) NULL');
+  await addColumnIfMissing('ProviderErrorRaw', 'ProviderErrorRaw TEXT NULL');
+  await addColumnIfMissing('FailedOn', 'FailedOn DATETIME NULL');
 };
 
 const createTransaction = async (data) => {
@@ -97,17 +125,28 @@ const markTransactionVerified = async (data) => {
   return rows[0] || null;
 };
 
-const markTransactionFailed = async (orderId) => {
+const markTransactionFailed = async (data) => {
   await ensurePaymentTransactionTable();
 
   await db.query(
     `
     UPDATE PaymentTransaction
-    SET Status = 'FAILED'
+    SET Status = 'FAILED',
+        FailureCode = ?,
+        FailureDescription = ?,
+        FailureSource = ?,
+        ProviderErrorRaw = ?,
+        FailedOn = NOW()
     WHERE ProviderOrderID = ?
-      AND Status = 'CREATED'
+      AND Status IN ('CREATED', 'FAILED')
     `,
-    [orderId]
+    [
+      data.failureCode || null,
+      data.failureDescription || null,
+      data.failureSource || null,
+      data.providerErrorRaw || null,
+      data.orderId,
+    ]
   );
 };
 

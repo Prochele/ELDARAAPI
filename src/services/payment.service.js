@@ -90,7 +90,16 @@ const verifyPayment = async (payload) => {
     .digest('hex');
 
   if (expectedSignature !== razorpaySignature) {
-    await paymentRepository.markTransactionFailed(razorpayOrderId);
+    await paymentRepository.markTransactionFailed({
+      orderId: razorpayOrderId,
+      failureCode: 'SIGNATURE_VERIFICATION_FAILED',
+      failureDescription: 'Payment signature verification failed',
+      failureSource: 'API_VERIFY',
+      providerErrorRaw: JSON.stringify({
+        razorpayOrderId,
+        razorpayPaymentId,
+      }),
+    });
 
     return {
       success: false,
@@ -136,8 +145,35 @@ const verifyPayment = async (payload) => {
   };
 };
 
+const recordPaymentFailure = async (payload) => {
+  assertRazorpayConfig();
+
+  if (!payload.razorpayOrderId) {
+    return {
+      success: false,
+      message: 'Razorpay order id is required to record payment failure',
+    };
+  }
+
+  await paymentRepository.markTransactionFailed({
+    orderId: payload.razorpayOrderId,
+    failureCode: payload.failureCode,
+    failureDescription: payload.failureDescription,
+    failureSource: payload.failureSource || 'RAZORPAY_CHECKOUT',
+    providerErrorRaw: payload.providerErrorRaw
+      ? JSON.stringify(payload.providerErrorRaw)
+      : null,
+  });
+
+  return {
+    success: true,
+    message: 'Payment failure recorded successfully',
+  };
+};
+
 module.exports = {
   PREMIUM_PLAN_ID,
   createRazorpayOrder,
+  recordPaymentFailure,
   verifyPayment,
 };
