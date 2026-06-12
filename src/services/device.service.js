@@ -28,6 +28,33 @@ const saveDeviceToken = async (body) => {
   });
 };
 
+const getMedicineReminderNotifications = async (userId) => {
+  if (!userId) throw new Error('userId is required');
+
+  const result = await deviceRepository.getMedicineReminderNotifications(userId);
+
+  return {
+    medicineReminderNotificationsEnabled:
+      result.MedicineReminderNotificationsEnabled === 1 ||
+      result.MedicineReminderNotificationsEnabled === true,
+  };
+};
+
+const updateMedicineReminderNotifications = async (userId, body) => {
+  if (!userId) throw new Error('userId is required');
+  if (typeof body?.enabled !== 'boolean') {
+    throw new Error('enabled is required');
+  }
+
+  await deviceRepository.updateMedicineReminderNotifications(userId, body.enabled);
+
+  return {
+    medicineReminderNotificationsEnabled: body.enabled,
+  };
+};
+
 module.exports = {
   saveDeviceToken,
+  getMedicineReminderNotifications,
+  updateMedicineReminderNotifications,
 };

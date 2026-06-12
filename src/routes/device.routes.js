@@ -10,4 +10,16 @@ router.post(
   deviceController.saveDeviceToken
 );
 
+router.get(
+  '/medicine-reminder-notifications',
+  authenticateSession,
+  deviceController.getMedicineReminderNotifications
+);
+
+router.put(
+  '/medicine-reminder-notifications',
+  authenticateSession,
+  deviceController.updateMedicineReminderNotifications
+);
+
 module.exports = router;
