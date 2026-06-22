@@ -29,7 +29,7 @@ const deleteMedicine = async (req, res) => {
 
     return res.json({
       success: 1,
-      message: 'Medicine deleted successfully'
+      message: 'Future medicine schedules deleted successfully'
     });
 
   } catch (error) {
