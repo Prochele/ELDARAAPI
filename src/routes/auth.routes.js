@@ -13,6 +13,7 @@ const { authRateLimiter } = require('../middlewares/rateLimit.middleware');
 
 router.post('/login/generate-otp', authController.generateLoginOtp);
 router.post('/login/verify-otp', authController.verifyLoginOtp);
+router.get('/login/complete', authController.completeLoginOtp);
 router.post(
   '/login',
   authRateLimiter,

@@ -67,6 +67,31 @@ const verifyLoginOtp = async (req, res, next) => {
   }
 };
 
+const completeLoginOtp = async (req, res, next) => {
+  try {
+    const {
+      mobileNumber,
+      code,
+      deviceUUID,
+      platform,
+      appVersion,
+    } = req.query;
+
+    const result = await authService.authenticateUserService({
+      identifier: mobileNumber,
+      otp: code,
+      deviceUUID,
+      platform,
+      appVersion,
+    });
+
+    return res.status(200).json(result);
+
+  } catch (error) {
+    next(error);
+  }
+};
+
 const authenticateUser = async (req, res, next) => {
   try {
     const result = await authService.authenticateUserService(req.body);
@@ -85,5 +110,6 @@ const authenticateUser = async (req, res, next) => {
 module.exports = {
   generateLoginOtp,
   verifyLoginOtp,
+  completeLoginOtp,
   authenticateUser,
 };
