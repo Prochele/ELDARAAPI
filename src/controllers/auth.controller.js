@@ -31,7 +31,19 @@ const { successResponse } = require('../utils/response.util');
 const generateLoginOtp = async (req, res, next) => {
   try {
     console.log("🔥 generateLoginOtp API HIT", req.body);
-    const { mobileNumber } = req.body;
+    const { mobileNumber, otp, deviceUUID, platform, appVersion } = req.body;
+
+    if (otp) {
+      const result = await authService.authenticateUserService({
+        identifier: mobileNumber,
+        otp,
+        deviceUUID,
+        platform,
+        appVersion,
+      });
+
+      return res.status(200).json(result);
+    }
 
     const result = await authService.generateLoginOtp(mobileNumber);
     console.log(result);
