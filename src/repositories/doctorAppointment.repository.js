@@ -51,6 +51,21 @@ exports.addFeedback = async (DoctorAppointmentId, Feedback) => {
     return rows[0][0];
 };
 
+exports.getDoctorAppointmentById = async (DoctorAppointmentId) => {
+    const [rows] = await db.query(
+        `SELECT
+            DoctorAppointmentId,
+            AppointmentDate,
+            AppointmentTime
+        FROM DoctorAppointment
+        WHERE DoctorAppointmentId = ?
+        LIMIT 1`,
+        [DoctorAppointmentId]
+    );
+
+    return rows[0] || null;
+};
+
 exports.deleteDoctorAppointment = async (DoctorAppointmentId) => {
     const [rows] = await db.query(
         `CALL USP_DeleteDoctorAppointment(?)`,
