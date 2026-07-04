@@ -66,14 +66,14 @@ exports.sendOtpEmail = async (toEmail, otp, expiry) => {
     return await sesClient.send(command);
 };
 
-exports.sendPremiumInvoiceEmail = async (invoice) => {
+exports.sendPlanInvoiceEmail = async (invoice) => {
     if (!invoice?.toEmail) {
         throw new Error("Invoice email recipient is required");
     }
 
     const invoiceNumber = invoice.invoiceNumber || `INV-${invoice.paymentTransactionId}`;
     const customerName = `${invoice.firstName || ""} ${invoice.lastName || ""}`.trim() || "Customer";
-    const planName = invoice.planName || "Premium Family Plan";
+    const planName = invoice.planName || "ELDARA Plan";
     const paymentDate = invoice.paymentDate
         ? new Date(invoice.paymentDate).toLocaleDateString("en-IN")
         : new Date().toLocaleDateString("en-IN");
@@ -138,14 +138,14 @@ exports.sendPremiumInvoiceEmail = async (invoice) => {
                                 </tbody>
                             </table>
 
-                            <p style="margin-top: 20px;">This is a system-generated invoice for your successful Premium plan payment.</p>
+                            <p style="margin-top: 20px;">This is a system-generated invoice for your successful ELDARA plan payment.</p>
                         </div>
                     `
                 }
             },
             Subject: {
                 Charset: "UTF-8",
-                Data: `ELDARA Premium Plan Invoice - ${invoiceNumber}`
+                Data: `ELDARA Plan Invoice - ${invoiceNumber}`
             }
         },
         Source: INVOICE_SOURCE

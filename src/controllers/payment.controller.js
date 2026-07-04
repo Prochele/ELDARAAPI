@@ -1,21 +1,30 @@
 const paymentService = require('../services/payment.service');
 
-const createPremiumOrder = async (req, res, next) => {
+const createOrderForPayload = async (payload, res) => {
   try {
-    const order = await paymentService.createRazorpayOrder(req.body || {});
+    const order = await paymentService.createRazorpayOrder(payload);
 
     return res.status(200).json({
       success: true,
-      message: 'Premium payment order created successfully',
+      message: 'Payment order created successfully',
       data: order,
     });
   } catch (error) {
     return res.status(400).json({
       success: false,
-      message: error.message || 'Unable to create Premium payment order',
+      message: error.message || 'Unable to create payment order',
       data: null,
     });
   }
+};
+
+const createOrder = async (req, res) => {
+  return createOrderForPayload(req.body || {}, res);
+};
+
+// Backward compatibility for app versions that only supported Premium.
+const createPremiumOrder = async (req, res) => {
+  return createOrderForPayload({ ...(req.body || {}), planId: 3 }, res);
 };
 
 const verifyPayment = async (req, res, next) => {
@@ -53,6 +62,7 @@ const recordPaymentFailure = async (req, res, next) => {
 };
 
 module.exports = {
+  createOrder,
   createPremiumOrder,
   recordPaymentFailure,
   verifyPayment,

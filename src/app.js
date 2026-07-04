@@ -31,6 +31,7 @@ console.log("STEP 15");
 const caretakerRoutes = require('./routes/caretaker.routes');
 const accountRoutes = require('./routes/account.routes');
 const paymentRoutes = require('./routes/payment.routes');
+const planRoutes = require('./routes/plan.routes');
 const adminRoutes = require('./routes/admin.routes');
 const app = express();
 const medicineScheduleRoutes = require('./routes/medicineSchedule.routes');
@@ -83,6 +84,7 @@ app.use('/api/device', deviceRoutes);
 app.use('/api/caretaker', caretakerRoutes);
 app.use('/api/account', accountRoutes);
 app.use('/api/payments', paymentRoutes);
+app.use('/api/plans', planRoutes);
 app.use('/api/admin', adminRoutes);
 /**
  * Health check

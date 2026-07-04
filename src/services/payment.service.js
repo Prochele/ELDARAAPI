@@ -2,13 +2,7 @@ const crypto = require('crypto');
 const env = require('../config/env');
 const emailUtil = require('../utils/email.util');
 const paymentRepository = require('../repositories/payment.repository');
-
-const PREMIUM_PLAN_ID = 3;
-
-const getPremiumAmountPaise = () => {
-  const amountInr = Number(env.PREMIUM_PLAN_AMOUNT_INR || 799);
-  return Math.round(amountInr * 100);
-};
+const planRepository = require('../repositories/plan.repository');
 
 const getCurrency = () => env.RAZORPAY_CURRENCY || 'INR';
 
@@ -21,9 +15,26 @@ const assertRazorpayConfig = () => {
 const createRazorpayOrder = async (payload) => {
   assertRazorpayConfig();
 
-  const amountPaise = getPremiumAmountPaise();
+  const planId = Number(payload.planId);
+
+  if (!Number.isInteger(planId) || planId <= 0) {
+    throw new Error('A valid plan is required');
+  }
+
+  const plan = await planRepository.getActivePlanById(planId);
+
+  if (!plan) {
+    throw new Error('The selected plan is unavailable');
+  }
+
+  const amountPaise = Math.round(Number(plan.MonthlyPrice) * 100);
+
+  if (!Number.isFinite(amountPaise) || amountPaise <= 0) {
+    throw new Error('The selected plan does not require payment');
+  }
+
   const currency = getCurrency();
-  const receipt = `premium_${Date.now()}`;
+  const receipt = `plan_${plan.PlanID}_${Date.now()}`;
 
   const response = await fetch('https://api.razorpay.com/v1/orders', {
     method: 'POST',
@@ -36,8 +47,8 @@ const createRazorpayOrder = async (payload) => {
       currency,
       receipt,
       notes: {
-        planId: String(PREMIUM_PLAN_ID),
-        planName: 'Premium Family',
+        planId: String(plan.PlanID),
+        planName: plan.PlanName,
         mobileNumber: payload.mobileNumber || '',
         emailId: payload.emailId || '',
       },
@@ -51,7 +62,7 @@ const createRazorpayOrder = async (payload) => {
   }
 
   const paymentTransactionId = await paymentRepository.createTransaction({
-    planId: PREMIUM_PLAN_ID,
+    planId: plan.PlanID,
     orderId: order.id,
     amountPaise,
     currency,
@@ -67,8 +78,8 @@ const createRazorpayOrder = async (payload) => {
     amount: amountPaise,
     currency,
     paymentTransactionId,
-    planId: PREMIUM_PLAN_ID,
-    planName: 'Premium Family',
+    planId: plan.PlanID,
+    planName: plan.PlanName,
   };
 };
 
@@ -121,14 +132,14 @@ const verifyPayment = async (payload) => {
   }
 
   try {
-    await emailUtil.sendPremiumInvoiceEmail({
+    await emailUtil.sendPlanInvoiceEmail({
       toEmail: transaction.EmailID,
       invoiceNumber: `INV-${transaction.PaymentTransactionID}`,
       paymentTransactionId: transaction.PaymentTransactionID,
       firstName: transaction.FirstName,
       lastName: transaction.LastName,
       mobileNumber: transaction.MobileNumber,
-      planName: 'ELDARA Premium Family Plan',
+      planName: `ELDARA ${transaction.PlanName} Plan`,
       amountPaise: transaction.AmountPaise,
       currency: transaction.Currency,
       orderId: transaction.ProviderOrderID,
@@ -136,7 +147,7 @@ const verifyPayment = async (payload) => {
       paymentDate: transaction.VerifiedOn,
     });
   } catch (error) {
-    console.error('Premium invoice email send failed:', error);
+    console.error('Plan invoice email send failed:', error);
   }
 
   return {
@@ -172,7 +183,6 @@ const recordPaymentFailure = async (payload) => {
 };
 
 module.exports = {
-  PREMIUM_PLAN_ID,
   createRazorpayOrder,
   recordPaymentFailure,
   verifyPayment,

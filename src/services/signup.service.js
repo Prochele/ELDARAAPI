@@ -1,19 +1,29 @@
 const signupRepository = require('../repositories/signup.repository');
 const paymentRepository = require('../repositories/payment.repository');
-const { PREMIUM_PLAN_ID } = require('./payment.service');
+const planRepository = require('../repositories/plan.repository');
 
 const registerUser = async (payload) => {
   const planId = Number(payload.planId);
+  const plan = await planRepository.getActivePlanById(planId);
 
-  if (planId === PREMIUM_PLAN_ID) {
+  if (!plan) {
+    return {
+      success: false,
+      message: 'The selected plan is unavailable',
+    };
+  }
+
+  const requiresPayment = Number(plan.MonthlyPrice) > 0;
+
+  if (requiresPayment) {
     const transaction = await paymentRepository.getVerifiedUnusedTransaction(
       payload.paymentTransactionId
     );
 
-    if (!transaction || Number(transaction.PlanID) !== PREMIUM_PLAN_ID) {
+    if (!transaction || Number(transaction.PlanID) !== planId) {
       return {
         success: false,
-        message: 'Premium payment verification is required',
+        message: `${plan.PlanName} plan payment verification is required`,
       };
     }
   }
@@ -27,7 +37,7 @@ const registerUser = async (payload) => {
     };
   }
 
-  if (planId === PREMIUM_PLAN_ID) {
+  if (requiresPayment) {
     await paymentRepository.markTransactionUsed(
       payload.paymentTransactionId,
       result.UserID,

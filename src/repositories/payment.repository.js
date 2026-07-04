@@ -112,11 +112,12 @@ const markTransactionVerified = async (data) => {
 
   const [rows] = await db.query(
     `
-    SELECT *
-    FROM PaymentTransaction
-    WHERE ProviderOrderID = ?
-      AND ProviderPaymentID = ?
-      AND Status = 'VERIFIED'
+    SELECT PT.*, PM.PlanName, PM.PlanCode
+    FROM PaymentTransaction PT
+    INNER JOIN PlanMaster PM ON PM.PlanID = PT.PlanID
+    WHERE PT.ProviderOrderID = ?
+      AND PT.ProviderPaymentID = ?
+      AND PT.Status = 'VERIFIED'
     LIMIT 1
     `,
     [data.orderId, data.paymentId]
