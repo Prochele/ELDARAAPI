@@ -6,7 +6,7 @@ const paymentRepository = require('../repositories/payment.repository');
 const PREMIUM_PLAN_ID = 3;
 
 const getPremiumAmountPaise = () => {
-  const amountInr = Number(env.PREMIUM_PLAN_AMOUNT_INR || 599);
+  const amountInr = Number(env.PREMIUM_PLAN_AMOUNT_INR || 799);
   return Math.round(amountInr * 100);
 };
 
