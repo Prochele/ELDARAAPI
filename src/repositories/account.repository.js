@@ -1,8 +1,49 @@
 const db = require('../config/db');
 
 const getProfile = async (userId) => {
-  const [rows] = await db.query('CALL sp_get_account_profile(?)', [userId]);
-  return rows[0][0] || null;
+  const [rows] = await db.query(
+    `
+    SELECT
+      U.UserID AS userId,
+      U.FirstName AS firstName,
+      U.LastName AS lastName,
+      CONCAT_WS(' ', U.FirstName, U.LastName) AS userName,
+      U.MobileNumber AS mobileNumber,
+      U.EmailID AS emailId,
+      U.DOB AS dob,
+      G.GenderName AS genderName,
+      CASE
+        WHEN RM.RoleCode = 'PTA' AND PM.PlanCode = 'BASIC' THEN 'PTASelf'
+        WHEN RM.RoleCode = 'PTA' AND PM.PlanCode = 'PREMIUM' THEN 'PTAFamily'
+        ELSE RM.RoleCode
+      END AS roleCode,
+      RM.RoleName AS roleName,
+      PM.PlanCode AS planCode,
+      PM.PlanName AS planName,
+      USM.StatusName AS statusName,
+      U.MemberGroupID AS memberGroupId,
+      U.CreatedOn AS createdOn
+    FROM UserMaster U
+    LEFT JOIN GenderMaster G
+      ON G.GenderID = U.GenderID
+    LEFT JOIN UserStatusMaster USM
+      ON USM.StatusID = U.StatusID
+    LEFT JOIN UserRoleMapping URM
+      ON URM.UserID = U.UserID
+      AND URM.IsActive = 1
+    LEFT JOIN RoleMaster RM
+      ON RM.RoleID = URM.RoleID
+    LEFT JOIN MemberGroupMaster MGM
+      ON MGM.MemberGroupID = U.MemberGroupID
+    LEFT JOIN PlanMaster PM
+      ON PM.PlanID = MGM.PlanID
+    WHERE U.UserID = ?
+    LIMIT 1
+    `,
+    [userId]
+  );
+
+  return rows[0] || null;
 };
 
 const updateEmail = async (userId, emailId) => {
