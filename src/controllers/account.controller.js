@@ -57,6 +57,28 @@ const updatePhone = async (req, res, next) => {
   }
 };
 
+const updatePlan = async (req, res, next) => {
+  try {
+    const result = await accountService.updatePlan(
+      req.user.UserID,
+      req.body.planId,
+      req.body.paymentTransactionId
+    );
+
+    if (!result || result.IsSuccess === 0) {
+      return responseUtil.errorResponse(
+        res,
+        result?.Message || 'Unable to update plan',
+        400
+      );
+    }
+
+    return responseUtil.successResponse(res, result.Message, result);
+  } catch (error) {
+    next(error);
+  }
+};
+
 const removeAccount = async (req, res, next) => {
   try {
     const result = await accountService.removeAccount(req.user.UserID);
@@ -79,5 +101,6 @@ module.exports = {
   getProfile,
   updateEmail,
   updatePhone,
+  updatePlan,
   removeAccount,
 };

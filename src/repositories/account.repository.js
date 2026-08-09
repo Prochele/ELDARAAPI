@@ -21,6 +21,15 @@ const updatePhone = async (userId, mobileNumber) => {
   return rows[0][0];
 };
 
+const updatePlan = async (userId, planId, paymentTransactionId) => {
+  const [rows] = await db.query('CALL sp_update_account_plan(?, ?, ?)', [
+    userId,
+    planId,
+    paymentTransactionId || null,
+  ]);
+  return rows[0][0];
+};
+
 const removeAccount = async (userId) => {
   const [rows] = await db.query('CALL sp_remove_account(?)', [userId]);
   return rows[0][0];
@@ -30,5 +39,6 @@ module.exports = {
   getProfile,
   updateEmail,
   updatePhone,
+  updatePlan,
   removeAccount,
 };
