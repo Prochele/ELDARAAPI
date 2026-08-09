@@ -46,28 +46,16 @@ exports.generateOtp = async ({ contactType, contactValue }) => {
 
   await otpRepository.generateOtp(contactType, contactValue, otp);
 
-  try {
+  if (contactType === 'EMAIL') {
+    await emailUtil.sendOtpEmail(contactValue, otp);
+  }
 
-    if (contactType === 'EMAIL') {
+  if (contactType === 'MOBILE') {
+    const mobileNumber = contactValue.startsWith('+')
+      ? contactValue
+      : `${contactValue}`;
 
-      await emailUtil.sendOtpEmail(contactValue, otp);
-
-    }
-
-    if (contactType === 'MOBILE') {
-
-      const mobileNumber = contactValue.startsWith('+')
-        ? contactValue
-        : `${contactValue}`;
-
-      await smsUtil.sendOtpSms(mobileNumber, otp);
-
-    }
-
-  } catch (error) {
-
-    console.error('OTP delivery failed:', error);
-
+    await smsUtil.sendOtpSms(mobileNumber, otp);
   }
 
   return { message: 'OTP sent successfully' };

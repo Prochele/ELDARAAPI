@@ -6,7 +6,11 @@ exports.generateOtp = async (req, res, next) => {
     const result = await otpService.generateOtp(req.body);
     return successResponse(res, result);
   } catch (err) {
-    next(err);
+    return res.status(400).json({
+      success: false,
+      message: err.message || 'Unable to send OTP',
+      data: null,
+    });
   }
 };
 
