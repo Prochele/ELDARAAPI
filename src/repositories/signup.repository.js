@@ -1,6 +1,23 @@
 const db = require('../config/db');
 const { DB_HOST } = require('../config/env');
 
+const findExistingUserByMobileOrEmail = async (mobileNumber, emailId) => {
+  const [rows] = await db.query(
+    `
+    SELECT
+      MobileNumber,
+      EmailID
+    FROM UserMaster
+    WHERE MobileNumber = ?
+       OR EmailID = ?
+    LIMIT 1
+    `,
+    [mobileNumber, emailId]
+  );
+
+  return rows[0] || null;
+};
+
 const callSignupProcedure = async (payload) => {
   const {
     firstName,
@@ -42,4 +59,5 @@ const callSignupProcedure = async (payload) => {
 
 module.exports = {
   callSignupProcedure,
+  findExistingUserByMobileOrEmail,
 };

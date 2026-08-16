@@ -3,6 +3,8 @@ const paymentRepository = require('../repositories/payment.repository');
 const planRepository = require('../repositories/plan.repository');
 
 const registerUser = async (payload) => {
+  const mobileNumber = String(payload.mobileNumber || '').trim();
+  const emailId = String(payload.emailId || '').trim();
   const planId = Number(payload.planId);
   const plan = await planRepository.getActivePlanById(planId);
 
@@ -10,6 +12,39 @@ const registerUser = async (payload) => {
     return {
       success: false,
       message: 'The selected plan is unavailable',
+    };
+  }
+
+  if (!mobileNumber) {
+    return {
+      success: false,
+      message: 'Mobile number is required',
+    };
+  }
+
+  if (!emailId) {
+    return {
+      success: false,
+      message: 'Email is required',
+    };
+  }
+
+  const existingUser = await signupRepository.findExistingUserByMobileOrEmail(
+    mobileNumber,
+    emailId
+  );
+
+  if (existingUser?.MobileNumber === mobileNumber) {
+    return {
+      success: false,
+      message: 'Mobile number is already registered',
+    };
+  }
+
+  if (String(existingUser?.EmailID || '').toLowerCase() === emailId.toLowerCase()) {
+    return {
+      success: false,
+      message: 'Email is already registered',
     };
   }
 
@@ -28,7 +63,11 @@ const registerUser = async (payload) => {
     }
   }
 
-  const result = await signupRepository.callSignupProcedure(payload);
+  const result = await signupRepository.callSignupProcedure({
+    ...payload,
+    mobileNumber,
+    emailId,
+  });
 
   if (!result || result.IsSuccess === 0) {
     return {
