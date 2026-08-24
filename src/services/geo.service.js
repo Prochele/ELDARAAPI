@@ -30,7 +30,22 @@ const getCountryCode = async (countryId) => {
   return result;
 };
 
+const getCountries = () => geoRepository.getCountries();
+
+const getProvinces = (countryId) => geoRepository.getProvinces(countryId);
+
+const getDistricts = (provinceId) => geoRepository.getDistricts(provinceId);
+
+const getCities = (districtId, search) => geoRepository.getCities(districtId, search);
+
+const getAreas = (cityId, search) => geoRepository.getAreas(cityId, search);
+
 module.exports = {
   getGeoHierarchy,
   getCountryCode,
+  getCountries,
+  getProvinces,
+  getDistricts,
+  getCities,
+  getAreas,
 };
