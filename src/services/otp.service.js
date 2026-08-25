@@ -75,7 +75,7 @@ const validateSignupContactIsAvailable = async ({
     const existingUser =
       await signupRepository.findExistingUserByMobileOrEmail(mobile, '');
 
-    if (existingUser?.MobileNumber === mobile) {
+    if (normalizeMobileNumber(existingUser?.MobileNumber) === mobile) {
       throw new Error('Mobile number is already registered');
     }
   }
@@ -84,7 +84,7 @@ const validateSignupContactIsAvailable = async ({
 exports.generateOtp = async ({
   contactType,
   contactValue,
-  validateUnique = false,
+  validateUnique = true,
   mobileNumber,
   emailId,
 }) => {
