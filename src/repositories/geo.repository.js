@@ -28,6 +28,39 @@
 // };
 const db = require('../config/db');
 
+const geoCollator = new Intl.Collator(undefined, {
+  numeric: true,
+  sensitivity: 'base',
+});
+
+const normalizeSortValue = (value) => String(value || '').trim();
+
+const isNotSpecified = (value) =>
+  normalizeSortValue(value).toLowerCase().startsWith('not specified');
+
+const sortGeoRows = (rows, nameKey, secondaryKey) =>
+  [...rows].sort((a, b) => {
+    const aNotSpecified = isNotSpecified(a[nameKey]);
+    const bNotSpecified = isNotSpecified(b[nameKey]);
+
+    if (aNotSpecified && !bNotSpecified) return 1;
+    if (!aNotSpecified && bNotSpecified) return -1;
+
+    const nameCompare = geoCollator.compare(
+      normalizeSortValue(a[nameKey]),
+      normalizeSortValue(b[nameKey])
+    );
+
+    if (nameCompare !== 0 || !secondaryKey) {
+      return nameCompare;
+    }
+
+    return geoCollator.compare(
+      normalizeSortValue(a[secondaryKey]),
+      normalizeSortValue(b[secondaryKey])
+    );
+  });
+
 const getGeoHierarchy = async () => {
 
   const sql = `CALL sp_GetGeoHierarchyJSON()`;
@@ -64,7 +97,7 @@ const getCountries = async () => {
      ORDER BY CountryName`
   );
 
-  return rows;
+  return sortGeoRows(rows, 'CountryName');
 };
 
 const getProvinces = async (countryId) => {
@@ -76,7 +109,7 @@ const getProvinces = async (countryId) => {
     [countryId]
   );
 
-  return rows;
+  return sortGeoRows(rows, 'ProvinceName');
 };
 
 const getDistricts = async (provinceId) => {
@@ -88,7 +121,7 @@ const getDistricts = async (provinceId) => {
     [provinceId]
   );
 
-  return rows;
+  return sortGeoRows(rows, 'DistrictName');
 };
 
 const getCities = async (districtId, search = '') => {
@@ -104,12 +137,11 @@ const getCities = async (districtId, search = '') => {
     `SELECT CityID, CityName
      FROM CityMaster
      WHERE DistrictID = ? AND IsActive = 1${searchSql}
-     ORDER BY LOWER(TRIM(CityName)), CityName
-     LIMIT 500`,
+     ORDER BY LOWER(TRIM(CityName)), CityName`,
     params
   );
 
-  return rows;
+  return sortGeoRows(rows, 'CityName').slice(0, 500);
 };
 
 const getAreas = async (cityId, search = '') => {
@@ -125,12 +157,11 @@ const getAreas = async (cityId, search = '') => {
     `SELECT AreaID, AreaName, Pincode
      FROM AreaMaster
      WHERE CityID = ? AND IsActive = 1${searchSql}
-     ORDER BY AreaName = 'Not specified', LOWER(TRIM(AreaName)), AreaName, Pincode
-     LIMIT 500`,
+     ORDER BY AreaName = 'Not specified', LOWER(TRIM(AreaName)), AreaName, Pincode`,
     params
   );
 
-  return rows;
+  return sortGeoRows(rows, 'AreaName', 'Pincode').slice(0, 500);
 };
 
 module.exports = {
