@@ -125,7 +125,7 @@ const getAreas = async (cityId, search = '') => {
     `SELECT AreaID, AreaName, Pincode
      FROM AreaMaster
      WHERE CityID = ? AND IsActive = 1${searchSql}
-     ORDER BY AreaName
+     ORDER BY AreaName = 'Not specified', AreaName, Pincode
      LIMIT 500`,
     params
   );

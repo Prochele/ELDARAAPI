@@ -6,7 +6,9 @@
   "scripts": {
     "test": "node --test test/*.test.js",
     "start": "node src/server.js",
-    "import:india-geo": "node scripts/import-india-geo.js"
+    "import:india-geo": "node scripts/import-india-geo.js",
+    "import:india-geo-api": "node scripts/import-india-geo-api.js",
+    "import:india-pincode-cache": "node scripts/import-india-pincode-cache.js"
   },
   "keywords": [],
   "author": "",
