@@ -84,7 +84,7 @@ const getDistricts = async (provinceId) => {
     `SELECT DistrictID, DistrictName
      FROM DistrictMaster
      WHERE ProvinceID = ? AND IsActive = 1
-     ORDER BY DistrictName`,
+     ORDER BY LOWER(TRIM(DistrictName)), DistrictName`,
     [provinceId]
   );
 
@@ -104,7 +104,7 @@ const getCities = async (districtId, search = '') => {
     `SELECT CityID, CityName
      FROM CityMaster
      WHERE DistrictID = ? AND IsActive = 1${searchSql}
-     ORDER BY CityName
+     ORDER BY LOWER(TRIM(CityName)), CityName
      LIMIT 500`,
     params
   );
@@ -125,7 +125,7 @@ const getAreas = async (cityId, search = '') => {
     `SELECT AreaID, AreaName, Pincode
      FROM AreaMaster
      WHERE CityID = ? AND IsActive = 1${searchSql}
-     ORDER BY AreaName = 'Not specified', AreaName, Pincode
+     ORDER BY AreaName = 'Not specified', LOWER(TRIM(AreaName)), AreaName, Pincode
      LIMIT 500`,
     params
   );
