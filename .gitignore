@@ -4,4 +4,4 @@ data/
 dist/
 build/
 *.log
-src/config/firebase.json
+src/config/firebase*.json
