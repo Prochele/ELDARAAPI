@@ -65,11 +65,19 @@ const getMedicineSchedule = async (patronId) => {
         try {
           if (!date) return null;
 
-          const d = new Date(date);
-
-          if (isNaN(d.getTime())) return date;
-
-          return d.toISOString().split('T')[0];
+          // The procedure returns DD-MM-YYYY. Date(string) swaps ambiguous days/months.
+          if (typeof date === 'string') {
+            const displayDate = /^(\d{2})[-/](\d{2})[-/](\d{4})$/.exec(date);
+            if (displayDate) {
+              return `${displayDate[3]}-${displayDate[2]}-${displayDate[1]}`;
+            }
+            const isoDate = /^(\d{4}-\d{2}-\d{2})(?:[T ].*)?$/.exec(date);
+            return isoDate ? isoDate[1] : date;
+          }
+          if (date instanceof Date && !isNaN(date.getTime())) {
+            return date.toISOString().split('T')[0];
+          }
+          return date;
         } catch {
           return date;
         }

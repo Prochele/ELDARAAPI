@@ -16,6 +16,8 @@ const env = require('./env');
 
 // });
 const pool = mysql.createPool({
+  // SQL DATE values are calendar days, not instants to convert through a timezone.
+  dateStrings: ['DATE'],
   host: process.env.DB_HOST,
   port: process.env.DB_PORT,
   user: process.env.DB_USER,
