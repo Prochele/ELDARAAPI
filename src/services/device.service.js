@@ -1,4 +1,6 @@
 const deviceRepository = require('../repositories/device.repository');
+const { createMorningReminderRepository } = require('../repositories/morningReminder.repository');
+const scheduleRepository = createMorningReminderRepository();
 
 const saveDeviceToken = async (body) => {
   if (typeof body !== 'object') {
@@ -18,7 +20,7 @@ const saveDeviceToken = async (body) => {
   if (!deviceUUID) throw new Error('deviceUUID is required');
   if (!pushToken) throw new Error('pushToken is required');
 
-  return await deviceRepository.saveDeviceToken({
+  await deviceRepository.saveDeviceToken({
     userId,
     deviceUUID,
     platform,
@@ -26,6 +28,36 @@ const saveDeviceToken = async (body) => {
     appVersion,
     pushToken
   });
+
+  let scheduleRemindersRegistered = false;
+  try {
+    await scheduleRepository.registerDevice(userId, deviceUUID, pushToken,
+      body.supportsScheduleReminders === true, body.sessionToken);
+    scheduleRemindersRegistered = body.supportsScheduleReminders === true;
+  } catch (error) {
+    // Older deployments can still register medicine push tokens before the migration is applied.
+    if (error.code !== 'ER_NO_SUCH_TABLE') throw error;
+  }
+  return { userId, scheduleRemindersRegistered };
+};
+
+const getScheduleReminderNotifications = async (userId) => {
+  if (!userId) throw new Error('userId is required');
+  return scheduleRepository.getPreferences(userId);
+};
+
+const updateScheduleReminderNotifications = async (userId, body) => {
+  if (!userId) throw new Error('userId is required');
+  if (typeof body?.appointmentRemindersEnabled !== 'boolean' ||
+      typeof body?.activityRemindersEnabled !== 'boolean') {
+    throw new Error('Both schedule reminder preferences must be boolean');
+  }
+  const preferences = {
+    appointmentRemindersEnabled: body.appointmentRemindersEnabled,
+    activityRemindersEnabled: body.activityRemindersEnabled,
+  };
+  await scheduleRepository.updatePreferences(userId, preferences);
+  return preferences;
 };
 
 const getMedicineReminderNotifications = async (userId) => {
@@ -57,4 +89,10 @@ module.exports = {
   saveDeviceToken,
   getMedicineReminderNotifications,
   updateMedicineReminderNotifications,
+  getScheduleReminderNotifications,
+  updateScheduleReminderNotifications,
+  unregisterScheduleDevice: (userId, deviceUUID) => {
+    if (!userId || !deviceUUID || deviceUUID.length > 100) throw new Error('Invalid device');
+    return scheduleRepository.unregisterDevice(userId, deviceUUID);
+  },
 };

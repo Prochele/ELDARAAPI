@@ -22,4 +22,11 @@ router.put(
   deviceController.updateMedicineReminderNotifications
 );
 
+router.get('/schedule-reminder-notifications', authenticateSession,
+  deviceController.getScheduleReminderNotifications);
+router.put('/schedule-reminder-notifications', authenticateSession,
+  deviceController.updateScheduleReminderNotifications);
+router.delete('/schedule-reminder-devices/:deviceUUID', authenticateSession,
+  deviceController.unregisterScheduleDevice);
+
 module.exports = router;

@@ -5,7 +5,8 @@ const saveDeviceToken = async (req, res, next) => {
   try {
     const payload = {
       ...req.body,
-      userId: req.user.UserID   // enforce from session
+      userId: req.user.UserID,   // enforce from session
+      sessionToken: req.headers.authorization.replace('Bearer ', ''),
     };
 
     const result = await deviceService.saveDeviceToken(payload);
@@ -57,4 +58,22 @@ module.exports = {
   saveDeviceToken,
   getMedicineReminderNotifications,
   updateMedicineReminderNotifications,
+  getScheduleReminderNotifications: async (req, res, next) => {
+    try {
+      return successResponse(res, 'Schedule notification preferences fetched',
+        await deviceService.getScheduleReminderNotifications(req.user.UserID));
+    } catch (error) { next(error); }
+  },
+  updateScheduleReminderNotifications: async (req, res, next) => {
+    try {
+      return successResponse(res, 'Schedule notification preferences updated',
+        await deviceService.updateScheduleReminderNotifications(req.user.UserID, req.body));
+    } catch (error) { next(error); }
+  },
+  unregisterScheduleDevice: async (req, res, next) => {
+    try {
+      await deviceService.unregisterScheduleDevice(req.user.UserID, req.params.deviceUUID);
+      return successResponse(res, 'Schedule notifications unregistered');
+    } catch (error) { next(error); }
+  },
 };

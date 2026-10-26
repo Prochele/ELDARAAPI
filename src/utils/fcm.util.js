@@ -16,7 +16,9 @@ try {
   firebaseInitialized = true;
   console.log('Firebase Admin initialized for project:', firebaseProjectId);
 } catch (error) {
-  console.warn('Firebase config not available. FCM notifications are disabled.', error.message);
+  console.warn('Firebase config not available. FCM notifications are disabled.', {
+    code: error.code || 'firebase/config-invalid',
+  });
 }
 
 const sendFCM = async (tokens, payload) => {
@@ -58,12 +60,21 @@ const sendFCM = async (tokens, payload) => {
   response.responses.forEach((result, index) => {
     if (!result.success) {
       console.warn('FCM token send failed:', {
-        tokenPrefix: tokens[index]?.slice(0, 12),
+        tokenIndex: index,
         code: result.error?.code,
-        message: result.error?.message,
       });
     }
   });
 };
 
-module.exports = { sendFCM };
+const sendScheduleFCM = async (device, reminder) => {
+  if (!firebaseInitialized) {
+    const error = new Error('Firebase is not initialized');
+    error.code = 'firebase/not-initialized';
+    throw error;
+  }
+  const { buildScheduleMessage } = require('./schedulePush.util');
+  return admin.messaging().send(buildScheduleMessage(device, reminder));
+};
+
+module.exports = { sendFCM, sendScheduleFCM };

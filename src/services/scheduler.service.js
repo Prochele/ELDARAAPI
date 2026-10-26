@@ -33,7 +33,6 @@ const startScheduler = () => {
       const [rows] = await db.query(`CALL sp_get_due_medicines()`);
 
       const data = rows[0] || [];
-      console.log('Due medicines:', data);
       const grouped = groupByPatronAndTime(data);
 
       for (const g of grouped) {
@@ -46,13 +45,24 @@ const startScheduler = () => {
         const tokens = (tokensResult[0] || []).map(t => t.PushToken);
 
         await sendFCM(tokens, g);
-        console.log('Tokens:', tokens);
       }
 
     } catch (err) {
       console.error('Scheduler error:', err);
     }
   });
+
+  // Roll out only after the additive migration and compatible mobile clients are ready.
+  if (process.env.ENABLE_MORNING_REMINDERS === 'true') {
+    const { createMorningReminderRepository } = require('../repositories/morningReminder.repository');
+    const { createMorningReminderRunner } = require('./morningReminder.service');
+    const { sendScheduleFCM } = require('../utils/fcm.util');
+    const run = createMorningReminderRunner({
+      repository: createMorningReminderRepository(), send: sendScheduleFCM,
+    });
+    cron.schedule('* * * * *', run, { timezone: 'Asia/Kolkata', noOverlap: true });
+    void run();
+  }
 };
 
 module.exports = { startScheduler };
