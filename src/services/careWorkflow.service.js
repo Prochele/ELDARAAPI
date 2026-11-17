@@ -76,25 +76,29 @@ const createCareWorkflow = (pool) => {
       target,
       id,
     ]);
-  const availability = async (db, id) => ({
-    preferences: (
-      await q(
-        db,
-        'SELECT Accepting accepting,WorkType workType FROM CareWorkPreferences WHERE CaretakerID=?',
-        [id]
-      )
-    )[0] || { accepting: 0, workType: 'either' },
-    slots: await q(
+  const availability = async (db, id) => {
+    const preferences = await q(
       db,
-      'SELECT Weekday weekday,FromMinute fromMinute,ToMinute toMinute FROM CareAvailability WHERE CaretakerID=? ORDER BY Weekday,FromMinute',
+      'SELECT Accepting accepting,WorkType workType FROM CareWorkPreferences WHERE CaretakerID=?',
       [id]
-    ),
-    leaves: await q(
-      db,
-      'SELECT FromDate fromDate,ToDate toDate FROM CareLeave WHERE CaretakerID=? AND ToDate>=? ORDER BY FromDate',
-      [id, v.indiaDate()]
-    ),
-  });
+    );
+    return {
+      preferences: {
+        ...(preferences[0] || { accepting: 0, workType: 'either' }),
+        configured: preferences.length > 0,
+      },
+      slots: await q(
+        db,
+        'SELECT Weekday weekday,FromMinute fromMinute,ToMinute toMinute FROM CareAvailability WHERE CaretakerID=? ORDER BY Weekday,FromMinute',
+        [id]
+      ),
+      leaves: await q(
+        db,
+        'SELECT FromDate fromDate,ToDate toDate FROM CareLeave WHERE CaretakerID=? AND ToDate>=? ORDER BY FromDate',
+        [id, v.indiaDate()]
+      ),
+    };
+  };
   const commitments = (db, id) =>
     q(
       db,
@@ -133,7 +137,10 @@ const createCareWorkflow = (pool) => {
     )
       v.fail('Caretaker is not accepting this work type', 409);
     if (!v.fitsAvailability(a, settings.slots, settings.leaves))
-      v.fail('Requested hours conflict with availability or leave', 409);
+      v.fail(
+        "Requested hours are outside the caretaker's working hours or overlap with unavailable dates",
+        409
+      );
     const others = await q(
       db,
       `SELECT ID id,Kind kind,FromDate fromDate,ToDate toDate,Weekdays weekdays,
@@ -196,6 +203,7 @@ const createCareWorkflow = (pool) => {
         const info = await availability(pool, row.caretakerId),
           assigned = await commitments(pool, row.caretakerId);
         row.accepting = Boolean(info.preferences.accepting);
+        row.workPreferencesSet = info.preferences.configured;
         row.workType = info.preferences.workType;
         row.freeSlots = v.freeSlots(info.slots, assigned);
         row.weeklySlots = info.slots;
@@ -222,7 +230,14 @@ const createCareWorkflow = (pool) => {
         pool,
         'SELECT GenderID id,GenderName name FROM GenderMaster ORDER BY GenderID'
       );
-      return { items: rows, total: Number(total), page, pageSize: 20, cities, genders };
+      return {
+        items: rows,
+        total: Number(total),
+        page,
+        pageSize: 20,
+        cities,
+        genders,
+      };
     },
     async getAvailability(user) {
       role(user, ['CT']);
@@ -237,12 +252,14 @@ const createCareWorkflow = (pool) => {
         !['either', 'full-time', 'part-time'].includes(body.workType)
       )
         v.fail('Choose work preferences');
-      if (!Array.isArray(leaves) || leaves.length > 60) v.fail('Up to 60 leave periods allowed');
+      if (!Array.isArray(leaves) || leaves.length > 60)
+        v.fail('You can add up to 60 unavailable date ranges');
       const periods = leaves.map((l) => ({
         fromDate: v.date(l.fromDate),
         toDate: v.date(l.toDate),
       }));
-      if (periods.some((l) => l.toDate < l.fromDate)) v.fail('Leave end must follow start');
+      if (periods.some((l) => l.toDate < l.fromDate))
+        v.fail('The end date must be on or after the start date');
       return tx(async (db) => {
         await lock(db, user.UserID);
         const existing = await commitments(db, user.UserID);
@@ -260,7 +277,10 @@ const createCareWorkflow = (pool) => {
               )
           )
         )
-          v.fail('Resolve assignments that conflict with this availability or leave first', 409);
+          v.fail(
+            'These working hours or unavailable dates conflict with a confirmed assignment. Resolve that assignment first.',
+            409
+          );
         await q(
           db,
           'INSERT INTO CareWorkPreferences(CaretakerID,Accepting,WorkType) VALUES(?,?,?) ON DUPLICATE KEY UPDATE Accepting=VALUES(Accepting),WorkType=VALUES(WorkType),UpdatedAt=UTC_TIMESTAMP()',

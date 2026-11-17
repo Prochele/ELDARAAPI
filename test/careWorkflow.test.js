@@ -1,6 +1,27 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
 const v = require('../src/utils/careWorkflow');
+const { createCareWorkflow } = require('../src/services/careWorkflow.service');
+
+test('caretaker search distinguishes a missing work preference from explicit acceptance or refusal', async () => {
+  for (const accepting of [undefined, 0, 1]) {
+    const service = createCareWorkflow({
+      query: async ({ sql }) => {
+        assert.match(sql.trim(), /^SELECT\b/i);
+        if (sql.includes('COUNT(*) total')) return [[{ total: 1 }]];
+        if (sql.includes('U.UserID caretakerId'))
+          return [[{ caretakerId: 32, name: 'Test Caretaker' }]];
+        if (sql.includes('FROM CareWorkPreferences'))
+          return [accepting === undefined ? [] : [{ accepting, workType: 'either' }]];
+        if (sql.includes('AVG(Rating)')) return [[{ averageRating: null, ratingCount: 0 }]];
+        return [[]];
+      },
+    });
+    const result = await service.search({ RoleCode: 'PTA', UserID: 99 });
+    assert.equal(result.items[0].workPreferencesSet, accepting !== undefined);
+    assert.equal(result.items[0].accepting, accepting === 1);
+  }
+});
 const a = {
   kind: 'weekly',
   fromDate: '2026-11-17',
@@ -21,7 +42,11 @@ test('care scheduling compares date, weekday and hours together', () => {
   assert.equal(v.overlaps(a, { ...a, kind: 'legacy' }), true);
 });
 test('leave and weekly ranges enforce the exact occurrences', () => {
-  const slots = a.weekdays.map((weekday) => ({ weekday, fromMinute: 480, toMinute: 900 }));
+  const slots = a.weekdays.map((weekday) => ({
+    weekday,
+    fromMinute: 480,
+    toMinute: 900,
+  }));
   assert.equal(v.fitsAvailability(a, slots, []), true);
   assert.equal(
     v.fitsAvailability(a, slots, [{ fromDate: '2026-11-21', toDate: '2026-11-22' }]),
