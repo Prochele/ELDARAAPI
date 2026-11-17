@@ -57,15 +57,12 @@ const getPatronList = async (userId, roleCode) => {
       FROM CaretakerPatronMapping CPM
       INNER JOIN UserMaster U
         ON U.UserID = CPM.PatronId
-      INNER JOIN UserRoleMapping UR
-        ON UR.UserID = U.UserID
-       AND UR.IsActive = TRUE
-      INNER JOIN RoleMaster RM
-        ON RM.RoleID = UR.RoleID
-       AND RM.RoleCode = 'PT'
       WHERE CPM.CaretakerId = ?
         AND CPM.IsActive = TRUE
         AND U.StatusID = 1
+        AND EXISTS(SELECT 1 FROM CareAssignment A WHERE A.PatronID=U.UserID AND A.CaretakerID=CPM.CaretakerId
+          AND A.State='active' AND A.FromDate<=DATE(CONVERT_TZ(UTC_TIMESTAMP(),'+00:00','+05:30'))
+          AND (A.ToDate IS NULL OR A.ToDate>=DATE(CONVERT_TZ(UTC_TIMESTAMP(),'+00:00','+05:30'))))
       ORDER BY U.FirstName, U.LastName
       `,
       [userId]

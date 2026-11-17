@@ -3,11 +3,7 @@ const service = require('../services/vitals.service');
 exports.insertVitals = async (req, res, next) => {
     try {
 
-        console.log("VITALS API HIT:", req.body); 
-
-        const result = await service.insertVitals(req.body);
-
-        console.log("VITALS SUCCESS:", result);
+        const result = await service.insertVitals({...req.body,createdBy:req.user.UserID});
 
         res.json(result);
     } catch (err) {

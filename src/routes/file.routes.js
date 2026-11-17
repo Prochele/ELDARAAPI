@@ -2,6 +2,7 @@ const express = require('express');
 const multer = require('multer');
 const fileController = require('../controllers/file.controller');
 const sessionMiddleware = require('../middlewares/session.middleware');
+const {guard,fileTarget}=require('../middlewares/careAccess.middleware');
 
 const router = express.Router();
 
@@ -12,6 +13,7 @@ router.post(
   '/upload',
   sessionMiddleware,
   upload.single('file'),
+  guard(fileTarget),
   fileController.uploadFile
 );
 
@@ -19,12 +21,14 @@ router.post(
 router.get(
   '/view/:file_id',
   sessionMiddleware,
+  guard(fileTarget),
   fileController.getFileView
 );
 
 router.delete(
   '/delete/:file_id',
   sessionMiddleware,
+  guard(fileTarget),
   fileController.deleteFile
 );
 

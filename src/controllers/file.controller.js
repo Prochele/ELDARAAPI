@@ -4,7 +4,7 @@ const { successResponse, errorResponse } = require('../utils/response.util');
 
 const uploadFile = async (req, res) => {
   try {
-    const userId = req.user?.user_id;
+    const userId = req.user.UserID;
 
     const result = await fileService.uploadFileService(
       req.file,
@@ -34,7 +34,7 @@ const getFileView = async (req, res) => {
 const deleteFile = async (req, res) => {
   try {
     const fileId = req.params.file_id;
-    const userId = req.user?.user_id;
+    const userId = req.user.UserID;
 
     await fileService.deleteFileService(fileId, userId);
 

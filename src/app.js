@@ -82,6 +82,8 @@ app.use('/api/vitals', vitalsRoutes);
 
 app.use('/api/device', deviceRoutes);
 app.use('/api/caretaker', caretakerRoutes);
+app.use('/api/admin/care-reports', require('./routes/careModeration.routes'));
+app.use('/api/care', require('./routes/careWorkflow.routes'));
 app.use('/api/account', accountRoutes);
 app.use('/api/payments', paymentRoutes);
 app.use('/api/plans', planRoutes);

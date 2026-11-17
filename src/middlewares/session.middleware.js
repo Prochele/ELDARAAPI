@@ -16,8 +16,9 @@ const authenticateSession = async (req, res, next) => {
          UT.UserID,
          RM.RoleCode
        FROM UserTokens UT
+       INNER JOIN UserMaster ActiveUser ON ActiveUser.UserID=UT.UserID AND ActiveUser.StatusID=1
        LEFT JOIN UserRoleMapping URM
-         ON URM.UserID = UT.UserID
+         ON URM.UserID = UT.UserID AND URM.IsActive=1
        LEFT JOIN RoleMaster RM
          ON RM.RoleID = URM.RoleID
        WHERE UT.AccessToken = ?

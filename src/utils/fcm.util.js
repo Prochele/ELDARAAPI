@@ -77,4 +77,15 @@ const sendScheduleFCM = async (device, reminder) => {
   return admin.messaging().send(buildScheduleMessage(device, reminder));
 };
 
-module.exports = { sendFCM, sendScheduleFCM };
+const sendCareFCM=async(device,notice)=>{
+  if(!firebaseInitialized)throw Object.assign(new Error('Firebase unavailable'),{code:'firebase/not-initialized'});
+  const data={type:'CARE_WORKFLOW',recipientId:String(notice.RecipientID),target:notice.Target,
+    referenceId:String(notice.ReferenceID),noticeId:String(notice.ID),title:'ELDARA',body:'You have a new update in ELDARA.'};
+  const message={token:device.PushToken,data,android:{priority:'high',ttl:86400000}};
+  if(device.Platform==='IOS'){
+    message.notification={title:data.title,body:data.body};
+    message.apns={headers:{'apns-push-type':'alert','apns-priority':'10','apns-collapse-id':`eldara-care-${notice.ID}`,'apns-expiration':String(Math.floor(Date.now()/1000)+86400)},payload:{aps:{sound:'default','thread-id':'eldara-care'}}};
+  }
+  return admin.messaging().send(message);
+};
+module.exports = { sendFCM, sendScheduleFCM, sendCareFCM };

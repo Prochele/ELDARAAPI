@@ -28,6 +28,7 @@ const { startScheduler } = require('./services/scheduler.service');
   try {
     // start background jobs
     startScheduler();
+    require('./services/careNotice.service').startCareNoticeWorker();
 
     app.listen(PORT, '0.0.0.0', () => {
       console.log(`🚀 ELDARA API running on port ${PORT}`);
