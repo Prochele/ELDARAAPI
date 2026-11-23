@@ -84,7 +84,15 @@ app.use('/api/device', deviceRoutes);
 app.use('/api/caretaker', caretakerRoutes);
 app.use('/api/admin/care-reports', require('./routes/careModeration.routes'));
 app.use('/api/care', require('./routes/careWorkflow.routes'));
+app.use('/api/wellness', require('./routes/wellness.routes').createWellnessRouter({
+  service: require('./services/wellness.service').createWellnessService({ pool: require('./config/db') }),
+  authenticate: require('./middlewares/session.middleware'),
+}));
 app.use('/api/account', accountRoutes);
+app.use('/api/walking', require('./routes/walking.routes').createWalkingRouter({
+  service: require('./services/walking.service').createWalkingService({ pool: require('./config/db') }),
+  authenticate: require('./middlewares/session.middleware'),
+}));
 app.use('/api/payments', paymentRoutes);
 app.use('/api/plans', planRoutes);
 app.use('/api/admin', adminRoutes);
@@ -95,6 +103,8 @@ app.get('/health', (req, res) => {
   res.status(200).json({
     status: 'UP',
     message: 'ELDARA API is running',
+    version: require('../package.json').version,
+    revision: process.env.RAILWAY_GIT_COMMIT_SHA || null,
   });
 });
 
