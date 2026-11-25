@@ -1,4 +1,5 @@
 const express = require('express');
+const { fail } = require('../utils/careWorkflow');
 const createWalkingRouter = ({ service, authenticate }) => {
   const router=express.Router();
   router.use(authenticate);
@@ -9,6 +10,12 @@ const createWalkingRouter = ({ service, authenticate }) => {
   };
   // Every route is /me; no patron/group/owner ID is accepted from clients.
   router.get('/me',handle(r=>service.overview(r.user)));
+  const daily = fn => handle(r => {
+    if (Object.keys(r.query).length) fail('Daily steps do not accept query parameters.');
+    return fn(r);
+  });
+  router.get('/me/daily-steps',daily(r=>service.dailySteps(r.user)));
+  router.put('/me/daily-steps',daily(r=>service.putDailySteps(r.user,r.body)));
   router.put('/me/goals',handle(r=>service.goals(r.user,r.body)));
   router.post('/me/walks',handle(r=>service.create(r.user,r.body)));
   router.get('/me/days/:date',handle(r=>service.history(r.user,r.params.date,r.query.before)));

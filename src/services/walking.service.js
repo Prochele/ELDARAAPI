@@ -5,6 +5,7 @@ const columns = `ID id,ClientID clientId,WalkDate date,Steps steps,DistanceMeter
 const createWalkingService = ({ pool, accessPool = pool, clock = () => new Date() }) => {
   const q = async (db, sql, args = []) => (await db.query({ sql, dateStrings: true }, args))[0];
   const owner = async user => {
+    if (!user) fail('Authentication is required.', 401);
     if (!v.roles.includes(user.RoleCode)) fail('Walking is available only for your personal Patron or Patron Admin account.', 403);
     const id = number(user.UserID);
     const [row] = await q(accessPool, `SELECT UserID id,CONCAT_WS(' ',FirstName,LastName) name
@@ -17,7 +18,45 @@ const createWalkingService = ({ pool, accessPool = pool, clock = () => new Date(
       FROM WalkingGoal WHERE UserID=?`, [id]);
     return row || { dailySteps: null, weeklySteps: null, strideCm: 65, version: 0 };
   };
+  const dailySteps = async (db, person, w) => {
+    const days = await q(db, `SELECT SnapshotDate date,Steps steps,DistanceMeters distanceMeters,DistanceSource distanceSource
+      FROM WalkingDailySnapshot WHERE UserID=? AND SnapshotDate BETWEEN ? AND ? ORDER BY SnapshotDate DESC`,
+    [person.id, w.oldestDate, w.today]);
+    return { owner: person, today: w.today, oldestDate: w.oldestDate,
+      days: days.map(d => ({ date: d.date, steps: Number(d.steps),
+        distanceMeters: Number(d.distanceMeters), distanceSource: d.distanceSource })) };
+  };
   return {
+    async dailySteps(user) {
+      const person = await owner(user), w = v.window(clock());
+      return dailySteps(pool, person, w);
+    },
+    async putDailySteps(user, body) {
+      const person = await owner(user), w = v.window(clock()), days = v.dailySteps(body, w);
+      // Lock dates in a stable order when phones submit overlapping batches.
+      days.sort((a, b) => a.date.localeCompare(b.date));
+      const db = await pool.getConnection();
+      try {
+        await db.beginTransaction();
+        // Daily totals from multiple phones overlap: keep the highest, never add them.
+        // Assign Steps last so every comparison sees the previously stored total.
+        // Ties retain the entire stored estimate, including its update timestamp.
+        await q(db, `INSERT INTO WalkingDailySnapshot(UserID,SnapshotDate,Steps,DistanceMeters,DistanceSource,UpdatedAtUTC)
+          VALUES ${days.map(() => '(?,?,?,?,?,?)').join(',')}
+          ON DUPLICATE KEY UPDATE
+            UpdatedAtUTC=IF(VALUES(Steps)>Steps,VALUES(UpdatedAtUTC),UpdatedAtUTC),
+            DistanceMeters=IF(VALUES(Steps)>Steps,VALUES(DistanceMeters),DistanceMeters),
+            DistanceSource=IF(VALUES(Steps)>Steps,VALUES(DistanceSource),DistanceSource),
+            Steps=GREATEST(Steps,VALUES(Steps))`,
+        days.flatMap(d => [person.id,d.date,d.steps,d.distanceMeters,d.distanceSource,w.now]));
+        const result = await dailySteps(db, person, w);
+        await db.commit();
+        return result;
+      } catch (e) {
+        await db.rollback();
+        throw e;
+      } finally { db.release(); }
+    },
     async overview(user) {
       const person = await owner(user), w = v.window(clock());
       const days = await q(pool, `SELECT WalkDate date,SUM(Steps) steps,SUM(DistanceMeters) distanceMeters,
@@ -79,10 +118,15 @@ const createWalkingService = ({ pool, accessPool = pool, clock = () => new Date(
         const r = await q(pool, 'DELETE FROM WalkingLog WHERE WalkDate<? LIMIT 500', [w.oldestDate]);
         removed += r.affectedRows; if (r.affectedRows < 500) break;
       }
+      for (let batch=0;batch<100;batch++) {
+        const r = await q(pool, 'DELETE FROM WalkingDailySnapshot WHERE SnapshotDate<? LIMIT 500', [w.oldestDate]);
+        removed += r.affectedRows; if (r.affectedRows < 500) break;
+      }
       // Local review can use a separate, read-only identity pool.
       let after=0;
       for (let batch=0;batch<500;batch++) {
-        const ids=(await q(pool, `SELECT UserID id FROM (SELECT UserID FROM WalkingLog UNION SELECT UserID FROM WalkingGoal) owners
+        const ids=(await q(pool, `SELECT UserID id FROM (SELECT UserID FROM WalkingLog UNION SELECT UserID FROM WalkingGoal
+          UNION SELECT UserID FROM WalkingDailySnapshot) owners
           WHERE UserID>? ORDER BY UserID LIMIT 500`, [after])).map(r=>Number(r.id));
         if (!ids.length) break;
         const active=new Set((await q(accessPool,'SELECT UserID id FROM UserMaster WHERE StatusID=1 AND UserID IN (?)',[ids])).map(r=>Number(r.id)));
@@ -90,6 +134,10 @@ const createWalkingService = ({ pool, accessPool = pool, clock = () => new Date(
         if (inactive.length) {
           await q(pool,'DELETE FROM WalkingLog WHERE UserID IN (?)',[inactive]);
           await q(pool,'DELETE FROM WalkingGoal WHERE UserID IN (?)',[inactive]);
+          for (let batch=0;batch<100;batch++) {
+            const r = await q(pool,'DELETE FROM WalkingDailySnapshot WHERE UserID IN (?) LIMIT 500',[inactive]);
+            if (r.affectedRows < 500) break;
+          }
         }
         after=ids.at(-1); if (ids.length<500) break;
       }

@@ -10,6 +10,7 @@ test('personal walking access, retries, goals, history and cleanup against isola
   await setup.query(`CREATE TABLE UserMaster(UserID BIGINT PRIMARY KEY,FirstName VARCHAR(100),LastName VARCHAR(100),MemberGroupID BIGINT,StatusID INT);
     INSERT INTO UserMaster VALUES(1,'Admin','One',10,1),(2,'Patron','One',10,1),(3,'Admin','Two',10,1),(4,'Caretaker','One',10,1),(5,'Inactive','One',10,0);`);
   await setup.query(fs.readFileSync(path.join(__dirname,'../migrations/20261123_walking.sql'),'utf8'));
+  await setup.query(fs.readFileSync(path.join(__dirname,'../migrations/20261125_walking_daily.sql'),'utf8'));
   const pool=mysql.createPool({socketPath,user:'root',database,dateStrings:true});
   const clock=()=>new Date('2026-11-23T12:00:00Z'), service=createWalkingService({pool,clock});
   const admin={UserID:1,RoleCode:'PTA'}, patron={UserID:2,RoleCode:'PT'}, ct={UserID:4,RoleCode:'CT'};
@@ -76,13 +77,49 @@ test('personal walking access, retries, goals, history and cleanup against isola
         assert.equal((await fetch(`${base}/me/walks`,{method:'POST',headers:{authorization:'admin','content-type':'application/json'},body:JSON.stringify({...walk(999),UserID:2})})).status,400);
       } finally {await new Promise(r=>server.close(r));}
     });
-    await t.test('seven-day cleanup deletes old walks and deactivated-account goals but keeps active goals',async()=>{
+    await t.test('daily snapshots keep atomic maxima, no-op retries and matching estimates without summing walks or phones',async()=>{
+      const day=(extra={})=>({date:'2026-11-23',steps:0,distanceMeters:0,distanceSource:'step-estimate',...extra});
+      const write=(svc,user,value)=>svc.putDailySteps(user,{days:[day(value)]});
+      assert.equal((await write(service,patron,{})).days[0].steps,0);
+      assert.deepEqual((await service.dailySteps(admin)).days,[]);
+      assert.equal((await service.overview(patron)).days.find(d=>d.date==='2026-11-23').steps,2000);
+      await write(service,patron,{steps:4000,distanceMeters:2600});
+      const stored=async()=> (await pool.query('SELECT * FROM WalkingDailySnapshot WHERE UserID=2 AND SnapshotDate=?',['2026-11-23']))[0][0];
+      const original=await stored();
+      const later=createWalkingService({pool,clock:()=>new Date('2026-11-23T13:00:00Z')});
+      for(const value of [{steps:4000,distanceMeters:2600},{steps:4000,distanceMeters:9999,distanceSource:'device-estimate'},
+        {steps:1,distanceMeters:200000,distanceSource:'device-estimate'}]) {
+        await write(later,patron,value);assert.deepEqual(await stored(),original);
+      }
+      await Promise.all([
+        write(later,patron,{steps:12000,distanceMeters:7000,distanceSource:'device-estimate'}),
+        write(later,patron,{steps:8000,distanceMeters:5200}),
+        write(later,patron,{steps:10000,distanceMeters:6500}),
+      ]);
+      assert.deepEqual((await service.dailySteps(patron)).days,[day({steps:12000,distanceMeters:7000,distanceSource:'device-estimate'})]);
+      await write(later,patron,{steps:12100,distanceMeters:1});
+      assert.deepEqual((await service.dailySteps(patron)).days,[day({steps:12100,distanceMeters:1})]);
+      await write(service,admin,{steps:9999,distanceMeters:6000});
+      assert.equal((await service.dailySteps(patron)).days[0].steps,12100);
+      assert.equal((await service.dailySteps(admin)).days[0].steps,9999);
+      assert.equal((await service.overview(patron)).days.find(d=>d.date==='2026-11-23').steps,2000);
+      await rejects(service.putDailySteps(patron,{days:[day({date:'2026-11-22',steps:123}),day({date:'2026-11-24'})]}),400);
+      assert.equal((await service.dailySteps(patron)).days.length,1);
+      await service.putDailySteps(patron,{days:[day({date:'2026-11-17'}),day({date:'2026-11-18'})]});
+      await write(service,{UserID:3,RoleCode:'PTA'},{steps:1234,distanceMeters:800});
+    });
+    await t.test('seven-day cleanup deletes old walks and snapshots including snapshot-only inactive owners',async()=>{
       await service.create(patron,walk(100,{date:'2026-11-17'}));await service.create(patron,walk(101,{date:'2026-11-18'}));
       await pool.query('UPDATE UserMaster SET StatusID=0 WHERE UserID=1');
+      await pool.query('UPDATE UserMaster SET StatusID=0 WHERE UserID=3');
       const next=createWalkingService({pool,clock:()=>new Date('2026-11-24T12:00:00Z')});await next.cleanup();
       assert.equal((await next.overview(patron)).days.some(d=>d.date==='2026-11-17'),false);
       assert.equal((await next.overview(patron)).days.some(d=>d.date==='2026-11-18'),true);
       const [goals]=await pool.query('SELECT * FROM WalkingGoal WHERE UserID=1');assert.equal(goals.length,0);
+      const daily=await next.dailySteps(patron);
+      assert.deepEqual(daily.days.map(d=>d.date),['2026-11-23','2026-11-18']);
+      const [inactiveSnapshots]=await pool.query('SELECT * FROM WalkingDailySnapshot WHERE UserID IN (1,3)');
+      assert.equal(inactiveSnapshots.length,0);
       await rejects(next.history(patron,'2026-11-17'),400);
     });
   } finally {await pool.end();await setup.query(`DROP DATABASE ${database}`);await setup.end();}

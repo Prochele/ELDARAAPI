@@ -40,4 +40,16 @@ const walk = (body, w) => {
   if (b.source === 'sensor' && b.distanceSource === 'manual') fail('Sensor walks must use a device or step estimate.');
   return b;
 };
-module.exports = { roles, window, day, goal, walk };
+const dailySteps = (body, w) => {
+  const b = validate(Joi.object({
+    days: Joi.array().items(Joi.object({
+      date: Joi.string().required(),
+      steps: Joi.number().integer().min(0).max(200000).required(),
+      distanceMeters: Joi.number().integer().min(0).max(200000).required(),
+      distanceSource: Joi.string().valid('device-estimate', 'step-estimate').required(),
+    }).unknown(false)).min(1).max(7).unique('date').required(),
+  }).unknown(false), body);
+  b.days.forEach(d => day(d.date, w));
+  return b.days;
+};
+module.exports = { roles, window, day, goal, walk, dailySteps };
